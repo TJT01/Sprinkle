@@ -18,8 +18,10 @@ b1d8321bc24c438d457ef7d2aa79e97658561aa5 assets/sprinkle/models/item/purpur_bric
 30c194948443abbdaf3ab35b307aa16012a580b9 assets/sprinkle/models/item/purpur_bricks.json
 df8dd03f9c9364dc0d0e69b0b8ee6e8e8205d9ca data/minecraft/tags/blocks/slabs.json
 d3a4fce3d0b35f197eed7ca94d19747e3a6f3b91 data/minecraft/tags/blocks/stairs.json
+06fd7865d3f51acea0526059bdb3f6e49488e0a9 data/minecraft/tags/blocks/walls.json
 df8dd03f9c9364dc0d0e69b0b8ee6e8e8205d9ca data/minecraft/tags/items/slabs.json
 d3a4fce3d0b35f197eed7ca94d19747e3a6f3b91 data/minecraft/tags/items/stairs.json
+06fd7865d3f51acea0526059bdb3f6e49488e0a9 data/minecraft/tags/items/walls.json
 8d5de8c73fce3d6e8d645fa2226ff0387c36a196 data/quark/tags/blocks/vertical_slab.json
 8d5de8c73fce3d6e8d645fa2226ff0387c36a196 data/quark/tags/items/vertical_slab.json
 927ecc01d35d9a5fc690130eacf2530e09d5a254 data/sprinkle/advancements/recipes/building_blocks/purpur_brick_slab.json

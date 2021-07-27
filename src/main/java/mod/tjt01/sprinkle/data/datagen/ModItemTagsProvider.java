@@ -20,6 +20,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         //Minecraft
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
+        copy(BlockTags.WALLS, ItemTags.WALLS);
         //Quark
         copy(ModTags.Blocks.QUARK_VERTICAL_SLAB, ModTags.Items.QUARK_VERTICAL_SLAB);
     }

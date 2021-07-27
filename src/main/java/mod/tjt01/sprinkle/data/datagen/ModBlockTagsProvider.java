@@ -25,6 +25,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         //Minecraft
         tag(BlockTags.SLABS).add(ModBlocks.PURPUR_BRICK_SLAB.get());
         tag(BlockTags.STAIRS).add(ModBlocks.PURPUR_BRICK_STAIRS.get());
+        tag(BlockTags.WALLS).add(ModBlocks.PURPUR_BRICK_WALL.get());
         //Forge
         //Quark
         tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get());
