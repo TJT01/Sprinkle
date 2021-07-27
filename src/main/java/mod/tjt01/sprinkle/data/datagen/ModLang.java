@@ -6,12 +6,12 @@ import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLang extends LanguageProvider {
     public ModLang(DataGenerator gen) {
-        super(gen, "sprinkle", "en-us");
+        super(gen, "sprinkle", "en_us");
     }
 
     @Override
     public String getName() {
-        return "Sprinkle language: en-us";
+        return "Sprinkle language: en_us";
     }
 
     @Override
