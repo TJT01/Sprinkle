@@ -2,6 +2,7 @@ package mod.tjt01.sprinkle;
 
 import java.util.HashMap;
 
+import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraftforge.common.crafting.CraftingHelper;
@@ -30,6 +31,7 @@ public class ModEventSubscriber {
 
 	@SubscribeEvent
 	public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
+		CraftingHelper.register(FlagCondition.Serializer.INSTANCE);
 		CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
 	}
 

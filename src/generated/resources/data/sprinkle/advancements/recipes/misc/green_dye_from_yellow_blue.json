@@ -1,0 +1,55 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "flag": "green_dye",
+          "type": "sprinkle:flag"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "sprinkle:purpur_brick_slab"
+          ]
+        },
+        "criteria": {
+          "has_yellow_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "minecraft:yellow_dye"
+                }
+              ]
+            }
+          },
+          "has_blue_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "minecraft:blue_dye"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "sprinkle:purpur_brick_slab"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_yellow_dye",
+            "has_blue_dye",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

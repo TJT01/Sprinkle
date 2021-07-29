@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 import mod.tjt01.sprinkle.Main;
+import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import mod.tjt01.sprinkle.init.ModItems;
@@ -85,6 +86,17 @@ class Recipes extends RecipeProvider {
 					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_slab_from_purpur_brick_vertical_slab"))
 					.build(consumer, "sprinkle", "purpur_brick_slab_from_purpur_brick_vertical_slab");
 		}
+		{
+			ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(ModBlocks.PURPUR_BRICK_SLAB.get())
+					.requires(Items.YELLOW_DYE)
+					.requires(Items.BLUE_DYE)
+					.unlockedBy("has_yellow_dye", has(Items.YELLOW_DYE))
+					.unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
+			ConditionalRecipe.builder()
+					.addCondition(new FlagCondition("green_dye"))
+					.addRecipe(greenDye::save)
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/green_dye_from_yellow_blue"))
+					.build(consumer, "sprinkle", "green_dye_from_yellow_blue");
+		}
 	}
-
 }

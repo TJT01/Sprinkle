@@ -9,6 +9,7 @@ import net.minecraft.block.WallBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -30,7 +31,42 @@ public class ModBlockModels extends BlockStateProvider {
     }
 
     public void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleslab, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
+        getVariantBuilder(block)
+                .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.NORTH)
+                .addModels(new ConfiguredModel(
+                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                                .texture("bottom", bottom).texture("side", side).texture("top", top)
+                        , 0, 0, true)
+                )
+                .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.EAST)
+                .addModels(new ConfiguredModel(
+                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                                .texture("bottom", bottom).texture("side", side).texture("top", top)
+                        , 0, 90, true)
+                )
+                .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.SOUTH)
+                .addModels(new ConfiguredModel(
+                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                                .texture("bottom", bottom).texture("side", side).texture("top", top)
+                        , 0, 180, true)
+                )
+                .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.WEST)
+                .addModels(new ConfiguredModel(
+                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                                .texture("bottom", bottom).texture("side", side).texture("top", top)
+                        , 0, 270, true)
+                )
+                .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.DOUBLE)
+                .addModels(new ConfiguredModel(models().getExistingFile(doubleslab)));
+    }
 
+    private void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleSlab, ResourceLocation texture) {
+        verticalSlabBlock(block, doubleSlab, texture, texture, texture);
+    }
+
+    private void simpleVerticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleSlab, ResourceLocation texture) {
+        this.verticalSlabBlock(block, doubleSlab, texture);
+        this.simpleBlockItem(block, this.models().generatedModels.get(this.blockTexture(block)));
     }
 
     private void simpleStairsBlock(StairsBlock block, ResourceLocation texture) {
@@ -49,6 +85,7 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleSlabBlock((SlabBlock) ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleStairsBlock((StairsBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
+        this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
     }
 
 }
