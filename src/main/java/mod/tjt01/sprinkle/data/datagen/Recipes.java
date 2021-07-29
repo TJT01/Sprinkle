@@ -76,7 +76,7 @@ class Recipes extends RecipeProvider {
 					.build(consumer, "sprinkle", "purpur_brick_vertical_slab");
 		}
 		{
-			ShapelessRecipeBuilder vertSlabRevert = ShapelessRecipeBuilder.shapeless(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
+			ShapelessRecipeBuilder vertSlabRevert = ShapelessRecipeBuilder.shapeless(ModBlocks.PURPUR_BRICK_SLAB.get())
 					.requires(ModBlocks.PURPUR_BRICK_SLAB.get())
 					.unlockedBy("has_purpur_brick_slab", has(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get()));
 			ConditionalRecipe.builder()
