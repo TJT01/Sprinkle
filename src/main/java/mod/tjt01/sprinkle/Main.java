@@ -6,6 +6,10 @@
 
 package mod.tjt01.sprinkle;
 
+import mod.tjt01.sprinkle.config.CommonConfig;
+import mod.tjt01.sprinkle.config.SprinkleConfig;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +29,10 @@ public class Main {
 		LOGGER.debug("Sprinkle has joined the game");
 		
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		final ModLoadingContext modLoadingContext = ModLoadingContext.get();
+
+		modLoadingContext.registerConfig(ModConfig.Type.COMMON, SprinkleConfig.COMMON_SPEC);
+
 		ModBlocks.BLOCKS.register(modEventBus);
 		ModItems.ITEMS.register(modEventBus);
 	}
