@@ -1,5 +1,6 @@
 package mod.tjt01.sprinkle.data.datagen;
 
+import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
@@ -28,6 +29,9 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleBlockItem(block, this.models().generatedModels.get(this.blockTexture(block)));
     }
 
+    public void verticalSlabBlock(VerticalSlabBlock block, ResourceLocation doubleslab, ResourceLocation bottom, ResourceLocation side, ResourceLocation top) {
+
+    }
 
     private void simpleStairsBlock(StairsBlock block, ResourceLocation texture) {
         this.stairsBlock(block, texture);
