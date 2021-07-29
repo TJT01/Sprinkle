@@ -87,7 +87,7 @@ class Recipes extends RecipeProvider {
 					.build(consumer, "sprinkle", "purpur_brick_slab_from_purpur_brick_vertical_slab");
 		}
 		{
-			ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(ModBlocks.PURPUR_BRICK_SLAB.get())
+			ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE)
 					.requires(Items.YELLOW_DYE)
 					.requires(Items.BLUE_DYE)
 					.unlockedBy("has_yellow_dye", has(Items.YELLOW_DYE))

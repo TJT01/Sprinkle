@@ -2,10 +2,12 @@ package mod.tjt01.sprinkle;
 
 import java.util.HashMap;
 
+import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +35,13 @@ public class ModEventSubscriber {
 	public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
 		CraftingHelper.register(FlagCondition.Serializer.INSTANCE);
 		CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
+	}
+
+	@SubscribeEvent
+	public static void onModConfigEvent(ModConfig.ModConfigEvent event) {
+		ModConfig modConfig = event.getConfig();
+		if (modConfig.getSpec() == SprinkleConfig.COMMON_SPEC)
+			SprinkleConfig.bakeCommon(modConfig);
 	}
 
 }
