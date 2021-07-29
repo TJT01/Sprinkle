@@ -72,7 +72,7 @@ class Recipes extends RecipeProvider {
 			ConditionalRecipe.builder()
 					.addCondition(new QuarkFlagCondition("vertical_slabs"))
 					.addRecipe(vertSlab::save)
-					.generateAdvancement()
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab"))
 					.build(consumer, "sprinkle", "purpur_brick_vertical_slab");
 		}
 		{
@@ -82,7 +82,7 @@ class Recipes extends RecipeProvider {
 			ConditionalRecipe.builder()
 					.addCondition(new QuarkFlagCondition("vertical_slabs"))
 					.addRecipe(vertSlabRevert::save)
-					.generateAdvancement()
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_slab_from_purpur_brick_vertical_slab"))
 					.build(consumer, "sprinkle", "purpur_brick_slab_from_purpur_brick_vertical_slab");
 		}
 	}
