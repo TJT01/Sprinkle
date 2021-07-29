@@ -5,11 +5,10 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 import mod.tjt01.sprinkle.Main;
+import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import mod.tjt01.sprinkle.init.ModItems;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
+import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -17,8 +16,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.CookingRecipeBuilder;
-import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.FalseCondition;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -36,15 +34,6 @@ class Recipes extends RecipeProvider {
 	
 	@Override
 	protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-		ConditionalShapedRecipeBuilder.shaped(Items.DIAMOND)
-				.pattern("###")
-				.pattern("###")
-				.pattern("###")
-				.define('#', Items.DIRT)
-				.unlockedBy("has_dirt", has(Items.DIRT))
-				.condition(FalseCondition.INSTANCE)
-				.save(consumer, new ResourceLocation("sprinkle", "test"));
-
 		ShapedRecipeBuilder.shaped(ModBlocks.PURPUR_BRICKS.get(), 4)
 				.pattern("##")
 				.pattern("##")
@@ -72,6 +61,30 @@ class Recipes extends RecipeProvider {
 				.define('#', ModBlocks.PURPUR_BRICKS.get())
 				.unlockedBy("has_purpur_bricks", has(ModBlocks.PURPUR_BRICKS.get()))
 				.save(consumer);
+
+		{
+			ShapedRecipeBuilder vertSlab = ShapedRecipeBuilder.shaped(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
+					.pattern("#")
+					.pattern("#")
+					.pattern("#")
+					.define('#', ModBlocks.PURPUR_BRICK_SLAB.get())
+					.unlockedBy("has_purpur_brick_slab", has(ModBlocks.PURPUR_BRICK_SLAB.get()));
+			ConditionalRecipe.builder()
+					.addCondition(new QuarkFlagCondition("vertical_slabs"))
+					.addRecipe(vertSlab::save)
+					.generateAdvancement()
+					.build(consumer, "sprinkle", "purpur_brick_vertical_slab");
+		}
+		{
+			ShapelessRecipeBuilder vertSlabRevert = ShapelessRecipeBuilder.shapeless(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
+					.requires(ModBlocks.PURPUR_BRICK_SLAB.get())
+					.unlockedBy("has_purpur_brick_slab", has(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get()));
+			ConditionalRecipe.builder()
+					.addCondition(new QuarkFlagCondition("vertical_slabs"))
+					.addRecipe(vertSlabRevert::save)
+					.generateAdvancement()
+					.build(consumer, "sprinkle", "purpur_brick_slab_from_purpur_brick_vertical_slab");
+		}
 	}
 
 }

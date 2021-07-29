@@ -2,6 +2,9 @@ package mod.tjt01.sprinkle;
 
 import java.util.HashMap;
 
+import mod.tjt01.sprinkle.data.QuarkFlagCondition;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,5 +27,10 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 public class ModEventSubscriber {
 	
 	public static final Logger LOGGER = LogManager.getLogger(Main.MODID + " Loading");
+
+	@SubscribeEvent
+	public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
+		CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
+	}
 
 }
