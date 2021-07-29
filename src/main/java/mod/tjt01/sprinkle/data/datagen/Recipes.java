@@ -11,6 +11,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +19,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.CookingRecipeBuilder;
 import net.minecraft.data.ShapedRecipeBuilder;
+import net.minecraftforge.common.crafting.conditions.FalseCondition;
+import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
 
 
 class Recipes extends RecipeProvider {
@@ -31,6 +36,22 @@ class Recipes extends RecipeProvider {
 	
 	@Override
 	protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+		ConditionalShapedRecipeBuilder.shaped(Items.DIAMOND)
+				.pattern("###")
+				.pattern("###")
+				.pattern("###")
+				.define('#', Items.DIRT)
+				.unlockedBy("has_dirt", has(Items.DIRT))
+				.condition(FalseCondition.INSTANCE)
+				.save(consumer, new ResourceLocation("sprinkle", "test"));
+
+		ShapedRecipeBuilder.shaped(ModBlocks.PURPUR_BRICKS.get(), 4)
+				.pattern("##")
+				.pattern("##")
+				.define('#', Items.PURPUR_BLOCK)
+				.unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer);
+
 		ShapedRecipeBuilder.shaped(ModBlocks.PURPUR_BRICK_STAIRS.get(), 4)
 				.pattern("#  ")
 				.pattern("## ")
