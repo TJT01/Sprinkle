@@ -11,7 +11,7 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "minecraft:green_dye"
+            "sprinkle:green_dye_from_yellow_blue"
           ]
         },
         "criteria": {
@@ -38,7 +38,7 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "minecraft:green_dye"
+              "recipe": "sprinkle:green_dye_from_yellow_blue"
             }
           }
         },

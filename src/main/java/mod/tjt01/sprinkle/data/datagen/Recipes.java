@@ -77,14 +77,15 @@ class Recipes extends RecipeProvider {
 					.build(consumer, "sprinkle", "purpur_brick_vertical_slab");
 		}
 		{
+			String name = "purpur_brick_slab_from_purpur_brick_vertical_slab";
 			ShapelessRecipeBuilder vertSlabRevert = ShapelessRecipeBuilder.shapeless(ModBlocks.PURPUR_BRICK_SLAB.get())
 					.requires(ModBlocks.PURPUR_BRICK_SLAB.get())
 					.unlockedBy("has_purpur_brick_slab", has(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get()));
 			ConditionalRecipe.builder()
 					.addCondition(new QuarkFlagCondition("vertical_slabs"))
-					.addRecipe(vertSlabRevert::save)
-					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_slab_from_purpur_brick_vertical_slab"))
-					.build(consumer, "sprinkle", "purpur_brick_slab_from_purpur_brick_vertical_slab");
+					.addRecipe((recipeConsumer) -> vertSlabRevert.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/" + name))
+					.build(consumer, "sprinkle", name);
 		}
 		{
 			ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE)
@@ -94,7 +95,7 @@ class Recipes extends RecipeProvider {
 					.unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
 			ConditionalRecipe.builder()
 					.addCondition(new FlagCondition("green_dye"))
-					.addRecipe(greenDye::save)
+					.addRecipe((recipeConsumer) -> greenDye.save(recipeConsumer, new ResourceLocation("sprinkle", "green_dye_from_yellow_blue")))
 					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/green_dye_from_yellow_blue"))
 					.build(consumer, "sprinkle", "green_dye_from_yellow_blue");
 		}
