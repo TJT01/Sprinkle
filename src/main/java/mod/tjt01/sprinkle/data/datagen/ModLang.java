@@ -23,5 +23,8 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.PURPUR_BRICK_WALL.get(), "Purpur Brick Wall");
         add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), "Purpur Brick Vertical Slab");
         add(ModBlocks.DETECTOR.get(), "Detector");
+
+        //Subtitles
+        add("subtitle.sprinkle.block.detector.click", "Detector clicks");
     }
 }

@@ -1,0 +1,22 @@
+{
+  "block.detector.click_on": {
+    "subtitle": "subtitle.sprinkle.block.detector.click",
+    "sounds": [
+      {
+        "name": "random/click",
+        "volume": 0.5,
+        "pitch": 0.9
+      }
+    ]
+  },
+  "block.detector.click_off": {
+    "subtitle": "subtitle.sprinkle.block.detector.click",
+    "sounds": [
+      {
+        "name": "random/click",
+        "volume": 0.5,
+        "pitch": 0.75
+      }
+    ]
+  }
+}

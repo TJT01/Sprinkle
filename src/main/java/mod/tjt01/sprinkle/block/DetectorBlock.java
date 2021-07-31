@@ -1,6 +1,7 @@
 package mod.tjt01.sprinkle.block;
 
 import mod.tjt01.sprinkle.Main;
+import mod.tjt01.sprinkle.init.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -9,9 +10,7 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
@@ -51,6 +50,8 @@ public class DetectorBlock extends DirectionalBlock {
         if (state.getValue(POWERED) != shouldBePowered(world, pos, state.getValue(FACING))) {
             world.setBlock(pos, state.setValue(POWERED, shouldBePowered(world, pos, state.getValue(FACING))), Constants.BlockFlags.BLOCK_UPDATE);
             this.updateNeighborsInFront(world, pos, state);
+            SoundEvent soundEvent = shouldBePowered(world, pos, state.getValue(FACING)) ? ModSoundEvents.DETECTOR_CLICK_ON.get() : ModSoundEvents.DETECTOR_CLICK_OFF.get();
+            world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS, 1, 1);
         }
     }
 

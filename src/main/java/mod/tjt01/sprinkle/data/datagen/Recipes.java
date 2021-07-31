@@ -17,6 +17,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.FalseCondition;
 import net.minecraftforge.common.crafting.conditions.ICondition;
@@ -61,6 +62,16 @@ class Recipes extends RecipeProvider {
 				.pattern("###")
 				.define('#', ModBlocks.PURPUR_BRICKS.get())
 				.unlockedBy("has_purpur_bricks", has(ModBlocks.PURPUR_BRICKS.get()))
+				.save(consumer);
+
+		ShapedRecipeBuilder.shaped(ModBlocks.DETECTOR.get())
+				.pattern("###")
+				.pattern("RRI")
+				.pattern("###")
+				.define('#', Tags.Items.COBBLESTONE)
+				.define('R', Tags.Items.DUSTS_REDSTONE)
+				.define('I', Tags.Items.INGOTS_IRON)
+				.unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
 				.save(consumer);
 
 		{
