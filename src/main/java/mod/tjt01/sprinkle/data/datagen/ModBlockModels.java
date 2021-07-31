@@ -89,38 +89,23 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
 
-        {
-            ResourceLocation offLoc = new ResourceLocation("sprinkle", "block/detector");
-            ModelFile offModel = models().getExistingFile(offLoc);
-            ResourceLocation onLoc = new ResourceLocation("sprinkle", "block/powered_detector");
-            ModelFile onModel = models().getExistingFile(onLoc);
-            getVariantBuilder(ModBlocks.DETECTOR.get())
-                    .partialState().with(DetectorBlock.FACING, Direction.NORTH).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, 0, 0, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.EAST).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, 0, 90, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.SOUTH).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, 0, 180, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.WEST).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, 0, 270, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.UP).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, 90, 0, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.DOWN).with(DetectorBlock.POWERED, false).addModels(
-                    new ConfiguredModel(offModel, -90, 0, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.NORTH).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, 0, 0, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.EAST).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, 0, 90, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.SOUTH).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, 0, 180, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.WEST).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, 0, 270, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.UP).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, 90, 0, false))
-                    .partialState().with(DetectorBlock.FACING, Direction.DOWN).with(DetectorBlock.POWERED, true).addModels(
-                    new ConfiguredModel(onModel, -90, 0, false));
-        }
+        getVariantBuilder(ModBlocks.DETECTOR.get())
+                .forAllStates(state -> {
+                    int rX = 0;
+                    int rY = 0;
+                    switch (state.getValue(DetectorBlock.FACING)) {
+                        case UP: rX = -90; break;
+                        case DOWN: rX = 90; break;
+                        case NORTH: break;
+                        case EAST: rY = 90; break;
+                        case SOUTH: rY = 180; break;
+                        case WEST: rY = 270; break;
+                    }
+                    ResourceLocation loc = new ResourceLocation("sprinkle", state.getValue(DetectorBlock.POWERED) ? "block/powered_detector" : "block/detector");
+                    ModelFile model = models().getExistingFile(loc);
+                    return new ConfiguredModel[]{new ConfiguredModel(model, rX, rY, false)};
+                });
 
+        this.simpleBlockItem(ModBlocks.DETECTOR.get(), models().getExistingFile(new ResourceLocation("sprinkle", "block/detector")));
     }
-
 }

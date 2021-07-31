@@ -2,11 +2,11 @@
   "variants": {
     "facing=down,powered=false": {
       "model": "sprinkle:block/detector",
-      "x": -90
+      "x": 90
     },
     "facing=up,powered=false": {
       "model": "sprinkle:block/detector",
-      "x": 90
+      "x": -90
     },
     "facing=north,powered=false": {
       "model": "sprinkle:block/detector"
@@ -25,11 +25,11 @@
     },
     "facing=down,powered=true": {
       "model": "sprinkle:block/powered_detector",
-      "x": -90
+      "x": 90
     },
     "facing=up,powered=true": {
       "model": "sprinkle:block/powered_detector",
-      "x": 90
+      "x": -90
     },
     "facing=north,powered=true": {
       "model": "sprinkle:block/powered_detector"
