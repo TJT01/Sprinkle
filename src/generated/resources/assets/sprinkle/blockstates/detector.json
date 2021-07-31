@@ -1,0 +1,50 @@
+{
+  "variants": {
+    "facing=down,powered=false": {
+      "model": "sprinkle:block/detector",
+      "x": -90
+    },
+    "facing=up,powered=false": {
+      "model": "sprinkle:block/detector",
+      "x": 90
+    },
+    "facing=north,powered=false": {
+      "model": "sprinkle:block/detector"
+    },
+    "facing=south,powered=false": {
+      "model": "sprinkle:block/detector",
+      "y": 180
+    },
+    "facing=west,powered=false": {
+      "model": "sprinkle:block/detector",
+      "y": 270
+    },
+    "facing=east,powered=false": {
+      "model": "sprinkle:block/detector",
+      "y": 90
+    },
+    "facing=down,powered=true": {
+      "model": "sprinkle:block/powered_detector",
+      "x": -90
+    },
+    "facing=up,powered=true": {
+      "model": "sprinkle:block/powered_detector",
+      "x": 90
+    },
+    "facing=north,powered=true": {
+      "model": "sprinkle:block/powered_detector"
+    },
+    "facing=south,powered=true": {
+      "model": "sprinkle:block/powered_detector",
+      "y": 180
+    },
+    "facing=west,powered=true": {
+      "model": "sprinkle:block/powered_detector",
+      "y": 270
+    },
+    "facing=east,powered=true": {
+      "model": "sprinkle:block/powered_detector",
+      "y": 90
+    }
+  }
+}

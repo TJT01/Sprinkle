@@ -1,5 +1,6 @@
 package mod.tjt01.sprinkle.data.datagen;
 
+import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import net.minecraft.block.Block;
@@ -7,6 +8,7 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.WallBlock;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -86,6 +88,39 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleStairsBlock((StairsBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
+
+        {
+            ResourceLocation offLoc = new ResourceLocation("sprinkle", "block/detector");
+            ModelFile offModel = models().getExistingFile(offLoc);
+            ResourceLocation onLoc = new ResourceLocation("sprinkle", "block/powered_detector");
+            ModelFile onModel = models().getExistingFile(onLoc);
+            getVariantBuilder(ModBlocks.DETECTOR.get())
+                    .partialState().with(DetectorBlock.FACING, Direction.NORTH).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, 0, 0, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.EAST).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, 0, 90, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.SOUTH).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, 0, 180, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.WEST).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, 0, 270, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.UP).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, 90, 0, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.DOWN).with(DetectorBlock.POWERED, false).addModels(
+                    new ConfiguredModel(offModel, -90, 0, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.NORTH).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, 0, 0, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.EAST).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, 0, 90, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.SOUTH).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, 0, 180, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.WEST).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, 0, 270, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.UP).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, 90, 0, false))
+                    .partialState().with(DetectorBlock.FACING, Direction.DOWN).with(DetectorBlock.POWERED, true).addModels(
+                    new ConfiguredModel(onModel, -90, 0, false));
+        }
+
     }
 
 }

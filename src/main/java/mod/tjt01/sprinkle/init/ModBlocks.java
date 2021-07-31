@@ -3,7 +3,7 @@ package mod.tjt01.sprinkle.init;
 import java.util.function.Supplier;
 
 import mod.tjt01.sprinkle.Main;
-import mod.tjt01.sprinkle.block.VerticalSlabBlock;
+import mod.tjt01.sprinkle.block.*;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -68,4 +68,6 @@ public final class ModBlocks {
 	//Purpur Brick Wall
 	public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, ItemGroup.TAB_BUILDING_BLOCKS);
 
+	//Detector
+	public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(AbstractBlock.Properties.copy(Blocks.OBSERVER)), ItemGroup.TAB_REDSTONE);
 }
