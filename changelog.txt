@@ -1,5 +1,0 @@
-1.15.2-0.1.0-alpha
-	Updated MCP mappings... i think?
-
-1.15.2-0.0.0-alpha
-	Initial Version
