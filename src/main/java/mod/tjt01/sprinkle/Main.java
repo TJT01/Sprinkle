@@ -6,7 +6,6 @@
 
 package mod.tjt01.sprinkle;
 
-import mod.tjt01.sprinkle.config.CommonConfig;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.init.ModSoundEvents;
 import net.minecraftforge.fml.ModLoadingContext;
