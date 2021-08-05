@@ -1,5 +1,8 @@
 {
   "block.sprinkle.detector": "Detector",
+  "block.sprinkle.gold_chain": "Gold Chain",
+  "block.sprinkle.gold_lantern": "Gold Lantern",
+  "block.sprinkle.gold_soul_lantern": "Gold Soul Lantern",
   "block.sprinkle.purpur_brick_slab": "Purpur Brick Slab",
   "block.sprinkle.purpur_brick_stairs": "Purpur Brick Stairs",
   "block.sprinkle.purpur_brick_vertical_slab": "Purpur Brick Vertical Slab",

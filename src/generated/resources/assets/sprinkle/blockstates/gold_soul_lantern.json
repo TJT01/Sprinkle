@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "sprinkle:block/gold_soul_lantern"
+    },
+    "hanging=true": {
+      "model": "sprinkle:block/hanging_gold_soul_lantern"
+    }
+  }
+}

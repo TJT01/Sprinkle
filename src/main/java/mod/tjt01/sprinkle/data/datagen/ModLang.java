@@ -16,6 +16,7 @@ public class ModLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+
         //Blocks
         add(ModBlocks.PURPUR_BRICKS.get(), "Purpur Bricks");
         add(ModBlocks.PURPUR_BRICK_SLAB.get(), "Purpur Brick Slab");
@@ -23,6 +24,9 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.PURPUR_BRICK_WALL.get(), "Purpur Brick Wall");
         add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), "Purpur Brick Vertical Slab");
         add(ModBlocks.DETECTOR.get(), "Detector");
+        add(ModBlocks.GOLD_CHAIN.get(), "Gold Chain");
+        add(ModBlocks.GOLD_LANTERN.get(), "Gold Lantern");
+        add(ModBlocks.GOLD_SOUL_LANTERN.get(), "Gold Soul Lantern");
 
         //Subtitles
         add("subtitle.sprinkle.block.detector.click", "Detector clicks");

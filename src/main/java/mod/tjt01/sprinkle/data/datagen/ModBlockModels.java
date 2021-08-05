@@ -3,11 +3,9 @@ package mod.tjt01.sprinkle.data.datagen;
 import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallBlock;
+import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -19,6 +17,24 @@ public class ModBlockModels extends BlockStateProvider {
 
     public ModBlockModels(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, "sprinkle", exFileHelper);
+    }
+
+    private void simpleItemModel(Item item) {
+        itemModels().getBuilder(item.getRegistryName().getPath())
+                .parent(itemModels().getExistingFile(mcLoc("item/generated")))
+                .texture("layer0", modLoc("item/" + item.getRegistryName().getPath()));
+    }
+
+    private void lanternBlock(LanternBlock block, ModelFile model, ModelFile hanging) {
+        getVariantBuilder(block)
+                .partialState().with(LanternBlock.HANGING, false)
+                        .modelForState().modelFile(model).addModel()
+                .partialState().with(LanternBlock.HANGING, true)
+                        .modelForState().modelFile(hanging).addModel();
+    }
+
+    private void axisBlock(RotatedPillarBlock block, ModelFile model) {
+        axisBlock(block, model, model);
     }
 
     private void cubeAllBlock(Block block) {
@@ -107,5 +123,20 @@ public class ModBlockModels extends BlockStateProvider {
                 });
 
         this.simpleBlockItem(ModBlocks.DETECTOR.get(), models().getExistingFile(new ResourceLocation("sprinkle", "block/detector")));
+        this.axisBlock((RotatedPillarBlock) ModBlocks.GOLD_CHAIN.get(), this.models().getExistingFile(modLoc("gold_chain")));
+        this.simpleItemModel(ModBlocks.GOLD_CHAIN.get().asItem());
+
+        this.lanternBlock(
+                (LanternBlock) ModBlocks.GOLD_LANTERN.get(),
+                models().withExistingParent("gold_lantern", modLoc("block/template_gold_lantern")).texture("lantern", blockTexture(ModBlocks.GOLD_LANTERN.get())),
+                models().withExistingParent("hanging_gold_lantern", modLoc("block/template_hanging_gold_lantern")).texture("lantern", blockTexture(ModBlocks.GOLD_LANTERN.get()))
+        );
+        this.simpleItemModel(ModBlocks.GOLD_LANTERN.get().asItem());
+        this.lanternBlock(
+                (LanternBlock) ModBlocks.GOLD_SOUL_LANTERN.get(),
+                models().withExistingParent("gold_soul_lantern", modLoc("block/template_gold_lantern")).texture("lantern", blockTexture(ModBlocks.GOLD_SOUL_LANTERN.get())),
+                models().withExistingParent("hanging_gold_soul_lantern", modLoc("block/template_hanging_gold_lantern")).texture("lantern", blockTexture(ModBlocks.GOLD_SOUL_LANTERN.get()))
+        );
+        this.simpleItemModel(ModBlocks.GOLD_SOUL_LANTERN.get().asItem());
     }
 }

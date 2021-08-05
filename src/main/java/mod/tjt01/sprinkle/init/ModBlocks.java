@@ -57,6 +57,12 @@ public final class ModBlocks {
 		return block(name, () -> new VerticalSlabBlock(AbstractBlock.Properties.copy(blockRegistryObject.get())), group);
 	}
 
+	//Gold Chain
+	public static final RegistryObject<Block> GOLD_CHAIN = block("gold_chain", () -> new ChainBlock(AbstractBlock.Properties.copy(Blocks.CHAIN)), ItemGroup.TAB_DECORATIONS);
+	//Gold Lantern
+	public static final RegistryObject<Block> GOLD_LANTERN = block("gold_lantern", () -> new LanternBlock(AbstractBlock.Properties.copy(Blocks.LANTERN)), ItemGroup.TAB_DECORATIONS);
+	//Gold Lantern
+	public static final RegistryObject<Block> GOLD_SOUL_LANTERN = block("gold_soul_lantern", () -> new LanternBlock(AbstractBlock.Properties.copy(Blocks.SOUL_LANTERN)), ItemGroup.TAB_DECORATIONS);
 	//Purpur Bricks
 	public static final RegistryObject<Block> PURPUR_BRICKS = block("purpur_bricks", () -> new Block(Block.Properties.copy(Blocks.PURPUR_BLOCK)), ItemGroup.TAB_BUILDING_BLOCKS);
 	//Purpur Brick Slab

@@ -5,9 +5,12 @@ import java.util.HashMap;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,4 +47,10 @@ public class ModEventSubscriber {
 			SprinkleConfig.bakeCommon(modConfig);
 	}
 
+	@SubscribeEvent
+	public static void onFMLClientSetup(FMLClientSetupEvent event) {
+		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_CHAIN.get(), RenderType.cutoutMipped());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_LANTERN.get(), RenderType.cutout());
+		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_SOUL_LANTERN.get(), RenderType.cutout());
+	}
 }

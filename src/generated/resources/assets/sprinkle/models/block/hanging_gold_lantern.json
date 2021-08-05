@@ -1,0 +1,6 @@
+{
+  "parent": "sprinkle:block/template_hanging_gold_lantern",
+  "textures": {
+    "lantern": "sprinkle:block/gold_lantern"
+  }
+}
