@@ -4,6 +4,7 @@ import mod.tjt01.sprinkle.data.ModTags;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -26,6 +27,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.SLABS).add(ModBlocks.PURPUR_BRICK_SLAB.get());
         tag(BlockTags.STAIRS).add(ModBlocks.PURPUR_BRICK_STAIRS.get());
         tag(BlockTags.WALLS).add(ModBlocks.PURPUR_BRICK_WALL.get());
+        tag(BlockTags.PIGLIN_REPELLENTS).add(ModBlocks.GOLD_SOUL_LANTERN.get());
+        tag(BlockTags.GUARDED_BY_PIGLINS).add(ModBlocks.GOLD_CHAIN.get(), ModBlocks.GOLD_LANTERN.get(), ModBlocks.GOLD_SOUL_LANTERN.get());
         //Forge
         //Quark
         tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get());

@@ -1,9 +1,12 @@
 package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.data.ModTags;
+import mod.tjt01.sprinkle.init.ModBlocks;
+import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -21,6 +24,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
         copy(BlockTags.WALLS, ItemTags.WALLS);
+        copy(BlockTags.PIGLIN_REPELLENTS, ItemTags.PIGLIN_REPELLENTS);
+        tag(ItemTags.PIGLIN_LOVED).add(ModBlocks.GOLD_CHAIN.get().asItem(), ModBlocks.GOLD_LANTERN.get().asItem());
         //Quark
         copy(ModTags.Blocks.QUARK_VERTICAL_SLAB, ModTags.Items.QUARK_VERTICAL_SLAB);
     }
