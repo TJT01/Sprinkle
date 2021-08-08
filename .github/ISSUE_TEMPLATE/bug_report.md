@@ -2,13 +2,33 @@
 name: Bug report
 about: Create a report to help us improve
 title: ''
-labels: bug
+labels: ''
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+*Describe issue here*
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Versions**
+Sprinkle: ___ (Don't use "latest"!)
+Minecraft: 1.16.5
+Forge: ___
+
+**Crash Report**
+Did the mod crash? If so, please use Gist or Pastebin.
+
+**Other Mods**
+Are other mods required to reproduce the issue? If so, list them and their versions here. e.g.
+Other Mod: x.y.z
+Mod2: r___
+
+**Repro steps**
+1) Do this
+2) Do that
+3) ...
+
+**What I expect to happen:**
+Something.
+
+**What actually happened:**
+Nothing.
