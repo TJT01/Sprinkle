@@ -4,6 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class CommonConfig {
     final ForgeConfigSpec.BooleanValue greenDyeRecipeEnabled;
+    final ForgeConfigSpec.BooleanValue brownDyeRecipeEnabled;
 
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("utilities");
@@ -12,6 +13,10 @@ public class CommonConfig {
                 .comment("Allow green dye to be crafted with yellow and blue dyes")
                 .translation("config.sprinkle.greenDyeEnabled")
                 .define("greenDyeEnabled", true);
+        brownDyeRecipeEnabled = builder
+                .comment("Allow brown dye to be crafted with orange and blue dyes")
+                .translation("config.sprinkle.brownDyeEnabled")
+                .define("brownDyeEnabled", true);
         builder.pop(2);
     }
 }

@@ -1,0 +1,55 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "flag": "green_dye",
+          "type": "sprinkle:flag"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "sprinkle:brown_dye_from_orange_blue"
+          ]
+        },
+        "criteria": {
+          "has_orange_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "minecraft:orange_dye"
+                }
+              ]
+            }
+          },
+          "has_blue_dye": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "minecraft:blue_dye"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "sprinkle:brown_dye_from_orange_blue"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_orange_dye",
+            "has_blue_dye",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

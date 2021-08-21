@@ -111,5 +111,18 @@ class Recipes extends RecipeProvider {
 					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
 					.build(consumer, "sprinkle", name);
 		}
+		{
+			String name = "brown_dye_from_orange_blue";
+			ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE)
+					.requires(Items.ORANGE_DYE)
+					.requires(Items.BLUE_DYE)
+					.unlockedBy("has_orange_dye", has(Items.ORANGE_DYE))
+					.unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
+			ConditionalRecipe.builder()
+					.addCondition(new FlagCondition("green_dye"))
+					.addRecipe((recipeConsumer) -> greenDye.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
+					.build(consumer, "sprinkle", name);
+		}
 	}
 }
