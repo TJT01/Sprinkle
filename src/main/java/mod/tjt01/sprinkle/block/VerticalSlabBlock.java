@@ -42,6 +42,7 @@ public class VerticalSlabBlock extends Block implements IWaterLoggable {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
@@ -65,6 +66,7 @@ public class VerticalSlabBlock extends Block implements IWaterLoggable {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean canBeReplaced(BlockState state, BlockItemUseContext context) {
         ItemStack stack = context.getItemInHand();
         VerticalSlabType type = state.getValue(TYPE);

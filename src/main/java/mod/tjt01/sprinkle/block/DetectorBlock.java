@@ -1,10 +1,8 @@
 package mod.tjt01.sprinkle.block;
 
-import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.init.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.DirectionalBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
