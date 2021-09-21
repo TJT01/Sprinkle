@@ -1,5 +1,6 @@
 package mod.tjt01.sprinkle.block;
 
+import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -25,14 +26,16 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
 import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public class VerticalSlabBlock extends Block implements IWaterLoggable {
+public class VerticalSlabBlock extends OptionalBlock implements IWaterLoggable {
 
+    public static final QuarkFlagCondition CONDITION = new QuarkFlagCondition("vertical_slabs");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<VerticalSlabType> TYPE = EnumProperty.create("type", VerticalSlabType.class);
 
     public VerticalSlabBlock(Properties properties) {
-        super(properties);
+        super(properties, CONDITION::test);
         registerDefaultState(defaultBlockState().setValue(TYPE, VerticalSlabType.NORTH).setValue(WATERLOGGED, false));
     }
 
