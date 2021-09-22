@@ -74,6 +74,34 @@ class Recipes extends RecipeProvider {
 				.unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
 				.save(consumer);
 
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICKS.get())
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_bricks_from_purpur_block_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_SLAB.get(), 2)
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_slab_from_purpur_block_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_STAIRS.get())
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_stairs_from_purpur_block_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_WALL.get())
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_wall_from_purpur_block_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_SLAB.get(), 2)
+				.unlocks("has_purpur_block", has(ModBlocks.PURPUR_BRICKS.get()))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_slab_from_purpur_bricks_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_STAIRS.get())
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_stairs_from_purpur_bricks_stonecutting"));
+
+		SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_WALL.get())
+				.unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+				.save(consumer, new ResourceLocation("sprinkle", "purpur_brick_wall_from_purpur_bricks_stonecutting"));
+
 		{
 			ShapedRecipeBuilder vertSlab = ShapedRecipeBuilder.shaped(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
 					.pattern("#")
@@ -86,6 +114,26 @@ class Recipes extends RecipeProvider {
 					.addRecipe(vertSlab::save)
 					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab"))
 					.build(consumer, "sprinkle", "purpur_brick_vertical_slab");
+		}
+		{
+			String name = "purpur_brick_vertical_slab_from_purpur_block_stonecutting";
+			SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
+					.unlocks("has_purpur_brick", has(Items.PURPUR_BLOCK));
+			ConditionalRecipe.builder()
+					.addCondition(new QuarkFlagCondition("vertical_slabs"))
+					.addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab_from_purpur_block_stonecutting"))
+					.build(consumer, "sprinkle", name);
+		}
+		{
+			String name = "purpur_brick_vertical_slab_from_purpur_bricks_stonecutting";
+			SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
+					.unlocks("has_purpur_brick", has(Items.PURPUR_BLOCK));
+			ConditionalRecipe.builder()
+					.addCondition(new QuarkFlagCondition("vertical_slabs"))
+					.addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
+					.generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab_from_purpur_block_stonecutting"))
+					.build(consumer, "sprinkle", name);
 		}
 		{
 			String name = "purpur_brick_slab_from_purpur_brick_vertical_slab";

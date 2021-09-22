@@ -1,0 +1,44 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "flag": "vertical_slabs",
+          "type": "sprinkle:quark_flag"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "sprinkle:purpur_brick_vertical_slab_from_purpur_bricks_stonecutting"
+          ]
+        },
+        "criteria": {
+          "has_purpur_brick": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "item": "minecraft:purpur_block"
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "sprinkle:purpur_brick_vertical_slab_from_purpur_bricks_stonecutting"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_purpur_brick",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}
