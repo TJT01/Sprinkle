@@ -72,7 +72,7 @@ public final class ModBlocks {
 	//Purpur Brick Stairs
 	public static final RegistryObject<Block> PURPUR_BRICK_STAIRS = stairsBlock("purpur_brick_stairs", PURPUR_BRICKS, ItemGroup.TAB_BUILDING_BLOCKS);
 	//Purpur Brick Wall
-	public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, ItemGroup.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, ItemGroup.TAB_DECORATIONS);
 
 	//Detector
 	public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(AbstractBlock.Properties.copy(Blocks.OBSERVER)), ItemGroup.TAB_REDSTONE);
