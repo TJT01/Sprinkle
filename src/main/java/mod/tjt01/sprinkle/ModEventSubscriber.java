@@ -31,26 +31,26 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 //@SuppressWarnings("unused")
 @EventBusSubscriber(modid = Main.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber {
-	
-	public static final Logger LOGGER = LogManager.getLogger(Main.MODID + " Loading");
 
-	@SubscribeEvent
-	public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
-		CraftingHelper.register(FlagCondition.Serializer.INSTANCE);
-		CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
-	}
+    public static final Logger LOGGER = LogManager.getLogger(Main.MODID + " Loading");
 
-	@SubscribeEvent
-	public static void onModConfigEvent(ModConfig.ModConfigEvent event) {
-		ModConfig modConfig = event.getConfig();
-		if (modConfig.getSpec() == SprinkleConfig.COMMON_SPEC)
-			SprinkleConfig.bakeCommon(modConfig);
-	}
+    @SubscribeEvent
+    public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
+        CraftingHelper.register(FlagCondition.Serializer.INSTANCE);
+        CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
+    }
 
-	@SubscribeEvent
-	public static void onFMLClientSetup(FMLClientSetupEvent event) {
-		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_CHAIN.get(), RenderType.cutoutMipped());
-		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_LANTERN.get(), RenderType.cutout());
-		RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_SOUL_LANTERN.get(), RenderType.cutout());
-	}
+    @SubscribeEvent
+    public static void onModConfigEvent(ModConfig.ModConfigEvent event) {
+        ModConfig modConfig = event.getConfig();
+        if (modConfig.getSpec() == SprinkleConfig.COMMON_SPEC)
+            SprinkleConfig.bakeCommon(modConfig);
+    }
+
+    @SubscribeEvent
+    public static void onFMLClientSetup(FMLClientSetupEvent event) {
+        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_CHAIN.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_LANTERN.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_SOUL_LANTERN.get(), RenderType.cutout());
+    }
 }

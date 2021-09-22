@@ -10,20 +10,20 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 @EventBusSubscriber(modid = Main.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
-	
-	@SubscribeEvent
-	public static void gatherData(GatherDataEvent event) {
-		DataGenerator generator = event.getGenerator();
-		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-		ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(generator, existingFileHelper);
-		generator.addProvider(new ModLootTableProvider(generator));
-		generator.addProvider(new Recipes(generator));
-		generator.addProvider(new ModBlockModels(generator, existingFileHelper));
-		generator.addProvider(blockTagsProvider);
-		generator.addProvider(new ModItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
-		generator.addProvider(new ModLang(generator));
-		generator.addProvider(new ModSoundDefinitions(generator, existingFileHelper));
 
-	}
-	
+    @SubscribeEvent
+    public static void gatherData(GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(generator, existingFileHelper);
+        generator.addProvider(new ModLootTableProvider(generator));
+        generator.addProvider(new Recipes(generator));
+        generator.addProvider(new ModBlockModels(generator, existingFileHelper));
+        generator.addProvider(blockTagsProvider);
+        generator.addProvider(new ModItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
+        generator.addProvider(new ModLang(generator));
+        generator.addProvider(new ModSoundDefinitions(generator, existingFileHelper));
+
+    }
+
 }
