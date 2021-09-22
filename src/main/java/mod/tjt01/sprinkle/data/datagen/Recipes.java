@@ -94,11 +94,11 @@ class Recipes extends RecipeProvider {
                 .unlocks("has_purpur_block", has(ModBlocks.PURPUR_BRICKS.get()))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_slab_from_purpur_bricks_stonecutting"));
 
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_STAIRS.get())
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_STAIRS.get())
                 .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_stairs_from_purpur_bricks_stonecutting"));
 
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_WALL.get())
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_WALL.get())
                 .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_wall_from_purpur_bricks_stonecutting"));
 
@@ -127,7 +127,7 @@ class Recipes extends RecipeProvider {
         }
         {
             String name = "purpur_brick_vertical_slab_from_purpur_bricks_stonecutting";
-            SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
+            SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
                     .unlocks("has_purpur_brick", has(Items.PURPUR_BLOCK));
             ConditionalRecipe.builder()
                     .addCondition(new QuarkFlagCondition("vertical_slabs"))
