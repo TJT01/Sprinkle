@@ -19,6 +19,7 @@ public class SprinkleConfig {
 
     public static boolean greenDyeEnabled = true;
     public static boolean brownDyeEnabled = true;
+    //public static boolean bundlesEnabled = true;
 
     public static Map<String, Boolean> flags = new HashMap<>();
 
@@ -28,6 +29,7 @@ public class SprinkleConfig {
 
         flags.put("green_dye", greenDyeEnabled);
         flags.put("brown_dye", brownDyeEnabled);
+        //flags.put("bundle", bundlesEnabled);
     }
 
 }
