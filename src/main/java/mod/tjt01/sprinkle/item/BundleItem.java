@@ -141,24 +141,19 @@ public class BundleItem extends OptionalItem{
             boolean reachedLimit = stack.getCount() > limit;
 
             if (!simulate) {
-                boolean changed = false;
                 if (!ItemHandlerHelper.canItemStacksStack(stack, getStackInSlot(slot))) {
                     for (int i = slot + 1; i < stacks.size(); i++) {
                         if (ItemHandlerHelper.canItemStacksStack(stack, getStackInSlot(i))) {
                             stacks.add(slot, stacks.remove(i));
-                            changed = true;
                         }
                     }
                 }
                 if (ItemHandlerHelper.canItemStacksStack(stack, getStackInSlot(slot))) {
                     stacks.get(slot).grow(reachedLimit ? limit : stack.getCount());
-                    changed = true;
                 } else {
                     stacks.add(Math.min(slot, stacks.size()), reachedLimit ? ItemHandlerHelper.copyStackWithSize(stack, limit) : stack);
-                    changed = true;
                 }
-                if (changed)
-                    onChanged();
+                onChanged();
             }
 
             return reachedLimit ? ItemHandlerHelper.copyStackWithSize(stack, stack.getCount() - limit) : ItemStack.EMPTY;
@@ -181,10 +176,9 @@ public class BundleItem extends OptionalItem{
 
             if (toExtract < existing.getCount()) {
                 if (!simulate) {
-                    this.stacks.set(slot, ItemHandlerHelper.copyStackWithSize(existing, existing.getCount() - toExtract));
+                    existing.shrink(toExtract);
                     onChanged();
                 }
-
                 return ItemHandlerHelper.copyStackWithSize(existing, toExtract);
             } else {
                 if (!simulate) {

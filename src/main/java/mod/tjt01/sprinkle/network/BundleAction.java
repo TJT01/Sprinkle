@@ -56,7 +56,6 @@ public class BundleAction {
                     if (slotObject.mayPlace(itemHandler.extractItem(0, itemHandler.getStackInSlot(0).getCount(), true))) {
                         slotObject.set(itemHandler.extractItem(0, itemHandler.getStackInSlot(0).getCount(), false));
                         player.inventory.setCarried(carried);
-                        player.ignoreSlotUpdateHack = false;
                         player.broadcastCarriedItem();
                     }
                 }
