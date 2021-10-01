@@ -1,5 +1,6 @@
 package mod.tjt01.sprinkle.item;
 
+import mcp.MethodsReturnNonnullByDefault;
 import mod.tjt01.sprinkle.Main;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.entity.item.ItemEntity;
@@ -22,9 +23,13 @@ import net.minecraftforge.items.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class BundleItem extends OptionalItem{
     public static final String TAG_ITEMS = "Items";
 
@@ -57,6 +62,8 @@ public class BundleItem extends OptionalItem{
 
     @Override
     public ActionResult<ItemStack> use(World level, PlayerEntity player, Hand hand) {
+        if (level.isClientSide)
+            return super.use(level, player, hand);
         boolean itemDropped = false;
         ItemStack item = player.getItemInHand(hand);
         if (item.getItem() == this) {
@@ -66,8 +73,10 @@ public class BundleItem extends OptionalItem{
                 while (!bundleItemHandler.getStackInSlot(0).isEmpty()) {
                     ItemStack stack = bundleItemHandler.extractItem(0, bundleItemHandler.getStackInSlot(0).getCount(), false);
                     ItemEntity entity = player.drop(stack, false, true);
-                    if (entity != null)
+                    if (entity != null) {
+                        entity.setUUID(UUID.randomUUID());
                         level.addFreshEntity(entity);
+                    }
                     itemDropped = true;
                 }
             }
