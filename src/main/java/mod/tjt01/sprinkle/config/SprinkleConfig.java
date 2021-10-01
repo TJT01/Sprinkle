@@ -19,7 +19,7 @@ public class SprinkleConfig {
 
     public static boolean greenDyeEnabled = true;
     public static boolean brownDyeEnabled = true;
-    //public static boolean bundlesEnabled = true;
+    public static boolean bundlesEnabled = false;
 
     public static Map<String, Boolean> flags = new HashMap<>();
 

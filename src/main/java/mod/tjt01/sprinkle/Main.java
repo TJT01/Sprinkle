@@ -8,6 +8,7 @@ package mod.tjt01.sprinkle;
 
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.init.ModSoundEvents;
+import mod.tjt01.sprinkle.network.SprinklePacketHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +37,8 @@ public class Main {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModSoundEvents.SOUND_EVENTS.register(modEventBus);
+
+        SprinklePacketHandler.init();
     }
 
 }
