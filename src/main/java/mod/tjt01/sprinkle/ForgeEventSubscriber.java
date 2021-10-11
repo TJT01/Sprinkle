@@ -35,7 +35,7 @@ public class ForgeEventSubscriber {
                             new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack):
                             new BundleAction(hoverSlot.index));*/
                     SprinklePacketHandler.INSTANCE.sendToServer(new BundleAction(hoverSlot.index));
-                    containerScreen.isSplittingStack = false;
+                    containerScreen.isQuickCrafting = false;
                     event.setCanceled(true);
                 }
             }
