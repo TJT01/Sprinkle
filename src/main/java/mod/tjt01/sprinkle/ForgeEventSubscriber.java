@@ -22,18 +22,20 @@ public class ForgeEventSubscriber {
     @OnlyIn(Dist.CLIENT)
     public static void onRightClick(GuiScreenEvent.MouseReleasedEvent.Pre event) {
         Minecraft minecraft = Minecraft.getInstance();
-        Screen gui = event.getGui();
+        Screen gui = minecraft.screen;
         if (gui instanceof ContainerScreen && event.getButton() == 1) {
             ContainerScreen<?> containerScreen = (ContainerScreen<?>) gui;
             Slot hoverSlot = containerScreen.getSlotUnderMouse();
+            assert minecraft.player != null;
             ItemStack heldStack = minecraft.player.inventory.getCarried();
 
             if (hoverSlot != null) {
                 if (heldStack.getItem() instanceof BundleItem || hoverSlot.getItem().getItem() instanceof BundleItem) {
-                    SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
+                    /*SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
                             new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack):
-                            new BundleAction(hoverSlot.index));
-                    containerScreen.passEvents = false;
+                            new BundleAction(hoverSlot.index));*/
+                    SprinklePacketHandler.INSTANCE.sendToServer(new BundleAction(hoverSlot.index));
+                    containerScreen.isSplittingStack = false;
                     event.setCanceled(true);
                 }
             }

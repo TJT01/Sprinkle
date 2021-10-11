@@ -17,5 +17,4 @@ public final class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Main.MODID);
 
     public static final RegistryObject<Item> BUNDLE = ITEMS.register("bundle", () -> new BundleItem(new Item.Properties().tab(ItemGroup.TAB_MISC).stacksTo(1), () -> SprinkleConfig.bundlesEnabled));
-
 }

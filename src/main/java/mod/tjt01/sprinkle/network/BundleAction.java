@@ -10,6 +10,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 
 import java.util.function.Supplier;
 
@@ -33,31 +34,28 @@ public class BundleAction {
             ServerPlayerEntity player = contextSupplier.get().getSender();
             if (player == null)
                 return;
-
+            Main.LOGGER.debug("lets a go");
             Container container = player.containerMenu;
             Slot slotObject = container.getSlot(this.slot);
             ItemStack carried = player.inventory.getCarried();
-            IItemHandler itemHandler = carried.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElseThrow(() -> new RuntimeException("LazyOptional must not be empty!"));
 
             if (carried.getItem() instanceof BundleItem) {
-                if (!slotObject.getItem().isEmpty()) {
+                BundleItem bundleItem = (BundleItem) carried.getItem();
+                if (slotObject.hasItem() && slotObject.mayPickup(player)) {
                     Main.LOGGER.debug("Pull");
 
                     ItemStack existing = slotObject.getItem();
-                    int count = existing.getCount() - itemHandler.insertItem(0, existing, true).getCount();
-                    if (count > 0) {
-                        itemHandler.insertItem(0, slotObject.remove(count), false);
-                        player.inventory.setCarried(carried);
+                    ItemStack remainder = bundleItem.addItem(carried, existing.copy());
+                    if (!ItemStack.matches(existing, remainder)) {
+                        slotObject.set(remainder);
                         player.ignoreSlotUpdateHack = false;
                         player.broadcastCarriedItem();
                     }
-                } else {
+                } else if(bundleItem.getFullness(carried) > 0 && !slotObject.hasItem() && slotObject.mayPlace(bundleItem.getContents(carried).get(0))) {
                     Main.LOGGER.debug("Push");
-                    if (slotObject.mayPlace(itemHandler.extractItem(0, itemHandler.getStackInSlot(0).getCount(), true))) {
-                        slotObject.set(itemHandler.extractItem(0, itemHandler.getStackInSlot(0).getCount(), false));
-                        player.inventory.setCarried(carried);
-                        player.broadcastCarriedItem();
-                    }
+                    slotObject.set(bundleItem.removeItem(carried));
+                    player.ignoreSlotUpdateHack = false;
+                    player.broadcastCarriedItem();
                 }
             }
         });
