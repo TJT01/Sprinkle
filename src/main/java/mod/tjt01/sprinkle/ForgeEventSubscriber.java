@@ -32,10 +32,9 @@ public class ForgeEventSubscriber {
             if (hoverSlot != null) {
                 if (heldStack.getItem() instanceof BundleItem || hoverSlot.getItem().getItem() instanceof BundleItem) {
                     Main.LOGGER.debug("poke");
-                    /*SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
-                            new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack):
-                            new BundleAction(hoverSlot.index));*/
-                    SprinklePacketHandler.INSTANCE.sendToServer(new BundleAction(hoverSlot.index));
+                    SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
+                            new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack) :
+                            new BundleAction(hoverSlot.index));
                     containerScreen.isQuickCrafting = false;
                     event.setCanceled(true);
                 }

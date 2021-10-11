@@ -1,7 +1,10 @@
 package mod.tjt01.sprinkle.network;
 
+import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.item.BundleItem;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -33,22 +36,37 @@ public class CreativeBundleAction {
             ServerPlayerEntity player = contextSupplier.get().getSender();
             if (player == null || !player.isCreative())
                 return;
+            ItemStack target = player.inventory.getItem(slot);
+            Slot slotObject = player.containerMenu.getSlot(slot);
+
             if (this.stack.getItem() instanceof BundleItem) {
-                stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(itemHandler -> {
-                    ItemStack target = player.inventory.getItem(slot);
-                    if (target.isEmpty()) {
-                        player.inventory.setItem(slot, itemHandler.extractItem(0, itemHandler.getStackInSlot(0).getCount(), false));
-                        SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(stack));
-                    } else {
-                        ItemStack existing = player.inventory.getItem(slot);
-                        int count = existing.getCount() - itemHandler.insertItem(0, existing, true).getCount();
-                        if (count > 0) {
-                            itemHandler.insertItem(0, player.inventory.removeItem(slot, count), false);
-                            SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(stack));
-                        }
+                BundleItem bundleItem = (BundleItem) this.stack.getItem();
+                if (!target.isEmpty() && slotObject.mayPickup(player)) {
+                    Main.LOGGER.debug("Pull");
+
+                    ItemStack remainder = bundleItem.addItem(this.stack, target);
+                    if (!ItemStack.matches(target, remainder)) {
+                        player.inventory.setItem(slot, remainder);
+                        SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(this.stack));
                     }
-                });
-            }
+                } else if(bundleItem.getFullness(this.stack) > 0 && target.isEmpty() && slotObject.mayPlace(bundleItem.getContents(this.stack).get(0))) {
+                    Main.LOGGER.debug("Push");
+                    player.inventory.setItem(slot, bundleItem.removeItem(this.stack));
+                    SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(this.stack));
+                }
+            } else if (slotObject.mayPickup(player) && target.getItem() instanceof BundleItem) {
+                BundleItem bundleItem = (BundleItem) target.getItem();
+                if (this.stack.isEmpty()) {
+                    ItemStack bundle = target.copy();
+                    player.inventory.setItem(slot, bundle);
+                    SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(bundleItem.removeItem(bundle)));
+                } else if (bundleItem.getVolumeOfOne(this.stack) + bundleItem.getFullness(slotObject.getItem()) < BundleItem.MAX_FULLNESS) {
+                    ItemStack bundle = target.copy();
+                    ItemStack remainder = bundleItem.addItem(bundle, this.stack);
+                    player.inventory.setItem(slot, bundle);
+                    SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(remainder));
+                }
+            };
         });
         contextSupplier.get().setPacketHandled(true);
     }
