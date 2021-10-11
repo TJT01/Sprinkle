@@ -62,6 +62,7 @@ public class BundleAction {
                 if (carried.isEmpty()) {
                     ItemStack bundle = slotObject.getItem().copy();
                     player.inventory.setCarried(bundleItem.removeItem(bundle));
+                    slotObject.set(bundle);
                     player.ignoreSlotUpdateHack = false;
                     player.broadcastCarriedItem();
                 } else if (bundleItem.getVolumeOfOne(carried) + bundleItem.getFullness(slotObject.getItem()) < BundleItem.MAX_FULLNESS) {

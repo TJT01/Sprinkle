@@ -31,11 +31,31 @@ public class ForgeEventSubscriber {
 
             if (hoverSlot != null) {
                 if (heldStack.getItem() instanceof BundleItem || hoverSlot.getItem().getItem() instanceof BundleItem) {
+                    Main.LOGGER.debug("poke");
                     /*SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
                             new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack):
                             new BundleAction(hoverSlot.index));*/
                     SprinklePacketHandler.INSTANCE.sendToServer(new BundleAction(hoverSlot.index));
                     containerScreen.isQuickCrafting = false;
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void onRightClickStart(GuiScreenEvent.MouseClickedEvent.Pre event) {
+        Minecraft minecraft = Minecraft.getInstance();
+        Screen gui = minecraft.screen;
+        if (gui instanceof ContainerScreen && event.getButton() == 1) {
+            ContainerScreen<?> containerScreen = (ContainerScreen<?>) gui;
+            Slot hoverSlot = containerScreen.getSlotUnderMouse();
+            assert minecraft.player != null;
+            ItemStack heldStack = minecraft.player.inventory.getCarried();
+
+            if (hoverSlot != null && heldStack.isEmpty()) {
+                if (hoverSlot.getItem().getItem() instanceof BundleItem) {
                     event.setCanceled(true);
                 }
             }
