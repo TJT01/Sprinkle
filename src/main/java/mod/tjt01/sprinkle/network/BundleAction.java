@@ -57,7 +57,19 @@ public class BundleAction {
                     player.ignoreSlotUpdateHack = false;
                     player.broadcastCarriedItem();
                 }
-            }
+            } else if (slotObject.mayPickup(player) && slotObject.getItem().getItem() instanceof BundleItem) {
+                BundleItem bundleItem = (BundleItem) slotObject.getItem().getItem();
+                if (carried.isEmpty()) {
+                    //TODO implement pulling from bundle
+                } else if (bundleItem.getVolumeOfOne(carried) + bundleItem.getFullness(slotObject.getItem()) < BundleItem.MAX_FULLNESS) {
+                    ItemStack bundle = slotObject.getItem().copy();
+                    ItemStack remainder = bundleItem.addItem(bundle, carried);
+                    player.inventory.setCarried(remainder);
+                    slotObject.set(bundle);
+                    player.ignoreSlotUpdateHack = false;
+                    player.broadcastCarriedItem();
+                }
+            };
         });
         contextSupplier.get().setPacketHandled(true);
     }

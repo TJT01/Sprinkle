@@ -28,7 +28,7 @@ public class CreativeBundleAction {
         return new CreativeBundleAction(buffer.readInt(), buffer.readItem());
     }
 
-    public void handle(Supplier<NetworkEvent.Context> contextSupplier) {
+    public void handle(Supplier<NetworkEvent.Context> contextSupplier) {//TODO: implement
         contextSupplier.get().enqueueWork(() -> {
             ServerPlayerEntity player = contextSupplier.get().getSender();
             if (player == null || !player.isCreative())
