@@ -1,18 +1,31 @@
 package mod.tjt01.sprinkle.item;
 
 import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextComponentUtils;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.awt.*;
+import java.util.List;
 import java.util.function.Supplier;
 
 @MethodsReturnNonnullByDefault
@@ -23,6 +36,18 @@ public class BundleItem extends OptionalItem{
 
     public BundleItem(Properties properties, Supplier<Boolean> condition) {
         super(properties, condition);
+    }
+
+    protected boolean isItemValid(ItemStack stack) {
+        return !(stack.getItem() instanceof BlockItem && ((BlockItem) stack.getItem()).getBlock() instanceof ShulkerBoxBlock);
+    }
+
+    public int getColumns(ItemStack bundle) {
+        return Math.max(2, (int) Math.ceil(Math.sqrt((double) getContents(bundle).size() + 1)));
+    }
+
+    public int getRows(ItemStack bundle) {
+        return Math.max(1, (int) Math.ceil((getContents(bundle).size() + 1d)/getColumns(bundle)));
     }
 
     public NonNullList<ItemStack> getContents(ItemStack stack) {
@@ -60,6 +85,8 @@ public class BundleItem extends OptionalItem{
     public int getVolumeOfOne(ItemStack stack) {
         if (stack.isEmpty())
             return 0;
+        if (stack.getItem() instanceof BundleItem)
+            return 4 + ((BundleItem) stack.getItem()).getFullness(stack);
         return MAX_FULLNESS/stack.getMaxStackSize();
     }
 
@@ -80,7 +107,7 @@ public class BundleItem extends OptionalItem{
         int fullness = getFullness(bundle);
         if (toAdd.isEmpty())
             return ItemStack.EMPTY;
-        if (getVolumeOfOne(toAdd) + fullness > MAX_FULLNESS)
+        if (!this.isItemValid(toAdd) || getVolumeOfOne(toAdd) + fullness > MAX_FULLNESS)
             return toAdd;
         NonNullList<ItemStack> stacks = getContents(bundle);
         int amount = Math.min(toAdd.getCount(), (MAX_FULLNESS-fullness)/getVolumeOfOne(toAdd));
@@ -99,6 +126,18 @@ public class BundleItem extends OptionalItem{
         stacks.add(0, stack);
         setContents(bundle, stacks);
         return remainder;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable World level, List<ITextComponent> textComponents, ITooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, level, textComponents, tooltipFlag);
+        textComponents.add(new StringTextComponent(""));
+        int rows = getRows(stack);
+        for (int i = 0; i < rows; i++) {
+            textComponents.add(new StringTextComponent(""));
+            textComponents.add(new StringTextComponent(""));
+        }
+        textComponents.add(new StringTextComponent(this.getFullness(stack) + "/" + MAX_FULLNESS));
     }
 
     @Override
