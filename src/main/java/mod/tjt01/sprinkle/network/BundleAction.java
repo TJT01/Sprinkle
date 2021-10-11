@@ -60,7 +60,10 @@ public class BundleAction {
             } else if (slotObject.mayPickup(player) && slotObject.getItem().getItem() instanceof BundleItem) {
                 BundleItem bundleItem = (BundleItem) slotObject.getItem().getItem();
                 if (carried.isEmpty()) {
-                    //TODO implement pulling from bundle
+                    ItemStack bundle = slotObject.getItem().copy();
+                    player.inventory.setCarried(bundleItem.removeItem(bundle));
+                    player.ignoreSlotUpdateHack = false;
+                    player.broadcastCarriedItem();
                 } else if (bundleItem.getVolumeOfOne(carried) + bundleItem.getFullness(slotObject.getItem()) < BundleItem.MAX_FULLNESS) {
                     ItemStack bundle = slotObject.getItem().copy();
                     ItemStack remainder = bundleItem.addItem(bundle, carried);
