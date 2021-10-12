@@ -12,9 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.*;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextComponentUtils;
+import net.minecraft.util.text.*;
+import net.minecraft.util.text.Color;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -62,6 +61,21 @@ public class BundleItem extends OptionalItem{
             return items;
         };
         return NonNullList.create();
+    }
+
+    @Override
+    public boolean showDurabilityBar(ItemStack stack) {
+        return !this.getContents(stack).isEmpty();
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return 1.0 - ((double) this.getFullness(stack))/MAX_FULLNESS;
+    }
+
+    @Override
+    public int getRGBDurabilityForDisplay(ItemStack stack) {
+        return 0x6666FF;
     }
 
     protected void setContents(ItemStack bundle, NonNullList<ItemStack> stacks) {
@@ -137,7 +151,7 @@ public class BundleItem extends OptionalItem{
             textComponents.add(new StringTextComponent(""));
             textComponents.add(new StringTextComponent(""));
         }
-        textComponents.add(new StringTextComponent(this.getFullness(stack) + "/" + MAX_FULLNESS));
+        textComponents.add(new StringTextComponent(this.getFullness(stack) + "/" + MAX_FULLNESS).setStyle(Style.EMPTY.withColor(TextFormatting.GRAY)));
     }
 
     @Override

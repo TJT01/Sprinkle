@@ -1,6 +1,7 @@
 package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.init.ModBlocks;
+import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -27,6 +28,9 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.GOLD_CHAIN.get(), "Gold Chain");
         add(ModBlocks.GOLD_LANTERN.get(), "Gold Lantern");
         add(ModBlocks.GOLD_SOUL_LANTERN.get(), "Gold Soul Lantern");
+
+        //Items
+        add(ModItems.BUNDLE.get(), "Bundle");
 
         //Subtitles
         add("subtitle.sprinkle.block.detector.click", "Detector clicks");

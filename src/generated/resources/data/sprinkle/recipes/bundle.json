@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "flag": "bundle",
+          "type": "sprinkle:flag"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "S#S",
+          "# #",
+          "###"
+        ],
+        "key": {
+          "S": {
+            "item": "minecraft:string"
+          },
+          "#": {
+            "item": "minecraft:rabbit_hide"
+          }
+        },
+        "result": {
+          "item": "sprinkle:bundle"
+        }
+      }
+    }
+  ]
+}

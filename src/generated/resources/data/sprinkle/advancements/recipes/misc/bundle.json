@@ -3,7 +3,7 @@
     {
       "conditions": [
         {
-          "flag": "brown_dye",
+          "flag": "bundle",
           "type": "sprinkle:flag"
         }
       ],
@@ -11,26 +11,16 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "sprinkle:brown_dye_from_orange_blue"
+            "sprinkle:bundle"
           ]
         },
         "criteria": {
-          "has_orange_dye": {
+          "has_rabbit_hide": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
-                  "item": "minecraft:orange_dye"
-                }
-              ]
-            }
-          },
-          "has_blue_dye": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-              "items": [
-                {
-                  "item": "minecraft:blue_dye"
+                  "item": "minecraft:rabbit_hide"
                 }
               ]
             }
@@ -38,14 +28,13 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "sprinkle:brown_dye_from_orange_blue"
+              "recipe": "sprinkle:bundle"
             }
           }
         },
         "requirements": [
           [
-            "has_orange_dye",
-            "has_blue_dye",
+            "has_rabbit_hide",
             "has_the_recipe"
           ]
         ]

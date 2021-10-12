@@ -2,28 +2,18 @@ package mod.tjt01.sprinkle.data.datagen;
 
 import java.util.function.Consumer;
 
-import javax.annotation.Nullable;
-
-import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.data.*;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
-import net.minecraftforge.common.crafting.conditions.FalseCondition;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.common.crafting.conditions.NotCondition;
-
+import org.apache.commons.lang3.StringUtils;
 
 class Recipes extends RecipeProvider {
 
@@ -34,12 +24,30 @@ class Recipes extends RecipeProvider {
         super(generatorIn);
     }
 
+    protected ShapedRecipeBuilder twoByTwo(IItemProvider result, Ingredient ingredient, int count) {
+        return ShapedRecipeBuilder.shaped(result, count)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ingredient);
+    }
+
+    protected ShapedRecipeBuilder twoByTwo(IItemProvider result, IItemProvider ingredient, int count) {
+        return this.twoByTwo(result, Ingredient.of(ingredient), count);
+    }
+
+    protected ShapedRecipeBuilder oneByThree(IItemProvider result, Ingredient ingredient, int count) {
+        return ShapedRecipeBuilder.shaped(result, count)
+                .pattern("###")
+                .define('#', ingredient);
+    }
+
+    protected ShapedRecipeBuilder oneByThree(IItemProvider result, IItemProvider ingredient, int count) {
+        return this.oneByThree(result, Ingredient.of(ingredient), count);
+    }
+
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(ModBlocks.PURPUR_BRICKS.get(), 4)
-                .pattern("##")
-                .pattern("##")
-                .define('#', Items.PURPUR_BLOCK)
+        this.twoByTwo(ModBlocks.PURPUR_BRICKS.get(), Items.PURPUR_BLOCK, 4)
                 .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer);
 
@@ -51,9 +59,7 @@ class Recipes extends RecipeProvider {
                 .unlockedBy("has_purpur_bricks", has(ModBlocks.PURPUR_BRICKS.get()))
                 .save(consumer);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.PURPUR_BRICK_SLAB.get(), 6)
-                .pattern("###")
-                .define('#', ModBlocks.PURPUR_BRICKS.get())
+        this.oneByThree(ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.get(), 6)
                 .unlockedBy("has_purpur_bricks", has(ModBlocks.PURPUR_BRICKS.get()))
                 .save(consumer);
 
@@ -148,7 +154,7 @@ class Recipes extends RecipeProvider {
         }
         {
             String name = "green_dye_from_yellow_blue";
-            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE)
+            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE, 2)
                     .requires(Items.YELLOW_DYE)
                     .requires(Items.BLUE_DYE)
                     .unlockedBy("has_yellow_dye", has(Items.YELLOW_DYE))
@@ -161,14 +167,29 @@ class Recipes extends RecipeProvider {
         }
         {
             String name = "brown_dye_from_orange_blue";
-            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE)
+            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE, 2)
                     .requires(Items.ORANGE_DYE)
                     .requires(Items.BLUE_DYE)
                     .unlockedBy("has_orange_dye", has(Items.ORANGE_DYE))
                     .unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
             ConditionalRecipe.builder()
-                    .addCondition(new FlagCondition("green_dye"))
+                    .addCondition(new FlagCondition("brown_dye"))
                     .addRecipe((recipeConsumer) -> greenDye.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
+                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
+                    .build(consumer, "sprinkle", name);
+        }
+        {
+            String name = "bundle";
+            ShapedRecipeBuilder bundle = ShapedRecipeBuilder.shaped(ModItems.BUNDLE.get())
+                    .pattern("S#S")
+                    .pattern("# #")
+                    .pattern("###")
+                    .define('S', Items.STRING)
+                    .define('#', Items.RABBIT_HIDE)
+                    .unlockedBy("has_rabbit_hide", has(Items.RABBIT_HIDE));
+            ConditionalRecipe.builder()
+                    .addCondition(new FlagCondition("bundle"))
+                    .addRecipe(recipeConsumer -> bundle.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
                     .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
                     .build(consumer, "sprinkle", name);
         }

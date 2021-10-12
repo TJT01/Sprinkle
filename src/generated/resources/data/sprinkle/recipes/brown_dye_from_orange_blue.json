@@ -4,7 +4,7 @@
     {
       "conditions": [
         {
-          "flag": "green_dye",
+          "flag": "brown_dye",
           "type": "sprinkle:flag"
         }
       ],
@@ -19,7 +19,8 @@
           }
         ],
         "result": {
-          "item": "minecraft:brown_dye"
+          "item": "minecraft:brown_dye",
+          "count": 2
         }
       }
     }
