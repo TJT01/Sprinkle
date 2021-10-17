@@ -10,7 +10,7 @@ loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft versio
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/TJT01/Sprinkle/issues" #optional
 
-license = "All Rights Reserved"
+license = "MIT License"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
