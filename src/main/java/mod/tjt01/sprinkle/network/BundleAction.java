@@ -31,7 +31,6 @@ public class BundleAction {
             ServerPlayerEntity player = contextSupplier.get().getSender();
             if (player == null)
                 return;
-            Main.LOGGER.debug("lets a go");
             Container container = player.containerMenu;
             Slot slotObject = container.getSlot(this.slot);
             ItemStack carried = player.inventory.getCarried();
@@ -39,8 +38,6 @@ public class BundleAction {
             if (carried.getItem() instanceof BundleItem) {
                 BundleItem bundleItem = (BundleItem) carried.getItem();
                 if (slotObject.hasItem() && slotObject.mayPickup(player)) {
-                    Main.LOGGER.debug("Pull");
-
                     ItemStack existing = slotObject.getItem();
                     ItemStack remainder = bundleItem.addItem(carried, existing.copy());
                     if (!ItemStack.matches(existing, remainder)) {
@@ -49,7 +46,6 @@ public class BundleAction {
                         player.broadcastCarriedItem();
                     }
                 } else if(bundleItem.getFullness(carried) > 0 && !slotObject.hasItem() && slotObject.mayPlace(bundleItem.getContents(carried).get(0))) {
-                    Main.LOGGER.debug("Push");
                     slotObject.set(bundleItem.removeItem(carried));
                     player.ignoreSlotUpdateHack = false;
                     player.broadcastCarriedItem();

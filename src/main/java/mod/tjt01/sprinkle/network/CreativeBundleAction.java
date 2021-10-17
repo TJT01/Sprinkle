@@ -40,15 +40,12 @@ public class CreativeBundleAction {
             if (this.stack.getItem() instanceof BundleItem) {
                 BundleItem bundleItem = (BundleItem) this.stack.getItem();
                 if (!target.isEmpty() && slotObject.mayPickup(player)) {
-                    Main.LOGGER.debug("Pull");
-
                     ItemStack remainder = bundleItem.addItem(this.stack, target);
                     if (!ItemStack.matches(target, remainder)) {
                         player.inventory.setItem(slot, remainder);
                         SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(this.stack));
                     }
                 } else if(bundleItem.getFullness(this.stack) > 0 && target.isEmpty() && slotObject.mayPlace(bundleItem.getContents(this.stack).get(0))) {
-                    Main.LOGGER.debug("Push");
                     player.inventory.setItem(slot, bundleItem.removeItem(this.stack));
                     SprinklePacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SetCarriedItem(this.stack));
                 }
