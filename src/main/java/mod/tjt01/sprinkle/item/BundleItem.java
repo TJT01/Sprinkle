@@ -2,28 +2,20 @@ package mod.tjt01.sprinkle.item;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.*;
 import net.minecraft.util.text.*;
-import net.minecraft.util.text.Color;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.ItemHandlerHelper;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.awt.*;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -154,39 +146,11 @@ public class BundleItem extends OptionalItem{
         textComponents.add(new StringTextComponent(this.getFullness(stack) + "/" + MAX_FULLNESS).setStyle(Style.EMPTY.withColor(TextFormatting.GRAY)));
     }
 
+    //TODO: Implement the right click thing
     @Override
     public ActionResult<ItemStack> use(World level, PlayerEntity player, Hand hand) {
         if (level.isClientSide)
             return super.use(level, player, hand);
         return super.use(level, player, hand);
     }
-
-    /*
-    @Override
-    public ActionResult<ItemStack> use(World level, PlayerEntity player, Hand hand) {
-        if (level.isClientSide)
-            return super.use(level, player, hand);
-        boolean itemDropped = false;
-        ItemStack item = player.getItemInHand(hand);
-        if (item.getItem() == this) {
-            IItemHandler handler = item.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElseThrow(() -> new RuntimeException("LazyOptional must not be empty!"));
-            if (handler instanceof BundleItemHandler) {
-                BundleItemHandler bundleItemHandler = (BundleItemHandler) handler;
-                while (!bundleItemHandler.getStackInSlot(0).isEmpty()) {
-                    ItemStack stack = bundleItemHandler.extractItem(0, bundleItemHandler.getStackInSlot(0).getCount(), false);
-                    ItemEntity entity = player.drop(stack, false, true);
-                    if (entity != null) {
-                        entity.setUUID(UUID.randomUUID());
-                        level.addFreshEntity(entity);
-                    }
-                    itemDropped = true;
-                }
-            }
-        }
-        if (itemDropped)
-            return ActionResult.success(player.getItemInHand(hand));
-        else
-            return super.use(level, player, hand);
-    }
-     */
 }

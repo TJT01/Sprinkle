@@ -2,7 +2,6 @@ package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.Main;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.LootTableProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;

@@ -2,11 +2,9 @@ package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.data.ModTags;
 import mod.tjt01.sprinkle.init.ModBlocks;
-import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.data.ExistingFileHelper;

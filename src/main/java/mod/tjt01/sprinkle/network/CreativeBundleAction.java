@@ -3,13 +3,11 @@ package mod.tjt01.sprinkle.network;
 import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.item.BundleItem;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.PacketDistributor;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.function.Supplier;
 

@@ -31,7 +31,7 @@ logoFile="sprinkle-logo.png" #optional
 authors="TJT01" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Description here
+Work-in-progress mod for Minecraft 1.16.5
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.sprinkle]] #optional

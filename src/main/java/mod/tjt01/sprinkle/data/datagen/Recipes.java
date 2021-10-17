@@ -13,7 +13,6 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
-import org.apache.commons.lang3.StringUtils;
 
 class Recipes extends RecipeProvider {
 

@@ -4,7 +4,6 @@ import mod.tjt01.sprinkle.data.ModTags;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
