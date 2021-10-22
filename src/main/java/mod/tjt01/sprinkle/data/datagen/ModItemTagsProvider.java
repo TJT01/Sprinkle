@@ -24,6 +24,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         copy(BlockTags.WALLS, ItemTags.WALLS);
         copy(BlockTags.PIGLIN_REPELLENTS, ItemTags.PIGLIN_REPELLENTS);
         tag(ItemTags.PIGLIN_LOVED).add(ModBlocks.GOLD_CHAIN.get().asItem(), ModBlocks.GOLD_LANTERN.get().asItem());
+        //Sprinkle
+        tag(ModTags.Items.BUNDLE_BLACKLIST);
         //Quark
         copy(ModTags.Blocks.QUARK_VERTICAL_SLAB, ModTags.Items.QUARK_VERTICAL_SLAB);
     }

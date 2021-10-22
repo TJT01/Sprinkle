@@ -1,10 +1,12 @@
 package mod.tjt01.sprinkle.item;
 
 import mcp.MethodsReturnNonnullByDefault;
+import mod.tjt01.sprinkle.data.ModTags;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
@@ -30,7 +32,8 @@ public class BundleItem extends OptionalItem{
     }
 
     protected boolean isItemValid(ItemStack stack) {
-        return !(stack.getItem() instanceof BlockItem && ((BlockItem) stack.getItem()).getBlock() instanceof ShulkerBoxBlock);
+        Item item = stack.getItem();
+        return !(item.is(ModTags.Items.BUNDLE_BLACKLIST) || (item instanceof BlockItem && ((BlockItem) item).getBlock() instanceof ShulkerBoxBlock));
     }
 
     public int getColumns(ItemStack bundle) {
