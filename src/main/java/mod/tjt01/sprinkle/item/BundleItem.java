@@ -2,7 +2,9 @@ package mod.tjt01.sprinkle.item;
 
 import mcp.MethodsReturnNonnullByDefault;
 import mod.tjt01.sprinkle.data.ModTags;
+import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -140,11 +142,16 @@ public class BundleItem extends OptionalItem{
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World level, List<ITextComponent> textComponents, ITooltipFlag tooltipFlag) {
         super.appendHoverText(stack, level, textComponents, tooltipFlag);
+        Minecraft minecraft = Minecraft.getInstance();
         textComponents.add(new StringTextComponent(""));
         int rows = getRows(stack);
+        int columns = getColumns(stack);
+        String text = "";
+        while (minecraft.font.width(text) < (columns*18) + 2)
+            text += " ";
         for (int i = 0; i < rows; i++) {
-            textComponents.add(new StringTextComponent(""));
-            textComponents.add(new StringTextComponent(""));
+            textComponents.add(new StringTextComponent(text));
+            textComponents.add(new StringTextComponent(text));
         }
         textComponents.add(new StringTextComponent(this.getFullness(stack) + "/" + MAX_FULLNESS).setStyle(Style.EMPTY.withColor(TextFormatting.GRAY)));
     }
@@ -154,6 +161,11 @@ public class BundleItem extends OptionalItem{
     public ActionResult<ItemStack> use(World level, PlayerEntity player, Hand hand) {
         if (level.isClientSide)
             return super.use(level, player, hand);
-        return super.use(level, player, hand);
+        NonNullList<ItemStack> stacks = this.getContents(player.getItemInHand(hand));
+        for (ItemStack stack: stacks) {
+            player.drop(stack, false, true);
+        }
+        this.setContents(player.getItemInHand(hand), NonNullList.create());
+        return ActionResult.success(player.getItemInHand(hand));
     }
 }

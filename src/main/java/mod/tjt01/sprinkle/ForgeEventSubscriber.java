@@ -40,7 +40,7 @@ public class ForgeEventSubscriber {
 
             if (hoverSlot != null) {
                 if (heldStack.getItem() instanceof BundleItem || hoverSlot.getItem().getItem() instanceof BundleItem) {
-                    Main.LOGGER.debug("poke");
+                    //Main.LOGGER.debug("poke {}", hoverSlot.getSlotIndex());
                     SprinklePacketHandler.INSTANCE.sendToServer(containerScreen instanceof CreativeScreen ?
                             new CreativeBundleAction(hoverSlot.getSlotIndex(), heldStack) :
                             new BundleAction(hoverSlot.index));
