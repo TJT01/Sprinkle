@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/gold"
+    },
+    "I": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "item": "sprinkle:gold_soul_lantern"
+  }
+}

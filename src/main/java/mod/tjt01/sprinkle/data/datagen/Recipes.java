@@ -79,6 +79,35 @@ class Recipes extends RecipeProvider {
                 .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
                 .save(consumer);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.GOLD_LANTERN.get())
+                .pattern("###")
+                .pattern("#I#")
+                .pattern("###")
+                .define('#', Tags.Items.NUGGETS_GOLD)
+                .define('I', Items.TORCH)
+                .unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
+                .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(ModBlocks.GOLD_SOUL_LANTERN.get())
+                .pattern("###")
+                .pattern("#I#")
+                .pattern("###")
+                .define('#', Tags.Items.NUGGETS_GOLD)
+                .define('I', Items.TORCH)
+                .unlockedBy("has_soul_torch", has(Items.SOUL_TORCH))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(ModBlocks.GOLD_CHAIN.get())
+                .pattern(".")
+                .pattern("#")
+                .pattern(".")
+                .define('#', Tags.Items.INGOTS_GOLD)
+                .define('.', Tags.Items.NUGGETS_GOLD)
+                .unlockedBy("has_gold_nugget", has(Tags.Items.NUGGETS_GOLD))
+                .unlockedBy("has_gold_ingot", has(Tags.Items.INGOTS_GOLD))
+                .save(consumer);
+
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICKS.get())
                 .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_bricks_from_purpur_block_stonecutting"));
