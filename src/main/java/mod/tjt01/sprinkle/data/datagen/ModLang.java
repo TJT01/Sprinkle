@@ -30,7 +30,7 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.GOLD_SOUL_LANTERN.get(), "Gold Soul Lantern");
 
         //Items
-        add(ModItems.BUNDLE.get(), "Bundle");
+        //add(ModItems.BUNDLE.get(), "Bundle");
 
         //Subtitles
         add("subtitle.sprinkle.block.detector.click", "Detector clicks");

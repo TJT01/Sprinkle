@@ -1,23 +1,29 @@
 package mod.tjt01.sprinkle.block;
 
 import mod.tjt01.sprinkle.init.ModSoundEvents;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DirectionalBlock;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.DirectionalBlock;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.util.Constants;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 
 import javax.annotation.Nullable;
 import java.util.Random;
+
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class DetectorBlock extends DirectionalBlock {
     public static BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -27,16 +33,16 @@ public class DetectorBlock extends DirectionalBlock {
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWERED, false));
     }
 
-    private void updatePowered(IWorld world, BlockPos pos) {
+    private void updatePowered(LevelAccessor world, BlockPos pos) {
         if (!world.isClientSide())
-            world.getBlockTicks().scheduleTick(pos, this, Constants.BlockFlags.BLOCK_UPDATE);
+            world.scheduleTick(pos, this, Block.UPDATE_CLIENTS);
     }
 
-    protected boolean shouldBePowered(IBlockReader world, BlockPos pos, Direction direction) {
+    protected boolean shouldBePowered(BlockGetter world, BlockPos pos, Direction direction) {
         return world.getBlockState(pos.relative(direction)).isFaceSturdy(world, pos.relative(direction), direction.getOpposite());
     }
 
-    protected void updateNeighborsInFront(World world, BlockPos pos, BlockState state) {
+    protected void updateNeighborsInFront(Level world, BlockPos pos, BlockState state) {
         Direction direction = state.getValue(FACING);
         BlockPos backPos = pos.relative(direction.getOpposite());
         world.neighborChanged(backPos, this, pos);
@@ -44,18 +50,18 @@ public class DetectorBlock extends DirectionalBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
         if (state.getValue(POWERED) != shouldBePowered(world, pos, state.getValue(FACING))) {
-            world.setBlock(pos, state.setValue(POWERED, shouldBePowered(world, pos, state.getValue(FACING))), Constants.BlockFlags.BLOCK_UPDATE);
+            world.setBlock(pos, state.setValue(POWERED, shouldBePowered(world, pos, state.getValue(FACING))), Block.UPDATE_CLIENTS);
             this.updateNeighborsInFront(world, pos, state);
             SoundEvent soundEvent = shouldBePowered(world, pos, state.getValue(FACING)) ? ModSoundEvents.DETECTOR_CLICK_ON.get() : ModSoundEvents.DETECTOR_CLICK_OFF.get();
-            world.playSound(null, pos, soundEvent, SoundCategory.BLOCKS, 1, 1);
+            world.playSound(null, pos, soundEvent, SoundSource.BLOCKS, 1, 1);
         }
     }
 
     @Override
     @SuppressWarnings("Deprecated")
-    public BlockState updateShape(BlockState state, Direction from, BlockState otherState, IWorld world, BlockPos pos, BlockPos otherPos) {
+    public BlockState updateShape(BlockState state, Direction from, BlockState otherState, LevelAccessor world, BlockPos pos, BlockPos otherPos) {
         if (state.getValue(FACING) == from) {
             this.updatePowered(world, pos);
         }
@@ -70,46 +76,46 @@ public class DetectorBlock extends DirectionalBlock {
 
     @Override
     @SuppressWarnings("Deprecated")
-    public int getSignal(BlockState state, IBlockReader world, BlockPos pos, Direction direction) {
+    public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return state.getValue(FACING) == direction && state.getValue(POWERED) ? 15 : 0;
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getNearestLookingDirection());
     }
 
     @Override
     @SuppressWarnings("Deprecated")
-    public int getDirectSignal(BlockState state, IBlockReader world, BlockPos pos, Direction direction) {
+    public int getDirectSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return this.getSignal(state, world, pos, direction);
     }
 
     @Override
-    public boolean canConnectRedstone(BlockState state, IBlockReader world, BlockPos pos, @Nullable Direction side) {
+    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, @Nullable Direction side) {
         return side != null && side == state.getValue(FACING);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED);
     }
 
     @Override
-    public void onPlace(BlockState state, World world, BlockPos pos, BlockState old, boolean moving) {
+    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState old, boolean moving) {
         if (!world.isClientSide) {
             final boolean isPowered = this.shouldBePowered(world, pos, state.getValue(FACING));
             if (isPowered) {
                 BlockState newState = state.setValue(POWERED, shouldBePowered(world, pos, state.getValue(FACING)));
-                world.setBlock(pos, newState, Constants.BlockFlags.BLOCK_UPDATE);
+                world.setBlock(pos, newState, Block.UPDATE_CLIENTS);
                 updateNeighborsInFront(world, pos, state);
             }
         }
     }
 
     @Override
-    public void onRemove(BlockState state, World world, BlockPos pos, BlockState other, boolean moving) {
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState other, boolean moving) {
         if (!state.is(other.getBlock())) {
             if (!world.isClientSide() && state.getValue(POWERED)) {
                 updateNeighborsInFront(world, pos, state.setValue(POWERED, false));

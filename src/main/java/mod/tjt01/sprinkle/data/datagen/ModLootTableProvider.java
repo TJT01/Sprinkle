@@ -4,15 +4,15 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
-import net.minecraft.block.Block;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.LootTableProvider;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.loot.*;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.loot.functions.SetCount;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -22,24 +22,32 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTables;
+import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+
 public class ModLootTableProvider extends LootTableProvider {
     public ModLootTableProvider(DataGenerator generator) {
         super(generator);
     }
 
     @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
+    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         return Lists.newArrayList(
-                Pair.of(ModBlockLootTables::new, LootParameterSets.BLOCK)
+                Pair.of(ModBlockLootTables::new, LootContextParamSets.BLOCK)
         );
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationTracker) {
-        map.forEach((key, lootTable) -> LootTableManager.validate(validationTracker, key, lootTable));
+    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationTracker) {
+        map.forEach((key, lootTable) -> LootTables.validate(validationTracker, key, lootTable));
     }
 
-    public static class ModBlockLootTables extends BlockLootTables {
+    public static class ModBlockLootTables extends BlockLoot {
         public ModBlockLootTables() {
             super();
         }
@@ -47,10 +55,10 @@ public class ModLootTableProvider extends LootTableProvider {
         private static LootTable.Builder createVerticalSlabItemTable(Block block) {
             return LootTable.lootTable()
                     .withPool(LootPool.lootPool()
-                            .setRolls(ConstantRange.exactly(1))
-                            .add(applyExplosionDecay(block, ItemLootEntry.lootTableItem(block)
-                                    .apply(SetCount.setCount(ConstantRange.exactly(2))
-                                            .when(BlockStateProperty.hasBlockStateProperties(block)
+                            .setRolls(ConstantValue.exactly(1))
+                            .add(applyExplosionDecay(block, LootItem.lootTableItem(block)
+                                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2))
+                                            .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                                     .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(
                                                             VerticalSlabBlock.TYPE,
                                                             VerticalSlabBlock.VerticalSlabType.DOUBLE))

@@ -2,8 +2,8 @@ package mod.tjt01.sprinkle.data;
 
 import com.google.gson.JsonObject;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
 
@@ -35,7 +35,7 @@ public class FlagCondition implements ICondition {
 
         @Override
         public FlagCondition read(JsonObject json) {
-            return new FlagCondition(JSONUtils.getAsString(json, "flag"));
+            return new FlagCondition(GsonHelper.getAsString(json, "flag"));
         }
 
         @Override

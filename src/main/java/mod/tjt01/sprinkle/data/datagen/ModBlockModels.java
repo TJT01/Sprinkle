@@ -3,10 +3,10 @@ package mod.tjt01.sprinkle.data.datagen;
 import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
-import net.minecraft.block.*;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -86,7 +86,7 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleBlockItem(block, this.models().generatedModels.get(this.blockTexture(block)));
     }
 
-    private void simpleStairsBlock(StairsBlock block, ResourceLocation texture) {
+    private void simpleStairsBlock(StairBlock block, ResourceLocation texture) {
         this.stairsBlock(block, texture);
         this.simpleBlockItem(block, this.models().generatedModels.get(this.blockTexture(block)));
     }
@@ -100,7 +100,7 @@ public class ModBlockModels extends BlockStateProvider {
     protected void registerStatesAndModels() {
         this.cubeAllBlock(ModBlocks.PURPUR_BRICKS.get());
         this.simpleSlabBlock((SlabBlock) ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
-        this.simpleStairsBlock((StairsBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
+        this.simpleStairsBlock((StairBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
 

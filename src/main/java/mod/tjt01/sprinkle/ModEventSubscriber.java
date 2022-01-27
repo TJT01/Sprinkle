@@ -1,22 +1,23 @@
 package mod.tjt01.sprinkle;
 
+import com.google.common.collect.ImmutableList;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
-import mod.tjt01.sprinkle.init.ModItems;
-import mod.tjt01.sprinkle.item.BundleItem;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.ItemModelsProperties;
-import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import mod.tjt01.sprinkle.init.ModBlocks;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -27,13 +28,13 @@ public class ModEventSubscriber {
     public static final Logger LOGGER = LogManager.getLogger(Main.MODID + " Loading");
 
     @SubscribeEvent
-    public static void registerRecipeSerializers(RegistryEvent.Register<IRecipeSerializer<?>> event) {
+    public static void registerRecipeSerializers(RegistryEvent.Register<RecipeSerializer<?>> event) {
         CraftingHelper.register(FlagCondition.Serializer.INSTANCE);
         CraftingHelper.register(QuarkFlagCondition.Serializer.INSTANCE);
     }
 
     @SubscribeEvent
-    public static void onModConfigEvent(ModConfig.ModConfigEvent event) {
+    public static void onModConfigEvent(ModConfigEvent event) {
         ModConfig modConfig = event.getConfig();
         if (modConfig.getSpec() == SprinkleConfig.COMMON_SPEC)
             SprinkleConfig.bakeCommon(modConfig);
@@ -42,15 +43,28 @@ public class ModEventSubscriber {
     @SubscribeEvent
     public static void onFMLClientSetup(FMLClientSetupEvent event) {
         //Render layers
-        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_CHAIN.get(), RenderType.cutoutMipped());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_LANTERN.get(), RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(ModBlocks.GOLD_SOUL_LANTERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_CHAIN.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_LANTERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOLD_SOUL_LANTERN.get(), RenderType.cutout());
         //Item Property Overrides
+        /*
         event.enqueueWork(() -> {
-            ItemModelsProperties.register(ModItems.BUNDLE.get(), new ResourceLocation(Main.MODID, "filled"), (stack, level, entity) -> {
+            ItemProperties.register(ModItems.BUNDLE.get(), new ResourceLocation(Main.MODID, "filled"), (stack, level, entity) -> {
                 BundleItem bundleItem = (BundleItem) stack.getItem();
                 return bundleItem.getFullness(stack)/(float)BundleItem.MAX_FULLNESS;
             });
         });
+         */
+    }
+
+    @SubscribeEvent
+    public static void onMissingMappings(RegistryEvent.MissingMappings<Item> event) {
+        ResourceLocation BUNDLE_LOC = new ResourceLocation("sprinkle", "bundle");
+        ImmutableList<RegistryEvent.MissingMappings.Mapping<Item>> mappings = event.getMappings(Main.MODID);
+        for (RegistryEvent.MissingMappings.Mapping<Item> mapping: mappings) {
+            if (mapping.key.equals(BUNDLE_LOC)) {
+                mapping.remap(Items.BUNDLE); //Sprinkle bundle removed; remap to vanilla
+            }
+        }
     }
 }

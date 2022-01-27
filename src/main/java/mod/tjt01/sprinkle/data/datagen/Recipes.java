@@ -7,12 +7,18 @@ import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import mod.tjt01.sprinkle.init.ModBlocks;
 import mod.tjt01.sprinkle.init.ModItems;
 import net.minecraft.data.*;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
+
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 
 class Recipes extends RecipeProvider {
 
@@ -23,29 +29,29 @@ class Recipes extends RecipeProvider {
         super(generatorIn);
     }
 
-    protected ShapedRecipeBuilder twoByTwo(IItemProvider result, Ingredient ingredient, int count) {
+    protected ShapedRecipeBuilder twoByTwo(ItemLike result, Ingredient ingredient, int count) {
         return ShapedRecipeBuilder.shaped(result, count)
                 .pattern("##")
                 .pattern("##")
                 .define('#', ingredient);
     }
 
-    protected ShapedRecipeBuilder twoByTwo(IItemProvider result, IItemProvider ingredient, int count) {
+    protected ShapedRecipeBuilder twoByTwo(ItemLike result, ItemLike ingredient, int count) {
         return this.twoByTwo(result, Ingredient.of(ingredient), count);
     }
 
-    protected ShapedRecipeBuilder oneByThree(IItemProvider result, Ingredient ingredient, int count) {
+    protected ShapedRecipeBuilder oneByThree(ItemLike result, Ingredient ingredient, int count) {
         return ShapedRecipeBuilder.shaped(result, count)
                 .pattern("###")
                 .define('#', ingredient);
     }
 
-    protected ShapedRecipeBuilder oneByThree(IItemProvider result, IItemProvider ingredient, int count) {
+    protected ShapedRecipeBuilder oneByThree(ItemLike result, ItemLike ingredient, int count) {
         return this.oneByThree(result, Ingredient.of(ingredient), count);
     }
 
     @Override
-    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
         this.twoByTwo(ModBlocks.PURPUR_BRICKS.get(), Items.PURPUR_BLOCK, 4)
                 .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer);
@@ -109,31 +115,31 @@ class Recipes extends RecipeProvider {
                 .save(consumer);
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICKS.get())
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_bricks_from_purpur_block_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_SLAB.get(), 2)
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_slab_from_purpur_block_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_STAIRS.get())
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_stairs_from_purpur_block_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.PURPUR_BRICK_WALL.get())
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_wall_from_purpur_block_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_SLAB.get(), 2)
-                .unlocks("has_purpur_block", has(ModBlocks.PURPUR_BRICKS.get()))
+                .unlockedBy("has_purpur_block", has(ModBlocks.PURPUR_BRICKS.get()))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_slab_from_purpur_bricks_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_STAIRS.get())
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_stairs_from_purpur_bricks_stonecutting"));
 
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.PURPUR_BRICK_WALL.get())
-                .unlocks("has_purpur_block", has(Items.PURPUR_BLOCK))
+                .unlockedBy("has_purpur_block", has(Items.PURPUR_BLOCK))
                 .save(consumer, new ResourceLocation("sprinkle", "purpur_brick_wall_from_purpur_bricks_stonecutting"));
 
         {
@@ -152,7 +158,7 @@ class Recipes extends RecipeProvider {
         {
             String name = "purpur_brick_vertical_slab_from_purpur_block_stonecutting";
             SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
-                    .unlocks("has_purpur_brick", has(Items.PURPUR_BLOCK));
+                    .unlockedBy("has_purpur_brick", has(Items.PURPUR_BLOCK));
             ConditionalRecipe.builder()
                     .addCondition(new QuarkFlagCondition("vertical_slabs"))
                     .addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
@@ -162,7 +168,7 @@ class Recipes extends RecipeProvider {
         {
             String name = "purpur_brick_vertical_slab_from_purpur_bricks_stonecutting";
             SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
-                    .unlocks("has_purpur_brick", has(Items.PURPUR_BLOCK));
+                    .unlockedBy("has_purpur_brick", has(Items.PURPUR_BLOCK));
             ConditionalRecipe.builder()
                     .addCondition(new QuarkFlagCondition("vertical_slabs"))
                     .addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
@@ -206,6 +212,7 @@ class Recipes extends RecipeProvider {
                     .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
                     .build(consumer, "sprinkle", name);
         }
+        /*TODO: bundle recipe?
         {
             String name = "bundle";
             ShapedRecipeBuilder bundle = ShapedRecipeBuilder.shaped(ModItems.BUNDLE.get())
@@ -221,5 +228,6 @@ class Recipes extends RecipeProvider {
                     .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
                     .build(consumer, "sprinkle", name);
         }
+         */
     }
 }
