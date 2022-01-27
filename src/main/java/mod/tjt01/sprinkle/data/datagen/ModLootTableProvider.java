@@ -70,14 +70,19 @@ public class ModLootTableProvider extends LootTableProvider {
         @Override
         protected void addTables() {
             this.dropSelf(ModBlocks.GOLD_CHAIN.get());
+            this.dropSelf(ModBlocks.GOLD_LANTERN.get());
+            this.dropSelf(ModBlocks.GOLD_SOUL_LANTERN.get());
+
             this.dropSelf(ModBlocks.PURPUR_BRICKS.get());
             this.add(ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlockLootTables::createSlabItemTable);
             this.dropSelf(ModBlocks.PURPUR_BRICK_STAIRS.get());
             this.dropSelf(ModBlocks.PURPUR_BRICK_WALL.get());
             this.add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlockLootTables::createVerticalSlabItemTable);
+
+            this.dropSelf(ModBlocks.UNNAMED_BLOCK.get());
+
             this.dropSelf(ModBlocks.DETECTOR.get());
-            this.dropSelf(ModBlocks.GOLD_LANTERN.get());
-            this.dropSelf(ModBlocks.GOLD_SOUL_LANTERN.get());
+
         }
 
         @Override

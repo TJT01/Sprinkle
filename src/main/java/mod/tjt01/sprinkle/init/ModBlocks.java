@@ -8,6 +8,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -74,6 +76,8 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICK_STAIRS = stairsBlock("purpur_brick_stairs", PURPUR_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Wall
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
+    //Unnamed Block
+    public static final RegistryObject<Block> UNNAMED_BLOCK = block("unnamed_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     //Detector
     public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(BlockBehaviour.Properties.copy(Blocks.OBSERVER)), CreativeModeTab.TAB_REDSTONE);

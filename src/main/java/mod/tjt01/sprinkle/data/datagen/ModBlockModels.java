@@ -1,5 +1,6 @@
 package mod.tjt01.sprinkle.data.datagen;
 
+import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.init.ModBlocks;
@@ -103,6 +104,8 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleStairsBlock((StairBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
+
+        this.cubeAllBlock(ModBlocks.UNNAMED_BLOCK.get());
 
         getVariantBuilder(ModBlocks.DETECTOR.get())
                 .forAllStates(state -> {
