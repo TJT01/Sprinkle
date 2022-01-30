@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "sprinkle:purpur_bricks",
+    "sprinkle:purpur_brick_stairs",
+    "sprinkle:purpur_brick_slab",
+    "sprinkle:purpur_brick_vertical_slab",
+    "sprinkle:purpur_brick_wall",
+    "sprinkle:detector",
+    "sprinkle:unnamed_block",
+    "sprinkle:unnamed_stone",
+    "sprinkle:gold_chain",
+    "sprinkle:gold_lantern",
+    "sprinkle:gold_soul_lantern"
+  ]
+}

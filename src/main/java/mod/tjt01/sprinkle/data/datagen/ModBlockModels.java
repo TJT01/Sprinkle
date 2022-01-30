@@ -106,6 +106,7 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
 
         this.cubeAllBlock(ModBlocks.UNNAMED_BLOCK.get());
+        this.cubeAllBlock(ModBlocks.UNNAMED_STONE.get());
 
         getVariantBuilder(ModBlocks.DETECTOR.get())
                 .forAllStates(state -> {
