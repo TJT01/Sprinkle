@@ -34,5 +34,9 @@ public class ModLang extends LanguageProvider {
 
         //Subtitles
         add("subtitle.sprinkle.block.detector.click", "Detector clicks");
+
+        //Other
+        add("sprinkle.ui.disabled", "Disabled");
+        add("sprinkle.ui.disabled.quark_missing", "Disabled; install Quark to enable");
     }
 }

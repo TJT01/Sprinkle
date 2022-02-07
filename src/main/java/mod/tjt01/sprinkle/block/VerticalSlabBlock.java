@@ -125,6 +125,10 @@ public class VerticalSlabBlock extends OptionalBlock implements SimpleWaterlogge
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.getValue(TYPE) == VerticalSlabType.DOUBLE ? state : state.setValue(TYPE, VerticalSlabType.fromDirection(rotation.rotate(state.getValue(TYPE).direction)));
     }
+    @Override
+    public String getDisabledTooltip() {
+        return "sprinkle.ui.disabled.quark_missing";
+    }
 
     public enum VerticalSlabType implements StringRepresentable {
         NORTH(Direction.NORTH),
