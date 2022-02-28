@@ -1,6 +1,7 @@
 package mod.tjt01.sprinkle.block;
 
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
+import mod.tjt01.lapislib.block.OptionalBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -26,9 +27,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nullable;
-import java.util.function.BooleanSupplier;
-
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 
 public class VerticalSlabBlock extends OptionalBlock implements SimpleWaterloggedBlock {
 
