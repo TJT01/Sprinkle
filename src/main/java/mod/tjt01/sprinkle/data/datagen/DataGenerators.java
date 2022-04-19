@@ -21,6 +21,7 @@ public class DataGenerators {
         //generator.addProvider(new ModItemModels(generator, existingFileHelper));
         generator.addProvider(blockTagsProvider);
         generator.addProvider(new ModItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
+        generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
         generator.addProvider(new ModLang(generator));
         generator.addProvider(new ModSoundDefinitions(generator, existingFileHelper));
 
