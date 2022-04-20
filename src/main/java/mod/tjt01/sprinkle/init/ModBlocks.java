@@ -77,7 +77,7 @@ public final class ModBlocks {
     //Purpur Brick Wall
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
     //Nightshale
-    public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Slab
     public static final RegistryObject<Block> NIGHTSHALE_SLAB = slabBlock(NIGHTSHALE, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Vertical Slab
