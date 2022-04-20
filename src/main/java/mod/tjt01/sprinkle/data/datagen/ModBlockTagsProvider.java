@@ -27,7 +27,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.PURPUR_BRICKS.get(), ModBlocks.PURPUR_BRICK_STAIRS.get(), ModBlocks.PURPUR_BRICK_SLAB.get(),
                 ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICK_WALL.get(),
                 ModBlocks.DETECTOR.get(),
-                ModBlocks.UNNAMED_BLOCK.get(), ModBlocks.UNNAMED_STONE.get(),
+                ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_BRICKS.get(),
                 ModBlocks.GOLD_CHAIN.get(), ModBlocks.GOLD_LANTERN.get(), ModBlocks.GOLD_SOUL_LANTERN.get()
         );
 

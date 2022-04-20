@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "sprinkle:block/unnamed_stone"
+    "all": "sprinkle:block/nightshale_bricks"
   }
 }

@@ -79,8 +79,8 @@ public class ModLootTableProvider extends LootTableProvider {
             this.dropSelf(ModBlocks.PURPUR_BRICK_WALL.get());
             this.add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlockLootTables::createVerticalSlabItemTable);
 
-            this.dropSelf(ModBlocks.UNNAMED_BLOCK.get());
-            this.dropSelf(ModBlocks.UNNAMED_STONE.get());
+            this.dropSelf(ModBlocks.NIGHTSHALE.get());
+            this.dropSelf(ModBlocks.NIGHTSHALE_BRICKS.get());
 
             this.dropSelf(ModBlocks.DETECTOR.get());
 

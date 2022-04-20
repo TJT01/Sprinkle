@@ -76,10 +76,10 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICK_STAIRS = stairsBlock("purpur_brick_stairs", PURPUR_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Wall
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
-    //Unnamed Block
-    public static final RegistryObject<Block> UNNAMED_BLOCK = block("unnamed_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
-    //Unnamed Stone
-    public static final RegistryObject<Block> UNNAMED_STONE = block("unnamed_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale
+    public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Bricks
+    public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(BlockBehaviour.Properties.copy(NIGHTSHALE.get())), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     //Detector
     public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(BlockBehaviour.Properties.copy(Blocks.OBSERVER)), CreativeModeTab.TAB_REDSTONE);
