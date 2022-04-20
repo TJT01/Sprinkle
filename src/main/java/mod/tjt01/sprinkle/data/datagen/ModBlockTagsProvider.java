@@ -29,6 +29,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.DETECTOR.get(),
                 ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_STAIRS.get(), ModBlocks.NIGHTSHALE_SLAB.get(),
                 ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_WALL.get(),
+                ModBlocks.GLIMMERING_NIGHTSHALE.get(),
                 ModBlocks.NIGHTSHALE_BRICKS.get(),
                 ModBlocks.GOLD_CHAIN.get(), ModBlocks.GOLD_LANTERN.get(), ModBlocks.GOLD_SOUL_LANTERN.get()
         );

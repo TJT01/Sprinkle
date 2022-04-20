@@ -33,6 +33,7 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.NIGHTSHALE_STAIRS.get(), "Nightshale Stairs");
         add(ModBlocks.NIGHTSHALE_WALL.get(), "Nightshale Wall");
         add(ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), "Nightshale Vertical Slab");
+        add(ModBlocks.GLIMMERING_NIGHTSHALE.get(), "Glimmering Nightshale");
         add(ModBlocks.NIGHTSHALE_BRICKS.get(), "Nightshale Bricks");
 
         //Items
