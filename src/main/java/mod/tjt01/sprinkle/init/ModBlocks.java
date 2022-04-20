@@ -39,7 +39,7 @@ public final class ModBlocks {
     }
 
     public static RegistryObject<Block> stairsBlock(String name, RegistryObject<Block> blockRegistryObject, CreativeModeTab group) {
-        return block(name, () -> new StairBlock(() -> blockRegistryObject.get().defaultBlockState(), Block.Properties.copy(PURPUR_BRICKS.get())), group);
+        return block(name, () -> new StairBlock(() -> blockRegistryObject.get().defaultBlockState(), Block.Properties.copy(blockRegistryObject.get())), group);
     }
 
     public static RegistryObject<Block> stairsBlock(RegistryObject<Block> blockRegistryObject, CreativeModeTab group) {
