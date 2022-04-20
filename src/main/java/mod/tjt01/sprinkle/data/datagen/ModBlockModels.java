@@ -106,6 +106,10 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
 
         this.cubeAllBlock(ModBlocks.NIGHTSHALE.get());
+        this.simpleSlabBlock((SlabBlock) ModBlocks.NIGHTSHALE_SLAB.get(), ModBlocks.NIGHTSHALE.getId(), blockTexture(ModBlocks.NIGHTSHALE.get()));
+        this.simpleStairsBlock((StairBlock) ModBlocks.NIGHTSHALE_STAIRS.get(), blockTexture(ModBlocks.NIGHTSHALE.get()));
+        this.simpleWallBlock((WallBlock) ModBlocks.NIGHTSHALE_WALL.get(), blockTexture(ModBlocks.NIGHTSHALE.get()));
+        this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.NIGHTSHALE.get()));
         this.cubeAllBlock(ModBlocks.NIGHTSHALE_BRICKS.get());
 
         getVariantBuilder(ModBlocks.DETECTOR.get())

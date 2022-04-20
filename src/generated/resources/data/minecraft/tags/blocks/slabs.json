@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "sprinkle:purpur_brick_slab"
+    "sprinkle:purpur_brick_slab",
+    "sprinkle:nightshale_slab"
   ]
 }

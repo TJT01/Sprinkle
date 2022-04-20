@@ -29,6 +29,10 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.GOLD_LANTERN.get(), "Gold Lantern");
         add(ModBlocks.GOLD_SOUL_LANTERN.get(), "Gold Soul Lantern");
         add(ModBlocks.NIGHTSHALE.get(), "Nightshale");
+        add(ModBlocks.NIGHTSHALE_SLAB.get(), "Nightshale Slab");
+        add(ModBlocks.NIGHTSHALE_STAIRS.get(), "Nightshale Stairs");
+        add(ModBlocks.NIGHTSHALE_WALL.get(), "Nightshale Wall");
+        add(ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), "Nightshale Vertical Slab");
         add(ModBlocks.NIGHTSHALE_BRICKS.get(), "Nightshale Bricks");
 
         //Items

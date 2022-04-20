@@ -70,7 +70,7 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICKS = block("purpur_bricks", () -> new Block(Block.Properties.copy(Blocks.PURPUR_BLOCK)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Slab
     public static final RegistryObject<Block> PURPUR_BRICK_SLAB = slabBlock("purpur_brick_slab", PURPUR_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
-    //Purpur Brick Slab
+    //Purpur Brick Vertical Slab
     public static final RegistryObject<Block> VERTICAL_PURPUR_BRICK_SLAB = verticalSlabBlock("purpur_brick_vertical_slab", PURPUR_BRICK_SLAB, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Stairs
     public static final RegistryObject<Block> PURPUR_BRICK_STAIRS = stairsBlock("purpur_brick_stairs", PURPUR_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
@@ -78,6 +78,14 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
     //Nightshale
     public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Slab
+    public static final RegistryObject<Block> NIGHTSHALE_SLAB = slabBlock(NIGHTSHALE, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Vertical Slab
+    public static final RegistryObject<Block> NIGHTSHALE_VERTICAL_SLAB = verticalSlabBlock("nightshale_vertical_slab", NIGHTSHALE_SLAB, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Stairs
+    public static final RegistryObject<Block> NIGHTSHALE_STAIRS = stairsBlock(NIGHTSHALE, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Wall
+    public static final RegistryObject<Block> NIGHTSHALE_WALL = wallBlock(NIGHTSHALE, CreativeModeTab.TAB_DECORATIONS);
     //Nightshale Bricks
     public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(BlockBehaviour.Properties.copy(NIGHTSHALE.get())), CreativeModeTab.TAB_BUILDING_BLOCKS);
 

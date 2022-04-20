@@ -27,13 +27,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.PURPUR_BRICKS.get(), ModBlocks.PURPUR_BRICK_STAIRS.get(), ModBlocks.PURPUR_BRICK_SLAB.get(),
                 ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICK_WALL.get(),
                 ModBlocks.DETECTOR.get(),
-                ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_BRICKS.get(),
+                ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_STAIRS.get(), ModBlocks.NIGHTSHALE_SLAB.get(),
+                ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_WALL.get(),
+                ModBlocks.NIGHTSHALE_BRICKS.get(),
                 ModBlocks.GOLD_CHAIN.get(), ModBlocks.GOLD_LANTERN.get(), ModBlocks.GOLD_SOUL_LANTERN.get()
         );
 
-        tag(BlockTags.SLABS).add(ModBlocks.PURPUR_BRICK_SLAB.get());
-        tag(BlockTags.STAIRS).add(ModBlocks.PURPUR_BRICK_STAIRS.get());
-        tag(BlockTags.WALLS).add(ModBlocks.PURPUR_BRICK_WALL.get());
+        tag(BlockTags.SLABS).add(ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlocks.NIGHTSHALE_SLAB.get());
+        tag(BlockTags.STAIRS).add(ModBlocks.PURPUR_BRICK_STAIRS.get(), ModBlocks.NIGHTSHALE_STAIRS.get());
+        tag(BlockTags.WALLS).add(ModBlocks.PURPUR_BRICK_WALL.get(), ModBlocks.NIGHTSHALE_WALL.get());
 
         tag(BlockTags.PIGLIN_REPELLENTS).add(ModBlocks.GOLD_SOUL_LANTERN.get());
         tag(BlockTags.GUARDED_BY_PIGLINS).add(
@@ -42,6 +44,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         );
         //Forge
         //Quark
-        tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get());
+        tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get());
     }
 }
