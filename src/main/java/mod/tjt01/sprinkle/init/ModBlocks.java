@@ -1,11 +1,9 @@
 package mod.tjt01.sprinkle.init;
 
 import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
 
 import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.block.*;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;
@@ -89,7 +87,7 @@ public final class ModBlocks {
     //Nightshale Wall
     public static final RegistryObject<Block> NIGHTSHALE_WALL = wallBlock(NIGHTSHALE, CreativeModeTab.TAB_DECORATIONS);
     //Glimmering Nightshale
-    public static final RegistryObject<Block> GLIMMERING_NIGHTSHALE = block("glimmering_nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS).requiresCorrectToolForDrops().strength(1.5F, 6.0F).lightLevel((state) -> 7)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> GLIMMERING_NIGHTSHALE = block("glimmering_nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS).requiresCorrectToolForDrops().strength(1.5F, 6.0F).lightLevel((state) -> 9)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Bricks
     public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(BlockBehaviour.Properties.copy(NIGHTSHALE.get())), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
