@@ -32,7 +32,7 @@ public class CommonConfig {
                 )
                 .translation("config.sprinkle.jukebox")
                 .define("jukeboxContainerEnabled", true);
-        builder.pop(2);
+        builder.pop();
 
         builder.push("utilities");
         builder.push("dyeRecipes");
