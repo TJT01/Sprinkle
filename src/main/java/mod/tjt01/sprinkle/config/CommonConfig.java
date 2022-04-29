@@ -5,6 +5,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class CommonConfig {
     final ForgeConfigSpec.BooleanValue effectiveBlindnessEnabled;
     final ForgeConfigSpec.DoubleValue blindnessMultiplier;
+    final ForgeConfigSpec.BooleanValue jukeboxTweakEnabled;
 
     final ForgeConfigSpec.BooleanValue greenDyeRecipeEnabled;
     final ForgeConfigSpec.BooleanValue brownDyeRecipeEnabled;
@@ -24,6 +25,14 @@ public class CommonConfig {
                 .translation("config.sprinkle.effectiveBlindness.Multiplier")
                 .defineInRange("visibilityFactor", 0.25D, 0.0D, Double.POSITIVE_INFINITY);
         builder.pop();
+        jukeboxTweakEnabled = builder
+                .comment(
+                        "Allow hoppers to interact with jukeboxes",
+                        "Also works with modded pipes"
+                )
+                .translation("config.sprinkle.jukebox")
+                .define("jukeboxContainerEnabled", true);
+        builder.pop(2);
 
         builder.push("utilities");
         builder.push("dyeRecipes");

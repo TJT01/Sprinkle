@@ -19,6 +19,7 @@ public class SprinkleConfig {
 
     public static boolean effectiveBlindnessEnabled = true;
     public static double blindnessMultiplier = 0.25;
+    public static boolean jukeboxCapabilityEnabled = true;
 
     public static boolean greenDyeEnabled = true;
     public static boolean brownDyeEnabled = true;
@@ -28,6 +29,7 @@ public class SprinkleConfig {
     public static void bakeCommon(ModConfig config) {
         effectiveBlindnessEnabled = COMMON_CONFIG.effectiveBlindnessEnabled.get();
         blindnessMultiplier = COMMON_CONFIG.blindnessMultiplier.get();
+        jukeboxCapabilityEnabled = COMMON_CONFIG.jukeboxTweakEnabled.get();
 
         greenDyeEnabled = COMMON_CONFIG.greenDyeRecipeEnabled.get();
         brownDyeEnabled = COMMON_CONFIG.brownDyeRecipeEnabled.get();
