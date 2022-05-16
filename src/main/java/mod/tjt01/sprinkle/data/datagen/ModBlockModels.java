@@ -99,19 +99,26 @@ public class ModBlockModels extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        //Purpur Bricks
         this.cubeAllBlock(ModBlocks.PURPUR_BRICKS.get());
         this.simpleSlabBlock((SlabBlock) ModBlocks.PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleStairsBlock((StairBlock) ModBlocks.PURPUR_BRICK_STAIRS.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.PURPUR_BRICK_WALL.get(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.PURPUR_BRICKS.get()));
 
+        //Nightshale
         this.cubeAllBlock(ModBlocks.NIGHTSHALE.get());
         this.simpleSlabBlock((SlabBlock) ModBlocks.NIGHTSHALE_SLAB.get(), ModBlocks.NIGHTSHALE.getId(), blockTexture(ModBlocks.NIGHTSHALE.get()));
         this.simpleStairsBlock((StairBlock) ModBlocks.NIGHTSHALE_STAIRS.get(), blockTexture(ModBlocks.NIGHTSHALE.get()));
         this.simpleWallBlock((WallBlock) ModBlocks.NIGHTSHALE_WALL.get(), blockTexture(ModBlocks.NIGHTSHALE.get()));
-        this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.PURPUR_BRICKS.getId(), blockTexture(ModBlocks.NIGHTSHALE.get()));
+        this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE.getId(), blockTexture(ModBlocks.NIGHTSHALE.get()));
         this.cubeAllBlock(ModBlocks.GLIMMERING_NIGHTSHALE.get());
         this.cubeAllBlock(ModBlocks.NIGHTSHALE_BRICKS.get());
+        this.simpleSlabBlock((SlabBlock) ModBlocks.NIGHTSHALE_BRICK_SLAB.get(), ModBlocks.NIGHTSHALE_BRICKS.getId(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
+        this.simpleStairsBlock((StairBlock) ModBlocks.NIGHTSHALE_BRICK_STAIRS.get(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
+        this.simpleWallBlock((WallBlock) ModBlocks.NIGHTSHALE_BRICK_WALL.get(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
+        this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_BRICKS.getId(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
+
 
         getVariantBuilder(ModBlocks.DETECTOR.get())
                 .forAllStates(state -> {

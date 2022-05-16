@@ -24,10 +24,13 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.PURPUR_BRICK_STAIRS.get(), "Purpur Brick Stairs");
         add(ModBlocks.PURPUR_BRICK_WALL.get(), "Purpur Brick Wall");
         add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), "Purpur Brick Vertical Slab");
+
         add(ModBlocks.DETECTOR.get(), "Detector");
+
         add(ModBlocks.GOLD_CHAIN.get(), "Gold Chain");
         add(ModBlocks.GOLD_LANTERN.get(), "Gold Lantern");
         add(ModBlocks.GOLD_SOUL_LANTERN.get(), "Gold Soul Lantern");
+
         add(ModBlocks.NIGHTSHALE.get(), "Nightshale");
         add(ModBlocks.NIGHTSHALE_SLAB.get(), "Nightshale Slab");
         add(ModBlocks.NIGHTSHALE_STAIRS.get(), "Nightshale Stairs");
@@ -35,6 +38,10 @@ public class ModLang extends LanguageProvider {
         add(ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), "Nightshale Vertical Slab");
         add(ModBlocks.GLIMMERING_NIGHTSHALE.get(), "Glimmering Nightshale");
         add(ModBlocks.NIGHTSHALE_BRICKS.get(), "Nightshale Bricks");
+        add(ModBlocks.NIGHTSHALE_BRICK_SLAB.get(), "Nightshale Brick Slab");
+        add(ModBlocks.NIGHTSHALE_BRICK_STAIRS.get(), "Nightshale Brick Stairs");
+        add(ModBlocks.NIGHTSHALE_BRICK_WALL.get(), "Nightshale Brick Wall");
+        add(ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), "Nightshale Brick Vertical Slab");
 
         //Items
         //add(ModItems.BUNDLE.get(), "Bundle");

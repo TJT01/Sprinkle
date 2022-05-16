@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "sprinkle:block/nightshale_brick_slab_top"
+    },
+    "type=bottom": {
+      "model": "sprinkle:block/nightshale_brick_slab"
+    },
+    "type=double": {
+      "model": "sprinkle:block/nightshale_bricks"
+    }
+  }
+}

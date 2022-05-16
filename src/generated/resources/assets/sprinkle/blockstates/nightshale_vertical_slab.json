@@ -1,26 +1,58 @@
 {
   "variants": {
-    "type=north": {
-      "model": "sprinkle:block/nightshale_vertical_slab",
-      "uvlock": true
-    },
-    "type=south": {
-      "model": "sprinkle:block/nightshale_vertical_slab",
-      "y": 180,
-      "uvlock": true
-    },
-    "type=east": {
-      "model": "sprinkle:block/nightshale_vertical_slab",
-      "y": 90,
-      "uvlock": true
-    },
-    "type=west": {
-      "model": "sprinkle:block/nightshale_vertical_slab",
-      "y": 270,
-      "uvlock": true
-    },
-    "type=double": {
-      "model": "sprinkle:block/purpur_bricks"
-    }
+    "type=north": [
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "uvlock": true
+      },
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "uvlock": true
+      }
+    ],
+    "type=south": [
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 180,
+        "uvlock": true
+      },
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 180,
+        "uvlock": true
+      }
+    ],
+    "type=east": [
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 90,
+        "uvlock": true
+      },
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 90,
+        "uvlock": true
+      }
+    ],
+    "type=west": [
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 270,
+        "uvlock": true
+      },
+      {
+        "model": "sprinkle:block/nightshale_vertical_slab",
+        "y": 270,
+        "uvlock": true
+      }
+    ],
+    "type=double": [
+      {
+        "model": "sprinkle:block/nightshale"
+      },
+      {
+        "model": "sprinkle:block/nightshale_bricks"
+      }
+    ]
   }
 }

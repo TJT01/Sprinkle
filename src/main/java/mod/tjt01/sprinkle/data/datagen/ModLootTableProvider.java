@@ -87,6 +87,10 @@ public class ModLootTableProvider extends LootTableProvider {
             this.dropSelf(ModBlocks.GLIMMERING_NIGHTSHALE.get());
 
             this.dropSelf(ModBlocks.NIGHTSHALE_BRICKS.get());
+            this.add(ModBlocks.NIGHTSHALE_BRICK_SLAB.get(), ModBlockLootTables::createSlabItemTable);
+            this.dropSelf(ModBlocks.NIGHTSHALE_BRICK_STAIRS.get());
+            this.dropSelf(ModBlocks.NIGHTSHALE_BRICK_WALL.get());
+            this.add(ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), ModBlockLootTables::createVerticalSlabItemTable);
 
             this.dropSelf(ModBlocks.DETECTOR.get());
 

@@ -60,12 +60,14 @@ public final class ModBlocks {
         return block(name, () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(blockRegistryObject.get())), group);
     }
 
+    ///BUILDING\\\
     //Gold Chain
     public static final RegistryObject<Block> GOLD_CHAIN = block("gold_chain", () -> new ChainBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN)), CreativeModeTab.TAB_DECORATIONS);
     //Gold Lantern
     public static final RegistryObject<Block> GOLD_LANTERN = block("gold_lantern", () -> new LanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN)), CreativeModeTab.TAB_DECORATIONS);
-    //Gold Lantern
+    //Gold Soul Lantern
     public static final RegistryObject<Block> GOLD_SOUL_LANTERN = block("gold_soul_lantern", () -> new LanternBlock(BlockBehaviour.Properties.copy(Blocks.SOUL_LANTERN)), CreativeModeTab.TAB_DECORATIONS);
+
     //Purpur Bricks
     public static final RegistryObject<Block> PURPUR_BRICKS = block("purpur_bricks", () -> new Block(Block.Properties.copy(Blocks.PURPUR_BLOCK)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Slab
@@ -76,6 +78,7 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICK_STAIRS = stairsBlock("purpur_brick_stairs", PURPUR_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Purpur Brick Wall
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
+
     //Nightshale
     public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Slab
@@ -90,7 +93,16 @@ public final class ModBlocks {
     public static final RegistryObject<Block> GLIMMERING_NIGHTSHALE = block("glimmering_nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS).requiresCorrectToolForDrops().strength(1.5F, 6.0F).lightLevel((state) -> 9)), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Bricks
     public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(BlockBehaviour.Properties.copy(NIGHTSHALE.get())), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Brick Slab
+    public static final RegistryObject<Block> NIGHTSHALE_BRICK_SLAB = slabBlock("nightshale_brick_slab", NIGHTSHALE_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Brick Vertical Slab
+    public static final RegistryObject<Block> NIGHTSHALE_BRICK_VERTICAL_SLAB = verticalSlabBlock("nightshale_vertical_brick_slab", NIGHTSHALE_BRICK_SLAB, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Brick Stairs
+    public static final RegistryObject<Block> NIGHTSHALE_BRICK_STAIRS = stairsBlock("nightshale_brick_stairs", NIGHTSHALE_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
+    //Nightshale Brick Wall
+    public static final RegistryObject<Block> NIGHTSHALE_BRICK_WALL = wallBlock("nightshale_brick_wall", NIGHTSHALE_BRICKS, CreativeModeTab.TAB_DECORATIONS);
 
+    ///REDSTONE\\\
     //Detector
     public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(BlockBehaviour.Properties.copy(Blocks.OBSERVER)), CreativeModeTab.TAB_REDSTONE);
 }

@@ -30,7 +30,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_STAIRS.get(), ModBlocks.NIGHTSHALE_SLAB.get(),
                 ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_WALL.get(),
                 ModBlocks.GLIMMERING_NIGHTSHALE.get(),
-                ModBlocks.NIGHTSHALE_BRICKS.get(),
+                ModBlocks.NIGHTSHALE_BRICKS.get(), ModBlocks.NIGHTSHALE_BRICK_STAIRS.get(), ModBlocks.NIGHTSHALE_BRICK_SLAB.get(),
+                ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_BRICK_WALL.get(),
                 ModBlocks.GOLD_CHAIN.get(), ModBlocks.GOLD_LANTERN.get(), ModBlocks.GOLD_SOUL_LANTERN.get()
         );
 
@@ -45,6 +46,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         );
         //Forge
         //Quark
-        tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get());
+        tag(ModTags.Blocks.QUARK_VERTICAL_SLAB).add(
+                ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(),
+                ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get()
+        );
     }
 }
