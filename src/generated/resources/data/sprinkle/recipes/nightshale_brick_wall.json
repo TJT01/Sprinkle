@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "sprinkle:nightshale_bricks"
+    }
+  },
+  "result": {
+    "item": "sprinkle:nightshale_brick_wall",
+    "count": 6
+  }
+}

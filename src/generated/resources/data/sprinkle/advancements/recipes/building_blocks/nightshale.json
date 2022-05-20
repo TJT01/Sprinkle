@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sprinkle:purpur_brick_wall_from_purpur_bricks_stonecutting"
+      "sprinkle:nightshale"
     ]
   },
   "criteria": {
-    "has_purpur_bricks": {
+    "has_flint": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sprinkle:purpur_bricks"
+              "minecraft:flint"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sprinkle:purpur_brick_wall_from_purpur_bricks_stonecutting"
+        "recipe": "sprinkle:nightshale"
       }
     }
   },
   "requirements": [
     [
-      "has_purpur_bricks",
+      "has_flint",
       "has_the_recipe"
     ]
   ]
