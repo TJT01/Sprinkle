@@ -205,7 +205,7 @@ repositories {
 }
 
 dependencies {
-    implementation fg.deobf("maven.modrinth:lapislib:1.18.1-1.0.1")
+    implementation fg.deobf("maven.modrinth:lapislib:1.18.1-1.0.1a")
     //runtimeOnly fg.deobf("curse.maven:quark-243121:3394265")
     //runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3326041")
 }
