@@ -1,21 +1,14 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:purpur_block"
+  },
+  "result": "sprinkle:purpur_brick_vertical_slab",
+  "count": 2,
+  "conditions": [
     {
-      "conditions": [
-        {
-          "flag": "vertical_slabs",
-          "type": "sprinkle:quark_flag"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:stonecutting",
-        "ingredient": {
-          "item": "minecraft:purpur_block"
-        },
-        "result": "sprinkle:purpur_brick_vertical_slab",
-        "count": 2
-      }
+      "flag": "vertical_slabs",
+      "type": "sprinkle:quark_flag"
     }
   ]
 }

@@ -1,28 +1,21 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
     {
-      "conditions": [
-        {
-          "flag": "green_dye",
-          "type": "sprinkle:flag"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "ingredients": [
-          {
-            "item": "minecraft:yellow_dye"
-          },
-          {
-            "item": "minecraft:blue_dye"
-          }
-        ],
-        "result": {
-          "item": "minecraft:green_dye",
-          "count": 2
-        }
-      }
+      "item": "minecraft:yellow_dye"
+    },
+    {
+      "item": "minecraft:blue_dye"
+    }
+  ],
+  "result": {
+    "item": "minecraft:green_dye",
+    "count": 2
+  },
+  "conditions": [
+    {
+      "flag": "green_dye",
+      "type": "sprinkle:flag"
     }
   ]
 }

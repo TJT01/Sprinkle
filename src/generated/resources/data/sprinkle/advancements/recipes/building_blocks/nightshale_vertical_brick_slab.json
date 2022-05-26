@@ -11,17 +11,17 @@
         "parent": "minecraft:recipes/root",
         "rewards": {
           "recipes": [
-            "sprinkle:purpur_brick_slab_from_purpur_brick_vertical_slab"
+            "sprinkle:nightshale_vertical_brick_slab"
           ]
         },
         "criteria": {
-          "has_purpur_brick_slab": {
+          "has_nightshale_brick_slab": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "sprinkle:purpur_brick_vertical_slab"
+                    "sprinkle:nightshale_brick_slab"
                   ]
                 }
               ]
@@ -30,13 +30,13 @@
           "has_the_recipe": {
             "trigger": "minecraft:recipe_unlocked",
             "conditions": {
-              "recipe": "sprinkle:purpur_brick_slab_from_purpur_brick_vertical_slab"
+              "recipe": "sprinkle:nightshale_vertical_brick_slab"
             }
           }
         },
         "requirements": [
           [
-            "has_purpur_brick_slab",
+            "has_nightshale_brick_slab",
             "has_the_recipe"
           ]
         ]

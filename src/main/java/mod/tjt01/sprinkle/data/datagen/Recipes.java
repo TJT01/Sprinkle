@@ -3,6 +3,7 @@ package mod.tjt01.sprinkle.data.datagen;
 import java.util.function.Consumer;
 
 import mod.tjt01.lapislib.data.OptionalRecipeBuilder;
+import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import mod.tjt01.sprinkle.init.ModBlocks;
@@ -194,88 +195,86 @@ class Recipes extends RecipeProvider {
         this.simpleStonecutting(ModBlocks.NIGHTSHALE_BRICKS.get(), ModBlocks.NIGHTSHALE_BRICK_STAIRS.get(), consumer);
         this.simpleStonecutting(ModBlocks.NIGHTSHALE_BRICKS.get(), ModBlocks.NIGHTSHALE_BRICK_WALL.get(), consumer);
 
-        //TODO fix in LapisLib
-//        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
-//            ShapedRecipeBuilder.shaped(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
-//                    .pattern("#")
-//                    .pattern("#")
-//                    .pattern("#")
-//                    .define('#', ModBlocks.PURPUR_BRICK_SLAB.get())
-//                    .unlockedBy("has_purpur_brick_slab", has(ModBlocks.PURPUR_BRICK_SLAB.get()))
-//                    .save(finishedRecipeConsumer);
-//        })
-//                .addCondition(new QuarkFlagCondition("vertical_slabs"))
-//                .save(consumer);
-        {
-            ShapedRecipeBuilder vertSlab = ShapedRecipeBuilder.shaped(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapedRecipeBuilder.shaped(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 3)
                     .pattern("#")
                     .pattern("#")
                     .pattern("#")
                     .define('#', ModBlocks.PURPUR_BRICK_SLAB.get())
-                    .unlockedBy("has_purpur_brick_slab", has(ModBlocks.PURPUR_BRICK_SLAB.get()));
-            ConditionalRecipe.builder()
-                    .addCondition(new QuarkFlagCondition("vertical_slabs"))
-                    .addRecipe(vertSlab::save)
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab"))
-                    .build(consumer, "sprinkle", "purpur_brick_vertical_slab");
-        }
-        {
-            String name = "purpur_brick_vertical_slab_from_purpur_block_stonecutting";
-            SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.PURPUR_BLOCK), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
-                    .unlockedBy("has_purpur_brick", has(Items.PURPUR_BLOCK));
-            ConditionalRecipe.builder()
-                    .addCondition(new QuarkFlagCondition("vertical_slabs"))
-                    .addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab_from_purpur_block_stonecutting"))
-                    .build(consumer, "sprinkle", name);
-        }
-        {
-            String name = "purpur_brick_vertical_slab_from_purpur_bricks_stonecutting";
-            SingleItemRecipeBuilder vertSlab = SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModBlocks.PURPUR_BRICKS.get()), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2)
-                    .unlockedBy("has_purpur_brick", has(Items.PURPUR_BLOCK));
-            ConditionalRecipe.builder()
-                    .addCondition(new QuarkFlagCondition("vertical_slabs"))
-                    .addRecipe((recipeConsumer) -> vertSlab.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/purpur_brick_vertical_slab_from_purpur_block_stonecutting"))
-                    .build(consumer, "sprinkle", name);
-        }
-        {
-            String name = "purpur_brick_slab_from_purpur_brick_vertical_slab";
-            ShapelessRecipeBuilder vertSlabRevert = ShapelessRecipeBuilder.shapeless(ModBlocks.PURPUR_BRICK_SLAB.get())
-                    .requires(ModBlocks.PURPUR_BRICK_SLAB.get())
-                    .unlockedBy("has_purpur_brick_slab", has(ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get()));
-            ConditionalRecipe.builder()
-                    .addCondition(new QuarkFlagCondition("vertical_slabs"))
-                    .addRecipe((recipeConsumer) -> vertSlabRevert.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/building_blocks/" + name))
-                    .build(consumer, "sprinkle", name);
-        }
-        {
-            String name = "green_dye_from_yellow_blue";
-            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE, 2)
+                    .unlockedBy("has_purpur_brick_slab", has(ModBlocks.PURPUR_BRICK_SLAB.get()))
+                    .save(finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapedRecipeBuilder.shaped(ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), 3)
+                    .pattern("#")
+                    .pattern("#")
+                    .pattern("#")
+                    .define('#', ModBlocks.NIGHTSHALE_SLAB.get())
+                    .unlockedBy("has_nightshale_slab", has(ModBlocks.NIGHTSHALE_SLAB.get()))
+                    .save(finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapedRecipeBuilder.shaped(ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), 3)
+                    .pattern("#")
+                    .pattern("#")
+                    .pattern("#")
+                    .define('#', ModBlocks.NIGHTSHALE_SLAB.get())
+                    .unlockedBy("has_nightshale_brick_slab", has(ModBlocks.NIGHTSHALE_BRICK_SLAB.get()))
+                    .save(finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            this.simpleStonecutting(Items.PURPUR_BLOCK, ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2, finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            this.simpleStonecutting(ModBlocks.PURPUR_BRICKS.get(), ModBlocks.VERTICAL_PURPUR_BRICK_SLAB.get(), 2, finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            this.simpleStonecutting(ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_VERTICAL_SLAB.get(), 2, finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            this.simpleStonecutting(ModBlocks.NIGHTSHALE.get(), ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), 2, finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            this.simpleStonecutting(ModBlocks.NIGHTSHALE_BRICKS.get(), ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), 2, finishedRecipeConsumer);
+        })
+                .addCondition(new QuarkFlagCondition("vertical_slabs"))
+                .save(consumer);
+
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapelessRecipeBuilder.shapeless(Items.GREEN_DYE, 2)
                     .requires(Items.YELLOW_DYE)
                     .requires(Items.BLUE_DYE)
                     .unlockedBy("has_yellow_dye", has(Items.YELLOW_DYE))
-                    .unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
-            ConditionalRecipe.builder()
-                    .addCondition(new FlagCondition("green_dye"))
-                    .addRecipe((recipeConsumer) -> greenDye.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
-                    .build(consumer, "sprinkle", name);
-        }
-        {
-            String name = "brown_dye_from_orange_blue";
-            ShapelessRecipeBuilder greenDye = ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE, 2)
+                    .unlockedBy("has_blue_dye", has(Items.BLUE_DYE))
+                    .save(finishedRecipeConsumer, new ResourceLocation(Main.MODID, "green_dye_from_yellow_blue"));
+        })
+                .addCondition(new FlagCondition("green_dye"))
+                .save(consumer);
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE, 2)
                     .requires(Items.ORANGE_DYE)
                     .requires(Items.BLUE_DYE)
                     .unlockedBy("has_orange_dye", has(Items.ORANGE_DYE))
-                    .unlockedBy("has_blue_dye", has(Items.BLUE_DYE));
-            ConditionalRecipe.builder()
-                    .addCondition(new FlagCondition("brown_dye"))
-                    .addRecipe((recipeConsumer) -> greenDye.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
-                    .build(consumer, "sprinkle", name);
-        }
+                    .unlockedBy("has_blue_dye", has(Items.BLUE_DYE))
+                    .save(finishedRecipeConsumer, new ResourceLocation(Main.MODID, "brown_dye_from_orange_blue"));
+        })
+                .addCondition(new FlagCondition("brown_dye"))
+                .save(consumer);
         /*TODO: bundle recipe?
         {
             String name = "bundle";
