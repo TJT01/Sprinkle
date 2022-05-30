@@ -21,12 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 public class ForgeEventSubscriber {
 
     @SubscribeEvent
-    public static void onLivingVisibility(LivingEvent.LivingVisibilityEvent event) {
-        if (SprinkleConfig.effectiveBlindnessEnabled && !event.getLookingEntity().getType().is(ModTags.EntitiyTypes.BLINDNESS_IMMUNE))
-            event.modifyVisibility(SprinkleConfig.blindnessMultiplier);
-    }
-
-    @SubscribeEvent
     public static void onMissingItem(RegistryEvent.MissingMappings<Item> event) {
         ImmutableList<RegistryEvent.MissingMappings.Mapping<Item>> mappings = event.getMappings(Main.MODID);
         for (RegistryEvent.MissingMappings.Mapping<Item> mapping: mappings) {

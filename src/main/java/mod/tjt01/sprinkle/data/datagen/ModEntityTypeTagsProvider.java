@@ -14,6 +14,6 @@ public class ModEntityTypeTagsProvider extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags() {
-        tag(ModTags.EntitiyTypes.BLINDNESS_IMMUNE);
+        //Intentionally left blank
     }
 }

@@ -18,8 +18,6 @@ The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.
   
   - Also supports modded pipes!
   
-
-
 ### Removed
 - Removed sprinkle's bundles; as they exist in vanilla
 
