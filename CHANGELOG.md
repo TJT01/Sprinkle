@@ -5,9 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 but this project does not adhere to Semantic Versioning.
 The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.3
 
-## [Unreleased]
+## [1.18.1-0.2.0-alpha]
 ### Added
 - Updated to 1.18.1
+  - This will be the only release for Minecraft 1.18.1. Up next: 1.18.2!
 - 1.18.1 versions and beyond now require [LapisLib](https://modrinth.com/mod/lapislib)
 - Added Nightshale; a dark blue block crafted with lapis lazuli and flint
 
