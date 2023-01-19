@@ -3,8 +3,7 @@ package mod.tjt01.sprinkle;
 import com.google.common.collect.ImmutableList;
 import mod.tjt01.sprinkle.capability.JukeboxCapabilityProvider;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
-import mod.tjt01.sprinkle.data.ModTags;
-import mod.tjt01.sprinkle.init.ModBlocks;
+import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 

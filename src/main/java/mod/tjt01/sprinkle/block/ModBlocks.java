@@ -1,9 +1,9 @@
-package mod.tjt01.sprinkle.init;
+package mod.tjt01.sprinkle.block;
 
 import java.util.function.Supplier;
 
 import mod.tjt01.sprinkle.Main;
-import mod.tjt01.sprinkle.block.*;
+import mod.tjt01.sprinkle.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;

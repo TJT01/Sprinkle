@@ -1,4 +1,4 @@
-package mod.tjt01.sprinkle.init;
+package mod.tjt01.sprinkle.item;
 
 import mod.tjt01.sprinkle.Main;
 import net.minecraft.world.item.Item;

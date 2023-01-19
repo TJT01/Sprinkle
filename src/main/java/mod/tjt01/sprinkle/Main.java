@@ -13,8 +13,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mod.tjt01.sprinkle.init.ModBlocks;
-import mod.tjt01.sprinkle.init.ModItems;
+import mod.tjt01.sprinkle.block.ModBlocks;
+import mod.tjt01.sprinkle.item.ModItems;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;

@@ -1,16 +1,11 @@
 package mod.tjt01.sprinkle;
 
-import com.google.common.collect.ImmutableList;
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
@@ -18,14 +13,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import mod.tjt01.sprinkle.init.ModBlocks;
-import net.minecraft.resources.ResourceLocation;
+import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @EventBusSubscriber(modid = Main.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber {

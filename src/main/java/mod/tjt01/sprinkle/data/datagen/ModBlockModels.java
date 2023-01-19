@@ -1,9 +1,8 @@
 package mod.tjt01.sprinkle.data.datagen;
 
-import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
-import mod.tjt01.sprinkle.init.ModBlocks;
+import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;

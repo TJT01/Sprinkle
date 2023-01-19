@@ -6,16 +6,13 @@ import mod.tjt01.lapislib.data.OptionalRecipeBuilder;
 import mod.tjt01.sprinkle.Main;
 import mod.tjt01.sprinkle.data.FlagCondition;
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
-import mod.tjt01.sprinkle.init.ModBlocks;
-import mod.tjt01.sprinkle.init.ModItems;
+import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.data.*;
-import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;

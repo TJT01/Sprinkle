@@ -3,7 +3,7 @@ package mod.tjt01.sprinkle.data.datagen;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
-import mod.tjt01.sprinkle.init.ModBlocks;
+import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.DataGenerator;
