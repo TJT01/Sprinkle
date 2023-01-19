@@ -1,25 +1,33 @@
 package mod.tjt01.sprinkle.data;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.EntityTypeTags;
 
 public class ModTags {
     public static class Blocks {
-        public static final Tag.Named<Block> QUARK_VERTICAL_SLAB = BlockTags.bind("quark:vertical_slab");
+        public static final TagKey<Block> QUARK_VERTICAL_SLAB = quark("vertical_slab");
+
+        private static TagKey<Block> quark(String name) {
+            return tag(new ResourceLocation("quark", name));
+        }
+
+        private static TagKey<Block> tag(ResourceLocation name) {
+            return BlockTags.create(name);
+        }
     }
 
     public static class Items {
-        //public static final Tag.Named<Item> BUNDLE_BLACKLIST = ItemTags.bind("sprinkle:bundle_blacklist");
+        public static final TagKey<Item> QUARK_VERTICAL_SLAB = quark("vertical_slab");
 
-        public static final Tag.Named<Item> QUARK_VERTICAL_SLAB = ItemTags.bind("quark:vertical_slab");
-    }
+        private static TagKey<Item> quark(String name) {
+            return tag(new ResourceLocation("quark", name));
+        }
 
-    public static class EntitiyTypes {
-        public static final Tag.Named<EntityType<?>> BLINDNESS_IMMUNE = EntityTypeTags.bind("sprinkle:blindness_immune");
+        private static TagKey<Item> tag(ResourceLocation name) {
+            return ItemTags.create(name);
+        }
     }
 }
