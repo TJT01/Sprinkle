@@ -104,5 +104,13 @@ public final class ModBlocks {
 
     ///REDSTONE\\\
     //Detector
-    public static final RegistryObject<Block> DETECTOR = block("detector", () -> new DetectorBlock(BlockBehaviour.Properties.copy(Blocks.OBSERVER)), CreativeModeTab.TAB_REDSTONE);
+    public static final RegistryObject<Block> DETECTOR = block("detector", () ->
+            new DetectorBlock(
+                    BlockBehaviour.Properties.of(Material.STONE)
+                            .strength(3.0F)
+                            .requiresCorrectToolForDrops()
+                            .isRedstoneConductor((pState, pLevel, pPos) -> false)
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
 }

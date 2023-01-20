@@ -6,9 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.JukeboxBlock;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,8 +16,9 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class JukeboxCapabilityProvider implements ICapabilityProvider {
     private final JukeboxItemHandler itemHandler;
@@ -30,9 +29,9 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
         this.itemHandlerLazy = LazyOptional.of(() -> this.itemHandler);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             return (LazyOptional<T>) itemHandlerLazy;
         return LazyOptional.empty();
@@ -50,15 +49,15 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
             return 1;
         }
 
-        @NotNull
+        @Nonnull
         @Override
         public ItemStack getStackInSlot(int slot) {
             return jukebox.getRecord();
         }
 
-        @NotNull
+        @Nonnull
         @Override
-        public ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+        public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
             BlockState state = jukebox.getBlockState();
             BlockPos pos = jukebox.getBlockPos();
             LevelAccessor level = jukebox.getLevel();
@@ -79,7 +78,7 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
             return remainder;
         }
 
-        @NotNull
+        @Nonnull
         @Override
         public ItemStack extractItem(int slot, int amount, boolean simulate) {
             BlockState state = jukebox.getBlockState();
@@ -105,7 +104,7 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
         }
 
         @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
             return stack.getItem() instanceof RecordItem;
         }
     }

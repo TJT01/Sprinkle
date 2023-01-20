@@ -9,6 +9,9 @@ The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.
 ### Added
 - Ported to 1.18.2
 
+### Changed
+- Detectors no longer conduct redstone power
+
 ## [1.18.1-0.2.0-alpha]
 ### Added
 - Updated to 1.18.1
