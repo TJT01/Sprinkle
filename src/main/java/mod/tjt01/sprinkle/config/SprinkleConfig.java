@@ -1,6 +1,5 @@
 package mod.tjt01.sprinkle.config;
 
-
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.commons.lang3.tuple.Pair;
@@ -19,6 +18,9 @@ public class SprinkleConfig {
 
     public static boolean jukeboxCapabilityEnabled = true;
 
+    public static boolean smoothNightVisionEnabled = true;
+    public static int smoothNightVisionFadeTime = 200;
+
     public static boolean greenDyeEnabled = true;
     public static boolean brownDyeEnabled = true;
 
@@ -29,6 +31,9 @@ public class SprinkleConfig {
 
         greenDyeEnabled = COMMON_CONFIG.greenDyeRecipeEnabled.get();
         brownDyeEnabled = COMMON_CONFIG.brownDyeRecipeEnabled.get();
+
+        smoothNightVisionFadeTime = COMMON_CONFIG.smoothNightVisionFadeTime.get();
+        smoothNightVisionEnabled = COMMON_CONFIG.smoothNightVisionEnabled.get();
 
         flags.put("green_dye", greenDyeEnabled);
         flags.put("brown_dye", brownDyeEnabled);

@@ -8,6 +8,9 @@ public class CommonConfig {
     final ForgeConfigSpec.BooleanValue greenDyeRecipeEnabled;
     final ForgeConfigSpec.BooleanValue brownDyeRecipeEnabled;
 
+    final ForgeConfigSpec.BooleanValue smoothNightVisionEnabled;
+    final ForgeConfigSpec.IntValue smoothNightVisionFadeTime;
+
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("tweaks");
         jukeboxTweakEnabled = builder
@@ -17,7 +20,16 @@ public class CommonConfig {
                 )
                 .translation("config.sprinkle.jukebox")
                 .define("jukeboxContainerEnabled", true);
-        builder.pop();
+        builder.push("smoothNightVision");
+        smoothNightVisionEnabled = builder
+                .comment("Removes night vision flashing; replacing it with a smooth fadeout")
+                .translation("config.sprinkle.tweaks.smoothNightVision.enabled")
+                .define("enabled", true);
+        smoothNightVisionFadeTime = builder
+                .comment("How long the fade lasts, in ticks")
+                .translation("config.sprinkle.tweaks.smoothNightVision.fadeTime")
+                .defineInRange("fadeTime", 200, 0, Integer.MAX_VALUE);
+        builder.pop(2);
 
         builder.push("utilities");
         builder.push("dyeRecipes");

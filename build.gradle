@@ -7,12 +7,14 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${mc_version}-${mod_version}"
 group = 'mod.tjt01.sprinkle' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -35,6 +37,7 @@ minecraft {
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'parchment', version: '2022.11.06-1.18.2'
+
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -142,6 +145,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    // Apply Mixin AP
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -211,4 +216,14 @@ dependencies {
     implementation fg.deobf("maven.modrinth:lapislib:1.18.2-1.0.2a")
     //runtimeOnly fg.deobf("curse.maven:quark-243121:3394265")
     //runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3326041")
+}
+
+mixin {
+    add sourceSets.main, "sprinkle.refmap.json"
+
+    config "sprinkle.mixins.json"
+
+
+    debug.verbose = true
+    debug.export = true
 }
