@@ -4,6 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class CommonConfig {
     final ForgeConfigSpec.BooleanValue jukeboxTweakEnabled;
+    final ForgeConfigSpec.BooleanValue doubleDoorsEnabled;
 
     final ForgeConfigSpec.BooleanValue greenDyeRecipeEnabled;
     final ForgeConfigSpec.BooleanValue brownDyeRecipeEnabled;
@@ -13,6 +14,10 @@ public class CommonConfig {
 
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("tweaks");
+        doubleDoorsEnabled = builder
+                .comment("Allows opening both sides of a double door")
+                .translation("config.sprinkle.tweaks.doubleDoorsOpenTogether")
+                .define("doubleDoorsOpenTogether", true);
         jukeboxTweakEnabled = builder
                 .comment(
                         "Allow hoppers to interact with jukeboxes",

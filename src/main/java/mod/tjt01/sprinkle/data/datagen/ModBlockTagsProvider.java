@@ -4,9 +4,11 @@ import mod.tjt01.sprinkle.data.ModTags;
 import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
@@ -16,12 +18,17 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     }
 
     @Override
+    @Nonnull
     public String getName() {
         return "Block Tags for Sprinkle";
     }
 
     @Override
     protected void addTags() {
+        //Sprinkle
+        tag(ModTags.Blocks.DOUBLE_DOOR_BLACKLIST)
+                .addOptionalTag(new ResourceLocation("quark", "non_double_door"));
+
         //Minecraft
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.PURPUR_BRICKS.get(), ModBlocks.PURPUR_BRICK_STAIRS.get(), ModBlocks.PURPUR_BRICK_SLAB.get(),
