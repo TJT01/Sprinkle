@@ -15,6 +15,7 @@ The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.
 - Detectors no longer conduct redstone power
   - This behavior matches that of vanilla observers
 - Made nightshale textures slightly nicer
+- Nightshale now uses deepslate sounds
 
 ## [1.18.1-0.2.0-alpha]
 ### Added

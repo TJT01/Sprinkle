@@ -19,6 +19,12 @@ import net.minecraftforge.registries.RegistryObject;
 public final class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Main.MODID);
 
+    public static final BlockBehaviour.Properties NIGHTSHALE_PROPERTIES =
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE)
+                    .requiresCorrectToolForDrops()
+                    .strength(1.5F, 6.0F)
+                    .sound(SoundType.DEEPSLATE);
+
     public static RegistryObject<Block> blockNoItem(String name, Supplier<Block> block) {
         return BLOCKS.register(name, block);
     }
@@ -80,7 +86,7 @@ public final class ModBlocks {
     public static final RegistryObject<Block> PURPUR_BRICK_WALL = wallBlock("purpur_brick_wall", PURPUR_BRICKS, CreativeModeTab.TAB_DECORATIONS);
 
     //Nightshale
-    public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLUE).requiresCorrectToolForDrops().strength(1.5F, 6.0F)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> NIGHTSHALE = block("nightshale", () -> new Block(NIGHTSHALE_PROPERTIES), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Slab
     public static final RegistryObject<Block> NIGHTSHALE_SLAB = slabBlock(NIGHTSHALE, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Vertical Slab
@@ -90,9 +96,15 @@ public final class ModBlocks {
     //Nightshale Wall
     public static final RegistryObject<Block> NIGHTSHALE_WALL = wallBlock(NIGHTSHALE, CreativeModeTab.TAB_DECORATIONS);
     //Glimmering Nightshale
-    public static final RegistryObject<Block> GLIMMERING_NIGHTSHALE = block("glimmering_nightshale", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS).requiresCorrectToolForDrops().strength(1.5F, 6.0F).lightLevel((state) -> 9)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> GLIMMERING_NIGHTSHALE = block("glimmering_nightshale", () -> new Block(
+            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.LAPIS).requiresCorrectToolForDrops()
+                    .strength(1.5F, 6.0F)
+                    .lightLevel((state) -> 9)
+                    .sound(SoundType.DEEPSLATE)
+            ), CreativeModeTab.TAB_BUILDING_BLOCKS
+    );
     //Nightshale Bricks
-    public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(BlockBehaviour.Properties.copy(NIGHTSHALE.get())), CreativeModeTab.TAB_BUILDING_BLOCKS);
+    public static final RegistryObject<Block> NIGHTSHALE_BRICKS = block("nightshale_bricks", () -> new Block(NIGHTSHALE_PROPERTIES), CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Brick Slab
     public static final RegistryObject<Block> NIGHTSHALE_BRICK_SLAB = slabBlock("nightshale_brick_slab", NIGHTSHALE_BRICKS, CreativeModeTab.TAB_BUILDING_BLOCKS);
     //Nightshale Brick Vertical Slab
