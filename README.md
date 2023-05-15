@@ -1,3 +1,3 @@
 # Sprinkle
 -----
-Coming soon to a Curseforge near you
+Coming soon to a Modrinth near you
