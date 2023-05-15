@@ -33,8 +33,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Main.MODID)
 public class ForgeEventSubscriber {
-    private static boolean handlingDoorClick = false;
-
     @SubscribeEvent
     public static void onMissingItem(RegistryEvent.MissingMappings<Item> event) {
         ImmutableList<RegistryEvent.MissingMappings.Mapping<Item>> mappings = event.getMappings(Main.MODID);
@@ -60,60 +58,5 @@ public class ForgeEventSubscriber {
                 }
             }
         }
-    }
-
-    @SubscribeEvent
-    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (
-                handlingDoorClick || event.isCanceled() || event.getResult() == Event.Result.DENY ||
-                        event.getUseBlock() == Event.Result.DENY || event.getEntity().isDiscrete()
-        ) return;
-
-        LivingEntity livingEntity = event.getEntityLiving();
-        Level level = event.getWorld();
-        BlockState clicked = level.getBlockState(event.getPos());
-
-        if (
-                clicked.is(ModTags.Blocks.DOUBLE_DOOR_BLACKLIST) ||
-                        !(clicked.getBlock() instanceof DoorBlock) ||
-                        clicked.getMaterial().equals(Material.METAL)
-        ) return;
-
-        DoorHingeSide side = clicked.getValue(DoorBlock.HINGE);
-        Direction facing = clicked.getValue(DoorBlock.FACING);
-        BlockPos other = switch (side) {
-            case LEFT -> event.getPos().relative(facing.getClockWise());
-            case RIGHT -> event.getPos().relative(facing.getCounterClockWise());
-        };
-        BlockState otherState = level.getBlockState(other);
-
-        if (
-                otherState.is(ModTags.Blocks.DOUBLE_DOOR_BLACKLIST) ||
-                        !(otherState.getBlock() instanceof DoorBlock) ||
-                        otherState.getMaterial().equals(Material.METAL) ||
-                        otherState.getValue(DoorBlock.HINGE).equals(side) ||
-                        otherState.getValue(DoorBlock.OPEN) != clicked.getValue(DoorBlock.OPEN)
-        ) return;
-
-        BlockHitResult hitResult = new BlockHitResult(
-                new Vec3(other.getX() + 0.5, other.getY() + 0.5, other.getZ() + 0.5),
-                facing, other, false
-        );
-
-        handlingDoorClick = true;
-        boolean canceled = MinecraftForge.EVENT_BUS.post(
-                new PlayerInteractEvent.RightClickBlock(event.getPlayer(), InteractionHand.MAIN_HAND, other, hitResult)
-        );
-        handlingDoorClick = false;
-        if (!canceled)
-            otherState.use(level, event.getPlayer(), InteractionHand.MAIN_HAND, hitResult);
-    }
-
-    @SubscribeEvent
-    public static void onAttachBlockEntityCapabilities(AttachCapabilitiesEvent<BlockEntity> event) {
-        if (!SprinkleConfig.jukeboxCapabilityEnabled)
-            return;
-        if (event.getObject() instanceof JukeboxBlockEntity jukebox)
-            event.addCapability(new ResourceLocation(Main.MODID, "item_handler"), new JukeboxCapabilityProvider(jukebox));
     }
 }
