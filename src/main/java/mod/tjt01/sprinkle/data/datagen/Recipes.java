@@ -272,22 +272,17 @@ class Recipes extends RecipeProvider {
         })
                 .addCondition(new FlagCondition("brown_dye"))
                 .save(consumer);
-        /*TODO: bundle recipe?
-        {
-            String name = "bundle";
-            ShapedRecipeBuilder bundle = ShapedRecipeBuilder.shaped(ModItems.BUNDLE.get())
+        OptionalRecipeBuilder.optional(finishedRecipeConsumer -> {
+            ShapedRecipeBuilder.shaped(Items.BUNDLE)
                     .pattern("S#S")
                     .pattern("# #")
                     .pattern("###")
                     .define('S', Items.STRING)
                     .define('#', Items.RABBIT_HIDE)
-                    .unlockedBy("has_rabbit_hide", has(Items.RABBIT_HIDE));
-            ConditionalRecipe.builder()
-                    .addCondition(new FlagCondition("bundle"))
-                    .addRecipe(recipeConsumer -> bundle.save(recipeConsumer, new ResourceLocation("sprinkle", name)))
-                    .generateAdvancement(new ResourceLocation("sprinkle", "recipes/misc/" + name))
-                    .build(consumer, "sprinkle", name);
-        }
-         */
+                    .unlockedBy("has_rabbit_hide", has(Items.RABBIT_HIDE))
+                    .save(finishedRecipeConsumer, new ResourceLocation(Main.MODID, "bundle"));
+        })
+                .addCondition(new FlagCondition("bundles"))
+                .save(consumer);
     }
 }

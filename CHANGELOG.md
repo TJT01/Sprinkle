@@ -10,6 +10,7 @@ The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.
 - Ported to 1.18.2
 - Added Smooth Night Vision
 - Added Double Doors Open Together
+- Added Bundle Recipe
 
 ### Changed
 - Detectors no longer conduct redstone power

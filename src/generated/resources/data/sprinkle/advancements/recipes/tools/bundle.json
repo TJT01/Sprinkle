@@ -1,0 +1,46 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "flag": "bundles",
+          "type": "sprinkle:flag"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "sprinkle:bundle"
+          ]
+        },
+        "criteria": {
+          "has_rabbit_hide": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:rabbit_hide"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "sprinkle:bundle"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_rabbit_hide",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

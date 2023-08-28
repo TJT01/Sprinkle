@@ -12,6 +12,9 @@ public class CommonConfig {
     final ForgeConfigSpec.BooleanValue smoothNightVisionEnabled;
     final ForgeConfigSpec.IntValue smoothNightVisionFadeTime;
 
+    final ForgeConfigSpec.BooleanValue forceBundles;
+    final ForgeConfigSpec.BooleanValue bundlesEnabled;
+
     public CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.push("tweaks");
         doubleDoorsEnabled = builder
@@ -46,6 +49,21 @@ public class CommonConfig {
                 .comment("Allow brown dye to be crafted with orange and blue dyes")
                 .translation("config.sprinkle.brownDyeEnabled")
                 .define("brownDyeEnabled", true);
-        builder.pop(2);
+        builder.pop();
+        builder.push("bundles");
+        bundlesEnabled = builder
+                .comment(
+                        "Allows bundles to be crafted"
+                )
+                .translation("config.sprinkle.bundles.enabled")
+                .define("enabled", true);
+        forceBundles = builder
+                .comment(
+                        "To prevent feature overlap, this feature is disabled if Quark is installed",
+                        "Set this to true to force-enable the feature"
+                )
+                .translation("config.sprinkle.bundles.enabled")
+                .define("forced", false);
+        builder.pop();
     }
 }

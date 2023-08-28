@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "sprinkle.refmap.json",
   "mixins": [
+    "ItemsMixin"
   ],
   "client": [
     "client.NightVisionScaleMixin"
