@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 but this project does not adhere to Semantic Versioning.
 The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.3
 
-## [Unreleased]
+## [1.18.2-0.3.0-alpha] - 2023-29-8
 ### Added
 - Ported to 1.18.2
 - Added Smooth Night Vision

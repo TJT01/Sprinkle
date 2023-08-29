@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/TJT01/Sprinkle/issues" #optional
 license = "MIT License"
 [[mods]] #mandatory
 modId="sprinkle" #mandatory
-version="1.18.1-0.2.0-alpha" #mandatory
+version="1.18.2-0.3.0-alpha" #mandatory
 displayName="Sprinkle" #mandatory
 # updateJSONURL="http://myurl.me/" #optional
 displayURL="https://github.com/TJT01/Sprinkle"
