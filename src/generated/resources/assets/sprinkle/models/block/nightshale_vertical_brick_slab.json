@@ -1,0 +1,8 @@
+{
+  "parent": "sprinkle:block/vertical_slab",
+  "textures": {
+    "bottom": "sprinkle:block/nightshale_bricks",
+    "side": "sprinkle:block/nightshale_bricks",
+    "top": "sprinkle:block/nightshale_bricks"
+  }
+}

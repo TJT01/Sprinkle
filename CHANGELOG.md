@@ -19,6 +19,9 @@ The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.
   - They're now less saturated and slightly more purple
 - Nightshale now uses deepslate sounds
 
+### Fixed
+- Nightshale brick vertical slab model
+
 ## [1.18.1-0.2.0-alpha]
 ### Added
 - Updated to 1.18.1
