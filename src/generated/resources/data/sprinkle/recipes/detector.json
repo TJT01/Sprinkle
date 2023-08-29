@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
+    "## ",
     "RRI",
-    "###"
+    "## "
   ],
   "key": {
     "#": {
@@ -13,7 +13,7 @@
       "tag": "forge:dusts/redstone"
     },
     "I": {
-      "tag": "forge:ingots/iron"
+      "item": "minecraft:heavy_weighted_pressure_plate"
     }
   },
   "result": {

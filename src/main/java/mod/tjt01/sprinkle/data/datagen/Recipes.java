@@ -138,12 +138,12 @@ class Recipes extends RecipeProvider {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(ModBlocks.DETECTOR.get())
-                .pattern("###")
+                .pattern("## ")
                 .pattern("RRI")
-                .pattern("###")
+                .pattern("## ")
                 .define('#', Tags.Items.COBBLESTONE)
                 .define('R', Tags.Items.DUSTS_REDSTONE)
-                .define('I', Tags.Items.INGOTS_IRON)
+                .define('I', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
                 .unlockedBy("has_redstone", has(Tags.Items.DUSTS_REDSTONE))
                 .save(consumer);
 
