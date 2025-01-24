@@ -2,11 +2,12 @@ package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLang extends LanguageProvider {
-    public ModLang(DataGenerator gen) {
-        super(gen, "sprinkle", "en_us");
+    public ModLang(PackOutput output) {
+        super(output, "sprinkle", "en_us");
     }
 
     @Override

@@ -1,0 +1,9 @@
+// 1.20.1	2025-01-24T17:10:05.1465993	Block Tags for Sprinkle
+5bd1912a824afbc95b362723b9ab8f05aff0f61e data/minecraft/tags/blocks/guarded_by_piglins.json
+a5e0038baa504807a273f508948a5d0bd27850f2 data/minecraft/tags/blocks/mineable/pickaxe.json
+5570656023615c56f9e5b8cde8ceb48c77021759 data/minecraft/tags/blocks/piglin_repellents.json
+4001b332dab8df468e70b9384dcfa77e705cd975 data/minecraft/tags/blocks/slabs.json
+c8258f6d4ff2e493afd4aff4ce87abfbd4c9dec8 data/minecraft/tags/blocks/stairs.json
+c0261b37cdbdff89aca6479d1f5036d85b313149 data/minecraft/tags/blocks/walls.json
+a5b267828c013aa0382ec224beec0611e172dfc7 data/quark/tags/blocks/vertical_slab.json
+8a4f7e904287cac1b5acba4c90bd0eeb9919f329 data/sprinkle/tags/blocks/double_door_blacklist.json

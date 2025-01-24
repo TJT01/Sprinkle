@@ -10,7 +10,7 @@ public class ModSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "sprinkle");
 
     public static RegistryObject<SoundEvent> makeSound(String name) {
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation("sprinkle", name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("sprinkle", name)));
     }
 
     public static final RegistryObject<SoundEvent> DETECTOR_CLICK_ON = makeSound("block.detector.click_on");

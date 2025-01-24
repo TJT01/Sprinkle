@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#  ",
-    "## ",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "sprinkle:purpur_bricks"
     }
   },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
   "result": {
-    "item": "sprinkle:purpur_brick_stairs",
-    "count": 4
-  }
+    "count": 4,
+    "item": "sprinkle:purpur_brick_stairs"
+  },
+  "show_notification": true
 }

@@ -11,9 +11,9 @@ import net.minecraft.world.level.block.JukeboxBlock;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 
@@ -32,7 +32,7 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if (cap == ForgeCapabilities.ITEM_HANDLER)
             return (LazyOptional<T>) itemHandlerLazy;
         return LazyOptional.empty();
     }
@@ -52,7 +52,7 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
         @Nonnull
         @Override
         public ItemStack getStackInSlot(int slot) {
-            return jukebox.getRecord();
+            return jukebox.getItem(0);
         }
 
         @Nonnull
@@ -66,13 +66,13 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
                 return stack;
             if (!(isItemValid(slot, stack)))
                 return stack;
-            if (!jukebox.getRecord().isEmpty())
+            if (!jukebox.getItem(0).isEmpty())
                 return stack;
 
             ItemStack remainder = ItemHandlerHelper.copyStackWithSize(stack, stack.getCount() - 1);
             if (!simulate) {
                 ItemStack input = ItemHandlerHelper.copyStackWithSize(stack, 1);
-                jukeboxBlock.setRecord(level, pos, state, input);
+                jukebox.setItem(0, input);
                 level.levelEvent((Player)null, 1010, pos, Item.getId(input.getItem()));
             }
             return remainder;
@@ -84,14 +84,14 @@ public class JukeboxCapabilityProvider implements ICapabilityProvider {
             BlockState state = jukebox.getBlockState();
             BlockPos pos = jukebox.getBlockPos();
             LevelAccessor level = jukebox.getLevel();
-            ItemStack existing = jukebox.getRecord();
+            ItemStack existing = jukebox.getItem(0);
 
             if (!(state.getBlock() instanceof JukeboxBlock jukeboxBlock))
                 return ItemStack.EMPTY;
             if (existing.isEmpty())
                 return ItemStack.EMPTY;
             if (!simulate) {
-                jukeboxBlock.setRecord(level, pos, state, ItemStack.EMPTY);
+                jukebox.setItem(0, ItemStack.EMPTY);
                 level.levelEvent(1010, pos, 0);
             }
 

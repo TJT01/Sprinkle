@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "#I#",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "minecraft:flint"
@@ -13,8 +9,14 @@
       "tag": "forge:gems/lapis"
     }
   },
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
   "result": {
-    "item": "sprinkle:nightshale",
-    "count": 4
-  }
+    "count": 4,
+    "item": "sprinkle:nightshale"
+  },
+  "show_notification": true
 }

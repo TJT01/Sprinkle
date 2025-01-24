@@ -1,5 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "sprinkle:flag",
+      "flag": "green_dye"
+    }
+  ],
   "ingredients": [
     {
       "item": "minecraft:yellow_dye"
@@ -9,13 +16,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:green_dye",
-    "count": 2
-  },
-  "conditions": [
-    {
-      "flag": "green_dye",
-      "type": "sprinkle:flag"
-    }
-  ]
+    "count": 2,
+    "item": "minecraft:green_dye"
+  }
 }

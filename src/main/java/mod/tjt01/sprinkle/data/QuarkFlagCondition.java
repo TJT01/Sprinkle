@@ -22,12 +22,12 @@ public class QuarkFlagCondition implements ICondition {
     }
 
     @Override
-    public boolean test() {
+    public boolean test(IContext context) {
         if (ModList.get().isLoaded("quark")) {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("type", "quark:flag");
             jsonObject.addProperty("flag", this.flag);
-            return CraftingHelper.getCondition(jsonObject).test();
+            return CraftingHelper.getCondition(jsonObject).test(context);
         }
         return false;
     }

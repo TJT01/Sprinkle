@@ -1,22 +1,22 @@
 {
-  "block.detector.click_on": {
-    "subtitle": "subtitle.sprinkle.block.detector.click",
-    "sounds": [
-      {
-        "name": "random/click",
-        "volume": 0.5,
-        "pitch": 0.9
-      }
-    ]
-  },
   "block.detector.click_off": {
-    "subtitle": "subtitle.sprinkle.block.detector.click",
     "sounds": [
       {
         "name": "random/click",
-        "volume": 0.5,
-        "pitch": 0.75
+        "pitch": 0.75,
+        "volume": 0.5
       }
-    ]
+    ],
+    "subtitle": "subtitle.sprinkle.block.detector.click"
+  },
+  "block.detector.click_on": {
+    "sounds": [
+      {
+        "name": "random/click",
+        "pitch": 0.9,
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitle.sprinkle.block.detector.click"
   }
 }

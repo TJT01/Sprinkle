@@ -1,23 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#",
-    "#",
-    "#"
+  "category": "building",
+  "conditions": [
+    {
+      "type": "sprinkle:quark_flag",
+      "flag": "vertical_slabs"
+    }
   ],
   "key": {
     "#": {
       "item": "sprinkle:nightshale_slab"
     }
   },
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
   "result": {
-    "item": "sprinkle:nightshale_vertical_slab",
-    "count": 3
+    "count": 3,
+    "item": "sprinkle:nightshale_vertical_slab"
   },
-  "conditions": [
-    {
-      "flag": "vertical_slabs",
-      "type": "sprinkle:quark_flag"
-    }
-  ]
+  "show_notification": true
 }

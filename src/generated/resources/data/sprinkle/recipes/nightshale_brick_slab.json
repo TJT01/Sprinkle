@@ -1,15 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "sprinkle:nightshale_bricks"
     }
   },
+  "pattern": [
+    "###"
+  ],
   "result": {
-    "item": "sprinkle:nightshale_brick_slab",
-    "count": 6
-  }
+    "count": 6,
+    "item": "sprinkle:nightshale_brick_slab"
+  },
+  "show_notification": true
 }

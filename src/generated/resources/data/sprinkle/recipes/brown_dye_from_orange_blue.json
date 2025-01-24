@@ -1,5 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "sprinkle:flag",
+      "flag": "brown_dye"
+    }
+  ],
   "ingredients": [
     {
       "item": "minecraft:orange_dye"
@@ -9,13 +16,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:brown_dye",
-    "count": 2
-  },
-  "conditions": [
-    {
-      "flag": "brown_dye",
-      "type": "sprinkle:flag"
-    }
-  ]
+    "count": 2,
+    "item": "minecraft:brown_dye"
+  }
 }

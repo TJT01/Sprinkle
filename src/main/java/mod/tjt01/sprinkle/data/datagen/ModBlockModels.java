@@ -3,7 +3,7 @@ package mod.tjt01.sprinkle.data.datagen;
 import mod.tjt01.sprinkle.block.DetectorBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.block.ModBlocks;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -11,17 +11,18 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBlockModels extends BlockStateProvider {
 
-    public ModBlockModels(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, "sprinkle", exFileHelper);
+    public ModBlockModels(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, "sprinkle", exFileHelper);
     }
 
     private void simpleItemModel(Item item) {
-        itemModels().getBuilder(item.getRegistryName().getPath())
+        itemModels().getBuilder(ForgeRegistries.ITEMS.getKey(item).getPath())
                 .parent(itemModels().getExistingFile(mcLoc("item/generated")))
-                .texture("layer0", modLoc("item/" + item.getRegistryName().getPath()));
+                .texture("layer0", modLoc("item/" + ForgeRegistries.ITEMS.getKey(item).getPath()));
     }
 
     private void lanternBlock(LanternBlock block, ModelFile model, ModelFile hanging) {
@@ -51,25 +52,25 @@ public class ModBlockModels extends BlockStateProvider {
         getVariantBuilder(block)
                 .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.NORTH)
                 .addModels(new ConfiguredModel(
-                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                        models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
                                 .texture("bottom", bottom).texture("side", side).texture("top", top)
                         , 0, 0, true)
                 )
                 .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.EAST)
                 .addModels(new ConfiguredModel(
-                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                        models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
                                 .texture("bottom", bottom).texture("side", side).texture("top", top)
                         , 0, 90, true)
                 )
                 .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.SOUTH)
                 .addModels(new ConfiguredModel(
-                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                        models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
                                 .texture("bottom", bottom).texture("side", side).texture("top", top)
                         , 0, 180, true)
                 )
                 .partialState().with(VerticalSlabBlock.TYPE, VerticalSlabBlock.VerticalSlabType.WEST)
                 .addModels(new ConfiguredModel(
-                        models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
+                        models().withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(), new ResourceLocation("sprinkle", "block/vertical_slab"))
                                 .texture("bottom", bottom).texture("side", side).texture("top", top)
                         , 0, 270, true)
                 )
@@ -93,7 +94,7 @@ public class ModBlockModels extends BlockStateProvider {
 
     private void simpleWallBlock(WallBlock block, ResourceLocation texture) {
         this.wallBlock(block, texture);
-        this.itemModels().wallInventory(block.getRegistryName().getPath(), texture);
+        this.itemModels().wallInventory(ForgeRegistries.BLOCKS.getKey(block).getPath(), texture);
     }
 
     @Override

@@ -1,34 +1,10 @@
 {
   "advancements": [
     {
-      "conditions": [
-        {
-          "flag": "green_dye",
-          "type": "sprinkle:flag"
-        }
-      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
-        "rewards": {
-          "recipes": [
-            "sprinkle:green_dye_from_yellow_blue"
-          ]
-        },
         "criteria": {
-          "has_yellow_dye": {
-            "trigger": "minecraft:inventory_changed",
-            "conditions": {
-              "items": [
-                {
-                  "items": [
-                    "minecraft:yellow_dye"
-                  ]
-                }
-              ]
-            }
-          },
           "has_blue_dye": {
-            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
@@ -37,13 +13,26 @@
                   ]
                 }
               ]
-            }
+            },
+            "trigger": "minecraft:inventory_changed"
           },
           "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "sprinkle:green_dye_from_yellow_blue"
-            }
+            },
+            "trigger": "minecraft:recipe_unlocked"
+          },
+          "has_yellow_dye": {
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "minecraft:yellow_dye"
+                  ]
+                }
+              ]
+            },
+            "trigger": "minecraft:inventory_changed"
           }
         },
         "requirements": [
@@ -52,8 +41,20 @@
             "has_blue_dye",
             "has_the_recipe"
           ]
-        ]
-      }
+        ],
+        "rewards": {
+          "recipes": [
+            "sprinkle:green_dye_from_yellow_blue"
+          ]
+        },
+        "sends_telemetry_event": false
+      },
+      "conditions": [
+        {
+          "type": "sprinkle:flag",
+          "flag": "green_dye"
+        }
+      ]
     }
   ]
 }

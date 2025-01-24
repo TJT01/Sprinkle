@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "#I#",
-    "###"
-  ],
+  "category": "misc",
   "key": {
     "#": {
       "tag": "forge:nuggets/gold"
@@ -13,7 +9,13 @@
       "item": "minecraft:torch"
     }
   },
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
   "result": {
     "item": "sprinkle:gold_lantern"
-  }
+  },
+  "show_notification": true
 }

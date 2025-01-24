@@ -19,18 +19,18 @@ Work-in-progress mod for Minecraft 1.18.2
 [[dependencies.sprinkle]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="[40.2.0,)" #mandatory
+    versionRange="[47.3.0,)" #mandatory
     ordering="NONE"
     side="BOTH"
 [[dependencies.sprinkle]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.20.1]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.sprinkle]]
     modId="lapislib"
     mandatory=true
-    versionRange="[1.2.0a,)"
+    versionRange="[1.2.0,)"
     ordering="NONE"
     side="BOTH"

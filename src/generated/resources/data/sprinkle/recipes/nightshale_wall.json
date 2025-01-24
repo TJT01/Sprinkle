@@ -1,16 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "sprinkle:nightshale"
     }
   },
+  "pattern": [
+    "###",
+    "###"
+  ],
   "result": {
-    "item": "sprinkle:nightshale_wall",
-    "count": 6
-  }
+    "count": 6,
+    "item": "sprinkle:nightshale_wall"
+  },
+  "show_notification": true
 }

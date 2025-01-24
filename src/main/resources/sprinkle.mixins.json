@@ -1,13 +1,13 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "mod.tjt01.sprinkle.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "sprinkle.refmap.json",
-  "mixins": [
-    "ItemsMixin"
-  ],
+  "refmap": "sprinkle.mixins.refmap.json",
   "client": [
     "client.NightVisionScaleMixin"
   ],
-  "minVersion": "0.8"
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

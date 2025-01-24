@@ -1,8 +1,8 @@
 package mod.tjt01.sprinkle.block;
 
 import mod.tjt01.sprinkle.data.QuarkFlagCondition;
-import mod.tjt01.lapislib.block.OptionalBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.material.Fluid;
@@ -28,14 +28,14 @@ import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nullable;
 
-public class VerticalSlabBlock extends OptionalBlock implements SimpleWaterloggedBlock {
+public class VerticalSlabBlock extends Block implements SimpleWaterloggedBlock {
 
     public static final QuarkFlagCondition CONDITION = new QuarkFlagCondition("vertical_slabs");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<VerticalSlabType> TYPE = EnumProperty.create("type", VerticalSlabType.class);
 
-    public VerticalSlabBlock(Properties properties) {
-        super(properties, CONDITION::test);
+    public VerticalSlabBlock(BlockBehaviour.Properties properties) {
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(TYPE, VerticalSlabType.NORTH).setValue(WATERLOGGED, false));
     }
 
@@ -123,10 +123,10 @@ public class VerticalSlabBlock extends OptionalBlock implements SimpleWaterlogge
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.getValue(TYPE) == VerticalSlabType.DOUBLE ? state : state.setValue(TYPE, VerticalSlabType.fromDirection(rotation.rotate(state.getValue(TYPE).direction)));
     }
-    @Override
-    public String getDisabledTooltip() {
-        return "sprinkle.ui.disabled.quark_missing";
-    }
+//    @Override
+//    public String getDisabledTooltip() {
+//        return "sprinkle.ui.disabled.quark_missing";
+//    }
 
     public enum VerticalSlabType implements StringRepresentable {
         NORTH(Direction.NORTH),

@@ -5,12 +5,12 @@ import mod.tjt01.sprinkle.data.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,14 +30,14 @@ public class DoubleDoorFeature {
                         event.getUseBlock() == Event.Result.DENY || event.getEntity().isDiscrete()
         ) return;
 
-        LivingEntity livingEntity = event.getEntityLiving();
-        Level level = event.getWorld();
+        Player player = event.getEntity();
+        Level level = event.getLevel();
         BlockState clicked = level.getBlockState(event.getPos());
 
         if (
                 clicked.is(ModTags.Blocks.DOUBLE_DOOR_BLACKLIST) ||
-                        !(clicked.getBlock() instanceof DoorBlock) ||
-                        clicked.getMaterial().equals(Material.METAL)
+                        !(clicked.getBlock() instanceof DoorBlock doorBlock) ||
+                        doorBlock.type() == BlockSetType.IRON
         ) return;
 
         DoorHingeSide side = clicked.getValue(DoorBlock.HINGE);
@@ -50,8 +50,8 @@ public class DoubleDoorFeature {
 
         if (
                 otherState.is(ModTags.Blocks.DOUBLE_DOOR_BLACKLIST) ||
-                        !(otherState.getBlock() instanceof DoorBlock) ||
-                        otherState.getMaterial().equals(Material.METAL) ||
+                        !(otherState.getBlock() instanceof DoorBlock otherDoorBlock) ||
+                        otherDoorBlock.type() == BlockSetType.IRON ||
                         otherState.getValue(DoorBlock.HINGE).equals(side) ||
                         otherState.getValue(DoorBlock.OPEN) != clicked.getValue(DoorBlock.OPEN)
         ) return;
@@ -63,10 +63,10 @@ public class DoubleDoorFeature {
 
         handlingDoorClick = true;
         boolean canceled = MinecraftForge.EVENT_BUS.post(
-                new PlayerInteractEvent.RightClickBlock(event.getPlayer(), InteractionHand.MAIN_HAND, other, hitResult)
+                new PlayerInteractEvent.RightClickBlock(event.getEntity(), InteractionHand.MAIN_HAND, other, hitResult)
         );
         handlingDoorClick = false;
         if (!canceled)
-            otherState.use(level, event.getPlayer(), InteractionHand.MAIN_HAND, hitResult);
+            otherState.use(level, event.getEntity(), InteractionHand.MAIN_HAND, hitResult);
     }
 }

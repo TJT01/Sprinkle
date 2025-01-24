@@ -2,13 +2,14 @@ package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.init.ModSoundEvents;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.SoundDefinitionsProvider;
 
 public class ModSoundDefinitions extends SoundDefinitionsProvider {
 
-    protected ModSoundDefinitions(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, "sprinkle", helper);
+    protected ModSoundDefinitions(PackOutput output, ExistingFileHelper helper) {
+        super(output, "sprinkle", helper);
     }
 
     @Override

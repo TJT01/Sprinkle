@@ -1,22 +1,10 @@
 {
   "advancements": [
     {
-      "conditions": [
-        {
-          "flag": "vertical_slabs",
-          "type": "sprinkle:quark_flag"
-        }
-      ],
       "advancement": {
         "parent": "minecraft:recipes/root",
-        "rewards": {
-          "recipes": [
-            "sprinkle:nightshale_vertical_brick_slab"
-          ]
-        },
         "criteria": {
           "has_nightshale_brick_slab": {
-            "trigger": "minecraft:inventory_changed",
             "conditions": {
               "items": [
                 {
@@ -25,13 +13,14 @@
                   ]
                 }
               ]
-            }
+            },
+            "trigger": "minecraft:inventory_changed"
           },
           "has_the_recipe": {
-            "trigger": "minecraft:recipe_unlocked",
             "conditions": {
               "recipe": "sprinkle:nightshale_vertical_brick_slab"
-            }
+            },
+            "trigger": "minecraft:recipe_unlocked"
           }
         },
         "requirements": [
@@ -39,8 +28,20 @@
             "has_nightshale_brick_slab",
             "has_the_recipe"
           ]
-        ]
-      }
+        ],
+        "rewards": {
+          "recipes": [
+            "sprinkle:nightshale_vertical_brick_slab"
+          ]
+        },
+        "sends_telemetry_event": false
+      },
+      "conditions": [
+        {
+          "type": "sprinkle:quark_flag",
+          "flag": "vertical_slabs"
+        }
+      ]
     }
   ]
 }

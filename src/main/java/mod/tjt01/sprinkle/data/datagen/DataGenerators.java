@@ -1,11 +1,15 @@
 package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.Main;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+
+import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(modid = Main.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
@@ -14,16 +18,19 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(generator, existingFileHelper);
-        generator.addProvider(new ModLootTableProvider(generator));
-        generator.addProvider(new Recipes(generator));
-        generator.addProvider(new ModBlockModels(generator, existingFileHelper));
+        PackOutput packOutput = generator.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
+
+        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(packOutput, lookup, existingFileHelper);
+        generator.addProvider(event.includeServer(), new ModLootTableProvider(packOutput));
+        generator.addProvider(event.includeServer(), new Recipes(packOutput));
+        generator.addProvider(event.includeClient(), new ModBlockModels(packOutput, existingFileHelper));
         //generator.addProvider(new ModItemModels(generator, existingFileHelper));
-        generator.addProvider(blockTagsProvider);
-        generator.addProvider(new ModItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
-        generator.addProvider(new ModEntityTypeTagsProvider(generator, existingFileHelper));
-        generator.addProvider(new ModLang(generator));
-        generator.addProvider(new ModSoundDefinitions(generator, existingFileHelper));
+        generator.addProvider(event.includeServer(), blockTagsProvider);
+        generator.addProvider(event.includeServer(), new ModItemTagsProvider(packOutput, lookup, blockTagsProvider.contentsGetter(), existingFileHelper));
+//        generator.addProvider(event.includeServer(), new ModEntityTypeTagsProvider(generator, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModLang(packOutput));
+        generator.addProvider(event.includeClient(), new ModSoundDefinitions(packOutput, existingFileHelper));
 
     }
 

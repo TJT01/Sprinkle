@@ -1,16 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###"
-  ],
+  "category": "building",
   "key": {
     "#": {
       "item": "sprinkle:purpur_bricks"
     }
   },
+  "pattern": [
+    "###",
+    "###"
+  ],
   "result": {
-    "item": "sprinkle:purpur_brick_wall",
-    "count": 6
-  }
+    "count": 6,
+    "item": "sprinkle:purpur_brick_wall"
+  },
+  "show_notification": true
 }

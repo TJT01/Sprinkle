@@ -1,6 +1,7 @@
 package mod.tjt01.sprinkle.block;
 
 import mod.tjt01.sprinkle.init.ModSoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.DirectionalBlock;
@@ -48,7 +49,7 @@ public class DetectorBlock extends DirectionalBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (state.getValue(POWERED) != shouldBePowered(world, pos, state.getValue(FACING))) {
             world.setBlock(pos, state.setValue(POWERED, shouldBePowered(world, pos, state.getValue(FACING))), Block.UPDATE_CLIENTS);
             this.updateNeighborsInFront(world, pos, state);

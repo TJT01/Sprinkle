@@ -21,7 +21,7 @@ public class FlagCondition implements ICondition {
     }
 
     @Override
-    public boolean test() {
+    public boolean test(IContext context) {
         return SprinkleConfig.flags.getOrDefault(flag, false);
     }
 
