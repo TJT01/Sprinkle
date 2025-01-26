@@ -3,7 +3,7 @@ package mod.tjt01.sprinkle.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class CommonConfig {
-    final ForgeConfigSpec.BooleanValue jukeboxTweakEnabled;
+//    final ForgeConfigSpec.BooleanValue jukeboxTweakEnabled;
     final ForgeConfigSpec.BooleanValue doubleDoorsEnabled;
 
     final ForgeConfigSpec.BooleanValue greenDyeRecipeEnabled;
@@ -21,13 +21,13 @@ public class CommonConfig {
                 .comment("Allows opening both sides of a double door")
                 .translation("config.sprinkle.tweaks.doubleDoorsOpenTogether")
                 .define("doubleDoorsOpenTogether", true);
-        jukeboxTweakEnabled = builder
-                .comment(
-                        "Allow hoppers to interact with jukeboxes",
-                        "Also works with modded pipes"
-                )
-                .translation("config.sprinkle.jukebox")
-                .define("jukeboxContainerEnabled", true);
+//        jukeboxTweakEnabled = builder
+//                .comment(
+//                        "Allow hoppers to interact with jukeboxes",
+//                        "Also works with modded pipes"
+//                )
+//                .translation("config.sprinkle.jukebox")
+//                .define("jukeboxContainerEnabled", true);
         builder.push("smoothNightVision");
         smoothNightVisionEnabled = builder
                 .comment("Removes night vision flashing; replacing it with a smooth fadeout")

@@ -215,8 +215,8 @@ repositories {
 
 dependencies {
     implementation fg.deobf("maven.modrinth:lapislib:1.20.1-1.2.0")
-//    runtimeOnly fg.deobf("maven.modrinth:quark:3.2-358")
-//    runtimeOnly fg.deobf("maven.modrinth:autoreglib:1.7-53")
+    runtimeOnly fg.deobf("maven.modrinth:quark:1.20.1-4.0-460")
+    runtimeOnly fg.deobf("maven.modrinth:zeta:1.20.1-1.0-24")
 }
 
 mixin {

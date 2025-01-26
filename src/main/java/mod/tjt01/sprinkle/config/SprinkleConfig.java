@@ -17,7 +17,7 @@ public class SprinkleConfig {
         COMMON_SPEC = specPairCommon.getRight();
     }
 
-    public static boolean jukeboxCapabilityEnabled = true;
+//    public static boolean jukeboxCapabilityEnabled = true;
 
     public static boolean smoothNightVisionEnabled = true;
     public static int smoothNightVisionFadeTime = 200;
@@ -34,7 +34,7 @@ public class SprinkleConfig {
     }
 
     public static void bakeCommon(ModConfig config) {
-        jukeboxCapabilityEnabled = COMMON_CONFIG.jukeboxTweakEnabled.get();
+//        jukeboxCapabilityEnabled = COMMON_CONFIG.jukeboxTweakEnabled.get();
 
         greenDyeEnabled = COMMON_CONFIG.greenDyeRecipeEnabled.get();
         brownDyeEnabled = COMMON_CONFIG.brownDyeRecipeEnabled.get();
