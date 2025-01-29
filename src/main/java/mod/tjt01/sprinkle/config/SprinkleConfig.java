@@ -19,8 +19,8 @@ public class SprinkleConfig {
 
 //    public static boolean jukeboxCapabilityEnabled = true;
 
-    public static boolean smoothNightVisionEnabled = true;
-    public static int smoothNightVisionFadeTime = 200;
+    public static boolean noNightVisionFlashEnabled = true;
+    public static int nightVisionFadeTime = 200;
 
     public static boolean greenDyeEnabled = true;
     public static boolean brownDyeEnabled = true;
@@ -39,8 +39,8 @@ public class SprinkleConfig {
         greenDyeEnabled = COMMON_CONFIG.greenDyeRecipeEnabled.get();
         brownDyeEnabled = COMMON_CONFIG.brownDyeRecipeEnabled.get();
 
-        smoothNightVisionFadeTime = COMMON_CONFIG.smoothNightVisionFadeTime.get();
-        smoothNightVisionEnabled = COMMON_CONFIG.smoothNightVisionEnabled.get();
+        nightVisionFadeTime = COMMON_CONFIG.nightVisionFadeTime.get();
+        noNightVisionFlashEnabled = COMMON_CONFIG.noNightVisionFlashEnabled.get();
 
         bundlesEnabled = COMMON_CONFIG.bundlesEnabled.get() && (COMMON_CONFIG.forceBundles.get() || !isModLoaded("quark"));
 

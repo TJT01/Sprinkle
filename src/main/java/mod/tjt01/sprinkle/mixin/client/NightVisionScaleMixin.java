@@ -22,9 +22,9 @@ public abstract class NightVisionScaleMixin {
             LivingEntity livingEntity, float nanoTime,
             CallbackInfoReturnable<Float> callback
     ) {
-        if (SprinkleConfig.smoothNightVisionEnabled) {
+        if (SprinkleConfig.noNightVisionFlashEnabled) {
             int duration = livingEntity.getEffect(MobEffects.NIGHT_VISION).getDuration();
-            callback.setReturnValue(Mth.clamp(duration/(float)SprinkleConfig.smoothNightVisionFadeTime, 0F, 1F));
+            callback.setReturnValue(Mth.clamp(duration/(float)SprinkleConfig.nightVisionFadeTime, 0F, 1F));
         }
     }
 }
