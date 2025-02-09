@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "sprinkle:block/milk_cauldron"
+    },
+    "age=1": {
+      "model": "sprinkle:block/milk_cauldron"
+    },
+    "age=2": {
+      "model": "sprinkle:block/milk_cauldron"
+    },
+    "age=3": {
+      "model": "sprinkle:block/cheese_cauldron"
+    }
+  }
+}

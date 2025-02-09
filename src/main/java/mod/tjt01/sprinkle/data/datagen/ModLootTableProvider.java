@@ -1,38 +1,50 @@
 package mod.tjt01.sprinkle.data.datagen;
 
+import mod.tjt01.sprinkle.block.MilkCauldronBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.block.ModBlocks;
+import mod.tjt01.sprinkle.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntry;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 public class ModLootTableProvider extends LootTableProvider {
     public ModLootTableProvider(PackOutput output) {
-        super(output, Set.of(), List.of(new SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)));
+        super(
+                output, Set.of(
+                        MilkCauldronBlock.CHEESE_LOOT_ID
+                ),
+                List.of(
+                        new SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK),
+                        new SubProviderEntry(ModGameplayLoot::new, LootContextParamSets.BLOCK)
+                )
+        );
     }
-
-    @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationTracker) {}
 
     public static class ModBlockLootTables extends BlockLootSubProvider {
         public ModBlockLootTables() {
@@ -81,6 +93,8 @@ public class ModLootTableProvider extends LootTableProvider {
 
             this.dropSelf(ModBlocks.DETECTOR.get());
 
+            this.dropOther(ModBlocks.MILK_CAULDRON.get(), Items.CAULDRON);
+            this.dropSelf(ModBlocks.CHEESE_BLOCK.get());
         }
 
         @Override
@@ -95,4 +109,19 @@ public class ModLootTableProvider extends LootTableProvider {
         }
     }
 
+    public static class ModGameplayLoot implements LootTableSubProvider {
+        @Override
+        public void generate(BiConsumer<ResourceLocation, LootTable.Builder> output) {
+            output.accept(
+                    MilkCauldronBlock.CHEESE_LOOT_ID, LootTable.lootTable()
+                            .withPool(
+                                    LootPool.lootPool().add(
+                                            LootItem.lootTableItem(ModItems.CHEESE.get()).apply(
+                                                    SetItemCountFunction.setCount(UniformGenerator.between(2,4))
+                                            )
+                                    )
+                            )
+            );
+        }
+    }
 }

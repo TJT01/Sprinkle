@@ -8,6 +8,7 @@ package mod.tjt01.sprinkle;
 
 import mod.tjt01.sprinkle.config.SprinkleConfig;
 import mod.tjt01.sprinkle.init.ModSoundEvents;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.LogManager;
@@ -21,9 +22,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod("sprinkle")
 public class Main {
-
     public static final String MODID = "sprinkle";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+
+    public static ResourceLocation location(String path) {
+        return new ResourceLocation(MODID, path);
+    }
 
     public Main() {
         LOGGER.debug("Sprinkle has joined the game");
