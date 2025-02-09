@@ -1,9 +1,11 @@
-// 1.20.1	2025-01-24T17:10:05.0979736	Loot Tables
+// 1.20.1	2025-02-09T16:29:27.9003897	Loot Tables
+085d2ec4a6dbf3bef43af6420fe4508948899ca9 data/sprinkle/loot_tables/blocks/cheese_block.json
 ef95b0e373022df20dfffd0eef3ab2ebf784e399 data/sprinkle/loot_tables/blocks/detector.json
 078d43e1b8f59ca9b6f91dc97327225702a6db1f data/sprinkle/loot_tables/blocks/glimmering_nightshale.json
 cbd941d0d86593b2f59e1793662b8e6fa0a6f774 data/sprinkle/loot_tables/blocks/gold_chain.json
 a89d83374fc5e70ce284bcb929d3f86e64cc4c48 data/sprinkle/loot_tables/blocks/gold_lantern.json
 6a4b444d432f9a651a329ca40d6640e1c7bc93da data/sprinkle/loot_tables/blocks/gold_soul_lantern.json
+1cf78a9254d07eacfc37dc6e3a5886b5fb3579fb data/sprinkle/loot_tables/blocks/milk_cauldron.json
 3e926b2c3a25b85a4aad046c50e1279521212b5b data/sprinkle/loot_tables/blocks/nightshale.json
 f3dc3bb172a8b899ba1e8f1dc5c66039f0a4179e data/sprinkle/loot_tables/blocks/nightshale_bricks.json
 9f745f6edd8ea57f33b9b3d5b1365b4e2f97e64e data/sprinkle/loot_tables/blocks/nightshale_brick_slab.json
@@ -19,3 +21,4 @@ d804148cc407e438631075b17f3add6efda88c4a data/sprinkle/loot_tables/blocks/purpur
 5f39dccb7fb3ba998915d72b44bfac4be7828e43 data/sprinkle/loot_tables/blocks/purpur_brick_stairs.json
 c2bd491e0c8a5070bf869ccdf6fa611cd4267b32 data/sprinkle/loot_tables/blocks/purpur_brick_vertical_slab.json
 e60de656433044817b469ba766aad1b5aae7a7e8 data/sprinkle/loot_tables/blocks/purpur_brick_wall.json
+2933acb05aba31356b51c8802ceb8870267b2602 data/sprinkle/loot_tables/gameplay/cheese.json

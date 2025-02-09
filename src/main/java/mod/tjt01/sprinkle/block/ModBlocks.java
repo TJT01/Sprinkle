@@ -130,4 +130,20 @@ public final class ModBlocks {
                             .instrument(NoteBlockInstrument.BASEDRUM)
             )
     );
+
+    public static final RegistryObject<Block> MILK_CAULDRON = blockNoItem(
+            "milk_cauldron", () -> new MilkCauldronBlock(
+                    BlockBehaviour.Properties.copy(Blocks.CAULDRON)
+                            .randomTicks()
+            )
+    );
+
+    public static final RegistryObject<Block> CHEESE_BLOCK = block(
+            "cheese_block", () -> new Block(
+                    BlockBehaviour.Properties.of()
+                            .strength(0.5F)
+                            .sound(SoundType.WOOL)
+                            .mapColor(MapColor.COLOR_YELLOW)
+            )
+    );
 }

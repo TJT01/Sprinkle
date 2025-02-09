@@ -1,6 +1,7 @@
 package mod.tjt01.sprinkle.data.datagen;
 
 import mod.tjt01.sprinkle.block.DetectorBlock;
+import mod.tjt01.sprinkle.block.MilkCauldronBlock;
 import mod.tjt01.sprinkle.block.VerticalSlabBlock;
 import mod.tjt01.sprinkle.block.ModBlocks;
 import net.minecraft.data.PackOutput;
@@ -39,8 +40,7 @@ public class ModBlockModels extends BlockStateProvider {
 
     private void cubeAllBlock(Block block) {
         ModelFile model = this.cubeAll(block);
-        this.simpleBlock(block, model);
-        this.simpleBlockItem(block, model);
+        this.simpleBlockWithItem(block, model);
     }
 
     private void simpleSlabBlock(SlabBlock block, ResourceLocation doubleslab, ResourceLocation texture) {
@@ -119,7 +119,6 @@ public class ModBlockModels extends BlockStateProvider {
         this.simpleWallBlock((WallBlock) ModBlocks.NIGHTSHALE_BRICK_WALL.get(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
         this.simpleVerticalSlabBlock((VerticalSlabBlock) ModBlocks.NIGHTSHALE_BRICK_VERTICAL_SLAB.get(), ModBlocks.NIGHTSHALE_BRICKS.getId(), blockTexture(ModBlocks.NIGHTSHALE_BRICKS.get()));
 
-
         getVariantBuilder(ModBlocks.DETECTOR.get())
                 .forAllStates(state -> {
                     int rX = 0;
@@ -153,5 +152,18 @@ public class ModBlockModels extends BlockStateProvider {
                 models().withExistingParent("hanging_gold_soul_lantern", modLoc("block/template_hanging_gold_lantern")).texture("lantern", blockTexture(ModBlocks.GOLD_SOUL_LANTERN.get()))
         );
         this.simpleItemModel(ModBlocks.GOLD_SOUL_LANTERN.get().asItem());
+        this.cubeAllBlock(ModBlocks.CHEESE_BLOCK.get());
+
+        ModelFile milk_cauldron = models().withExistingParent("milk_cauldron", "block/template_cauldron_full")
+                .texture("content", modLoc("block/cauldron_milk"));
+        getVariantBuilder(ModBlocks.MILK_CAULDRON.get())
+                .forAllStates(
+                        state -> ConfiguredModel.builder().modelFile(
+                                        state.getValue(MilkCauldronBlock.AGE) == 3
+                                                ? models().withExistingParent("cheese_cauldron", "block/template_cauldron_full")
+                                                .texture("content", modLoc("block/cheese_block"))
+                                                : milk_cauldron
+                                ).build()
+                );
     }
 }
