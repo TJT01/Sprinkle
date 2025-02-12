@@ -4,12 +4,14 @@ import com.google.gson.JsonObject;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.conditions.FalseCondition;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
 import net.minecraftforge.fml.ModList;
 
 public class QuarkFlagCondition implements ICondition {
     private static final ResourceLocation NAME = new ResourceLocation("sprinkle", "quark_flag");
+    private ICondition wrapped = null;
     private final String flag;
 
     public QuarkFlagCondition(String flag) {
@@ -23,13 +25,17 @@ public class QuarkFlagCondition implements ICondition {
 
     @Override
     public boolean test(IContext context) {
-        if (ModList.get().isLoaded("quark")) {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("type", "quark:flag");
-            jsonObject.addProperty("flag", this.flag);
-            return CraftingHelper.getCondition(jsonObject).test(context);
+        if (wrapped == null && ModList.get().isLoaded("quark")) {
+            if (ModList.get().isLoaded("quark")) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("type", "quark:flag");
+                jsonObject.addProperty("flag", this.flag);
+                wrapped = CraftingHelper.getCondition(jsonObject);
+            } else {
+                wrapped = FalseCondition.INSTANCE;
+            }
         }
-        return false;
+        return wrapped.test(context);
     }
 
     public static class Serializer implements IConditionSerializer<QuarkFlagCondition> {

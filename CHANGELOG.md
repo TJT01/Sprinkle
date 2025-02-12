@@ -6,6 +6,9 @@ but this project does not adhere to Semantic Versioning.
 The version format is MCMAJOR.MCMINOR.MCPATCH-MAJOR.MINOR.PATCH, eg, 1.18.1-1.2.3
 
 ## [UNRELEASED]
+### Added
+- Added milk cauldrons and cheese
+
 ### Changed
 - Renamed Smooth Night Vision to No Night Vision Flash
 
